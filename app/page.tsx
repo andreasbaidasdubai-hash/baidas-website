@@ -162,12 +162,12 @@ const VIMEO_ID = "1197377063";
 const FORMSPREE_ENDPOINT = "https://formspree.io/f/REPLACE_WITH_YOUR_ID";
 // WhatsApp floating button: international number, digits only, no "+" (e.g. "971501234567").
 // Empty = button hidden.
-const WHATSAPP_NUMBER = "";
+const WHATSAPP_NUMBER = "41786521111";
 const WHATSAPP_MSG = "Guten Tag, ich interessiere mich für Baidas & Baidas.";
 // Optional looping construction video under the project gallery.
 // Set a Vimeo ID (preferred) or a local /public path to enable it. Empty = hidden.
 const PROJECT_VIDEO_VIMEO_ID = "";
-const PROJECT_VIDEO_SRC = "";
+const PROJECT_VIDEO_SRC = "/bau.mov";
 
 /* original brand mark (icon extracted from logo.svg) — recolors via `color` */
 function LogoIcon({ color, size = 42 }: { color: string; size?: number }) {
@@ -355,10 +355,8 @@ export default function Home() {
                 style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: "100vw", height: "56.25vw", minHeight: "100%", minWidth: "177.78vh", border: 0, pointerEvents: "none" }}
               />
             ) : (
-              <video autoPlay muted loop playsInline preload="metadata"
-                style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }}>
-                <source src={PROJECT_VIDEO_SRC} type="video/mp4" />
-              </video>
+              <video autoPlay muted loop playsInline preload="metadata" src={PROJECT_VIDEO_SRC}
+                style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
             )}
           </div>
         </section>
