@@ -128,6 +128,14 @@ const T = {
 
 const LANGS = ["de", "en", "fr"] as const;
 
+/* ─── DEPLOY CONFIG — fill these in for production ───────────────── */
+// Hero video via Vimeo: upload the video to Vimeo, then paste its numeric ID
+// (from the URL vimeo.com/XXXXXXXXX). While empty, local /landing.mp4 is used.
+const VIMEO_ID = "";
+// Contact form via Formspree: create a form at formspree.io (recipient
+// info@baidas.ch) and paste the endpoint URL here.
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/REPLACE_WITH_YOUR_ID";
+
 /* original brand mark (icon extracted from logo.svg) — recolors via `color` */
 function LogoIcon({ color, size = 42 }: { color: string; size?: number }) {
   return (
@@ -226,10 +234,21 @@ export default function Home() {
 
       {/* ── HERO ── */}
       <section id="top" style={{ position: "relative", height: "100dvh", overflow: "hidden", background: "#0E1B2A" }}>
-        <video autoPlay muted loop playsInline preload="auto"
-          style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }}>
-          <source src="/landing.mp4" type="video/mp4" />
-        </video>
+        {VIMEO_ID ? (
+          <div style={{ position: "absolute", inset: 0, overflow: "hidden" }}>
+            <iframe
+              src={`https://player.vimeo.com/video/${VIMEO_ID}?background=1&autoplay=1&loop=1&muted=1&dnt=1`}
+              allow="autoplay; fullscreen"
+              title="Baidas & Baidas"
+              style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: "100vw", height: "56.25vw", minHeight: "100%", minWidth: "177.78vh", border: 0, pointerEvents: "none" }}
+            />
+          </div>
+        ) : (
+          <video autoPlay muted loop playsInline preload="auto"
+            style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }}>
+            <source src="/landing.mp4" type="video/mp4" />
+          </video>
+        )}
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(10,18,28,0.5) 0%, rgba(10,18,28,0.3) 45%, rgba(10,18,28,0.62) 100%)" }} />
 
         <motion.button onClick={() => goTo("#about")}
@@ -314,14 +333,25 @@ export default function Home() {
                 <p style={{ fontFamily: "var(--font-cormorant)", fontStyle: "italic", fontSize: "1.9rem", color: INK, maxWidth: "22ch", lineHeight: 1.3 }}>{t.sent}</p>
               </div>
             ) : (
-              <form onSubmit={e => { e.preventDefault(); setSent(true); }} style={{ display: "flex", flexDirection: "column", gap: 18 }}>
-                {[[t.namePh, "text"], [t.emailPh, "email"]].map(([ph, ty]) => (
-                  <input key={ph} type={ty} required placeholder={ph}
+              <form
+                onSubmit={async e => {
+                  e.preventDefault();
+                  const form = e.currentTarget;
+                  if (FORMSPREE_ENDPOINT.includes("REPLACE")) { setSent(true); return; } // demo until endpoint is set
+                  try {
+                    const res = await fetch(FORMSPREE_ENDPOINT, { method: "POST", body: new FormData(form), headers: { Accept: "application/json" } });
+                    if (res.ok) { setSent(true); form.reset(); }
+                  } catch { /* network error — silently ignore */ }
+                }}
+                style={{ display: "flex", flexDirection: "column", gap: 18 }}>
+                {[[t.namePh, "text", "name"], [t.emailPh, "email", "email"]].map(([ph, ty, nm]) => (
+                  <input key={ph} name={nm} type={ty} required placeholder={ph}
                     style={{ background: "transparent", border: "none", borderBottom: `1px solid ${LINE}`, padding: "14px 2px", fontFamily: "var(--font-geist-sans)", fontSize: 15, color: INK, outline: "none" }}
                     onFocus={e => (e.currentTarget.style.borderBottomColor = INK)}
                     onBlur={e => (e.currentTarget.style.borderBottomColor = LINE)} />
                 ))}
-                <textarea required placeholder={t.msgPh} rows={4}
+                <input type="hidden" name="_subject" value="Neue Anfrage über baidas.ch" />
+                <textarea name="message" required placeholder={t.msgPh} rows={4}
                   style={{ background: "transparent", border: "none", borderBottom: `1px solid ${LINE}`, padding: "14px 2px", fontFamily: "var(--font-geist-sans)", fontSize: 15, color: INK, outline: "none", resize: "none" }}
                   onFocus={e => (e.currentTarget.style.borderBottomColor = INK)}
                   onBlur={e => (e.currentTarget.style.borderBottomColor = LINE)} />
