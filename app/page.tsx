@@ -131,7 +131,7 @@ const LANGS = ["de", "en", "fr"] as const;
 /* ─── DEPLOY CONFIG — fill these in for production ───────────────── */
 // Hero video via Vimeo: upload the video to Vimeo, then paste its numeric ID
 // (from the URL vimeo.com/XXXXXXXXX). While empty, local /landing.mp4 is used.
-const VIMEO_ID = "";
+const VIMEO_ID = "1197377063";
 // Contact form via Formspree: create a form at formspree.io (recipient
 // info@baidas.ch) and paste the endpoint URL here.
 const FORMSPREE_ENDPOINT = "https://formspree.io/f/REPLACE_WITH_YOUR_ID";
