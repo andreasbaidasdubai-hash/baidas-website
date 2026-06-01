@@ -471,7 +471,7 @@ export default function Home() {
         <a href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MSG)}`}
           target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"
           style={{
-            position: "fixed", bottom: 24, left: 24, zIndex: 120,
+            position: "fixed", bottom: 80, right: 22, zIndex: 120,
             width: 48, height: 48, borderRadius: "50%",
             display: "flex", alignItems: "center", justifyContent: "center",
             background: "#25D366", boxShadow: "0 6px 18px rgba(0,0,0,0.28)",
