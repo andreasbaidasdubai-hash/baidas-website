@@ -5,6 +5,7 @@ import { motion, useReducedMotion, AnimatePresence } from "motion/react";
 import { useLang } from "@/context/LanguageContext";
 import { Reveal } from "@/components/Reveal";
 import Music from "@/components/Music";
+import { WhatsappLogo } from "@phosphor-icons/react";
 
 /* ─── PALETTE — beyond-style: white / cream / ink ────────────────── */
 const INK   = "#16181A";   // headings, nav-solid, footer
@@ -159,6 +160,14 @@ const VIMEO_ID = "1197377063";
 // Contact form via Formspree: create a form at formspree.io (recipient
 // info@baidas.ch) and paste the endpoint URL here.
 const FORMSPREE_ENDPOINT = "https://formspree.io/f/REPLACE_WITH_YOUR_ID";
+// WhatsApp floating button: international number, digits only, no "+" (e.g. "971501234567").
+// Empty = button hidden.
+const WHATSAPP_NUMBER = "";
+const WHATSAPP_MSG = "Guten Tag, ich interessiere mich für Baidas & Baidas.";
+// Optional looping construction video under the project gallery.
+// Set a Vimeo ID (preferred) or a local /public path to enable it. Empty = hidden.
+const PROJECT_VIDEO_VIMEO_ID = "";
+const PROJECT_VIDEO_SRC = "";
 
 /* original brand mark (icon extracted from logo.svg) — recolors via `color` */
 function LogoIcon({ color, size = 42 }: { color: string; size?: number }) {
@@ -335,6 +344,26 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── CONSTRUCTION VIDEO BAND (optional, looping) ── */}
+      {(PROJECT_VIDEO_VIMEO_ID || PROJECT_VIDEO_SRC) && (
+        <section style={{ background: "#0E1B2A", borderBottom: `1px solid ${LINE}` }}>
+          <div style={{ position: "relative", width: "100%", aspectRatio: "16 / 9", overflow: "hidden" }}>
+            {PROJECT_VIDEO_VIMEO_ID ? (
+              <iframe
+                src={`https://player.vimeo.com/video/${PROJECT_VIDEO_VIMEO_ID}?background=1&autoplay=1&loop=1&muted=1&dnt=1`}
+                allow="autoplay; fullscreen" title="Baidas & Baidas — Bau"
+                style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: "100vw", height: "56.25vw", minHeight: "100%", minWidth: "177.78vh", border: 0, pointerEvents: "none" }}
+              />
+            ) : (
+              <video autoPlay muted loop playsInline preload="metadata"
+                style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }}>
+                <source src={PROJECT_VIDEO_SRC} type="video/mp4" />
+              </video>
+            )}
+          </div>
+        </section>
+      )}
+
       {/* ── AKQUISITION / KONTAKT ── */}
       <section id="akquisition" style={{ padding: "clamp(6rem,12vw,11rem) clamp(1.5rem,5vw,4rem)", maxWidth: 1180, margin: "0 auto" }}>
         <Reveal><Eyebrow>{t.acqLabel}</Eyebrow></Reveal>
@@ -440,6 +469,20 @@ export default function Home() {
           </motion.div>
         )}
       </AnimatePresence>
+      {WHATSAPP_NUMBER && (
+        <a href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MSG)}`}
+          target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"
+          style={{
+            position: "fixed", bottom: 24, left: 24, zIndex: 120,
+            width: 48, height: 48, borderRadius: "50%",
+            display: "flex", alignItems: "center", justifyContent: "center",
+            background: "#25D366", boxShadow: "0 6px 18px rgba(0,0,0,0.28)",
+            textDecoration: "none",
+          }}>
+          <WhatsappLogo weight="fill" size={27} color="#fff" />
+        </a>
+      )}
+
       <Music />
     </main>
   );
