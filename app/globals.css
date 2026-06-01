@@ -28,3 +28,20 @@ body {
 ::-webkit-scrollbar-track { background: #FFFFFF; }
 ::-webkit-scrollbar-thumb { background: rgba(22,24,26,0.18); border-radius: 4px; }
 ::-webkit-scrollbar-thumb:hover { background: rgba(22,24,26,0.30); }
+
+/* ─── Arabic / RTL ──────────────────────────────────────────────────
+   Cormorant & Geist have no Arabic glyphs, so in RTL mode swap to
+   Amiri (headings) and Noto Sans Arabic (text). The brand wordmark
+   stays Latin (Poppins). Letter-spacing/uppercase are neutralised so
+   the joined Arabic script renders correctly. */
+[dir="rtl"] :where(h1, h2, h3) {
+  font-family: var(--font-amiri), "Amiri", Georgia, serif !important;
+}
+[dir="rtl"] :where(p, a, button, span, input, textarea, li, label) {
+  font-family: var(--font-arabic), "Noto Sans Arabic", system-ui, sans-serif !important;
+  letter-spacing: 0 !important;
+  text-transform: none !important;
+}
+[dir="rtl"] .brand, [dir="rtl"] .brand * {
+  font-family: var(--font-poppins), sans-serif !important;
+}

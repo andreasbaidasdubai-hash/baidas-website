@@ -124,9 +124,33 @@ const T = {
     footerNav: [["À Propos", "#about"], ["Immobilier", "#projekte"], ["Acquisition", "#akquisition"]],
     close: "Fermer",
   },
+  ar: {
+    nav: [["المشاريع", "#projekte"], ["الاستحواذ", "#akquisition"]],
+    heroEyebrow: "فنّ العمارة وتطوير المشاريع",
+    heroTitle: "Baidas & Baidas",
+    discover: "اكتشف",
+    aboutLabel: "وعدنا",
+    aboutTitle: "عقارات حصرية",
+    aboutP: [
+      "تبني بيداس آند بيداس عقارات حصرية في مواقع مختارة بعناية وذات قيمة عالية.",
+      "إنّ تطوير وبناء عقارات سكنية فاخرة على أراضٍ حصرية، استناداً إلى فنّ معماري يبلغ أعلى درجات الإتقان الحِرفي، هو وعدنا.",
+      "تخضع جميع مراحل البناء، من التخطيط وحتى مختلف مراحل التنفيذ، لمعيار جودة لا يقبل المساومة: من اختيار الأراضي والمواقع من الطراز الأول، وتكليف نخبة من المعماريين أصحاب الطابع المميّز، والتعاون مع ورشٍ حِرفية منتقاة، وصولاً إلى التصميم الإبداعي للمشاريع بالتعاون مع روّاد مصممي الديكور الداخلي ومهندسي تنسيق الحدائق.",
+    ],
+    projLabel: "العقارات",
+    projTitle: "المشاريع",
+    projIntro: "تمتدّ مشاريعنا العقارية عبر زيورخ ودبي وأبوظبي. وبصفتنا مطوّرين عقاريين، نتولّى العملية بأكملها — من شراء الأراضي وحتى إنجاز المشاريع الإنشائية. كما نساهم أيضاً كمستثمرين في المشاريع الإنشائية لضمان نجاحها ورِبحيتها.",
+    acqLabel: "الاستحواذ",
+    acqTitle: "اعرض أرضك",
+    acqP1: "تشتري بيداس آند بيداس أراضيَ قابلة للبناء في مواقع سكنية جيدة وممتازة في زيورخ ودبي وأبوظبي، لتشييد شققٍ تمليك أو فللٍ سكنية فائقة الجودة عليها.",
+    acqP2: "هل لديك أرض مناسبة أو عقار قائم وترغب في عرضه للبيع؟ يمكنك بالطبع التواصل معنا مباشرةً وبشكل شخصي حفاظاً على السرّية. يسعدنا تواصلك معنا.",
+    namePh: "اسمك", emailPh: "بريدك الإلكتروني", msgPh: "رسالتك",
+    send: "إرسال الطلب", sent: "شكراً جزيلاً — سنتواصل معك قريباً.",
+    footerNav: [["من نحن", "#about"], ["العقارات", "#projekte"], ["الاستحواذ", "#akquisition"]],
+    close: "إغلاق",
+  },
 } as const;
 
-const LANGS = ["de", "en", "fr"] as const;
+const LANGS = ["de", "en", "fr", "ar"] as const;
 
 /* ─── DEPLOY CONFIG — fill these in for production ───────────────── */
 // Hero video via Vimeo: upload the video to Vimeo, then paste its numeric ID
@@ -152,7 +176,7 @@ function LogoIcon({ color, size = 42 }: { color: string; size?: number }) {
 /* full logo lockup: icon + "Baidas & Baidas" (original-style grey ampersand) */
 function LogoLockup({ color, iconSize = 42, fontSize = "22px", gap = 13, stacked = false, hideText = false }: { color: string; iconSize?: number; fontSize?: string; gap?: number; stacked?: boolean; hideText?: boolean }) {
   return (
-    <span style={{ display: "inline-flex", flexDirection: stacked ? "column" : "row", alignItems: stacked ? "flex-start" : "center", gap: stacked ? 12 : gap }}>
+    <span className="brand" style={{ display: "inline-flex", flexDirection: stacked ? "column" : "row", alignItems: stacked ? "flex-start" : "center", gap: stacked ? 12 : gap }}>
       <LogoIcon color={color} size={iconSize} />
       <span className={hideText ? "hidden sm:inline" : undefined} style={{ fontFamily: "var(--font-poppins)", fontWeight: 600, fontSize, letterSpacing: "0.01em", color, whiteSpace: "nowrap", transition: "color 0.4s" }}>
         Baidas<span style={{ fontSize: "0.66em", fontWeight: 600, opacity: 0.5, margin: "0 0.2em" }}>&amp;</span>Baidas
@@ -182,6 +206,12 @@ export default function Home() {
     window.addEventListener("scroll", fn, { passive: true });
     return () => window.removeEventListener("scroll", fn);
   }, []);
+
+  // Arabic reads right-to-left — flip document direction + language
+  useEffect(() => {
+    document.documentElement.lang = lang;
+    document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+  }, [lang]);
 
   const goTo = (href: string) => {
     if (href.startsWith("#")) document.querySelector(href)?.scrollIntoView({ behavior: "smooth", block: "start" });
