@@ -240,7 +240,7 @@ export default function Home() {
               src={`https://player.vimeo.com/video/${VIMEO_ID}?background=1&autoplay=1&loop=1&muted=1&dnt=1`}
               allow="autoplay; fullscreen"
               title="Baidas & Baidas"
-              style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: "100vw", height: "56.25vw", minHeight: "100%", minWidth: "177.78vh", border: 0, pointerEvents: "none" }}
+              style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: "100vw", height: "75vw", minHeight: "100%", minWidth: "133.34vh", border: 0, pointerEvents: "none" }}
             />
           </div>
         ) : (
