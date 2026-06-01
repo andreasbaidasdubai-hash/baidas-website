@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans:    var(--font-geist-sans), "Geist", system-ui, sans-serif;
+  --font-display: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+
+  /* Palette — beyond-style: light, editorial, warm */
+  --color-bg:    #FFFFFF;   /* page white */
+  --color-cream: #F4F0E9;   /* warm cream accent sections */
+  --color-ink:   #16181A;   /* near-black headings / nav-solid */
+  --color-body:  #5A5E63;   /* muted grey body text */
+  --color-soft:  #9A9DA2;   /* faint labels / captions */
+  --color-line:  rgba(22,24,26,0.12);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: #FFFFFF;
+  color: #16181A;
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection { background: rgba(22,24,26,0.10); }
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #FFFFFF; }
+::-webkit-scrollbar-thumb { background: rgba(22,24,26,0.18); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(22,24,26,0.30); }
