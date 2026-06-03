@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Baidas & Baidas — Email Signature</title>
+<style>
+  body { margin:0; background:#EDEBE6; font-family:Georgia, 'Times New Roman', serif; }
+  .wrap { max-width:760px; margin:40px auto; padding:0 20px; }
+  .panel { background:#fff; border:1px solid rgba(22,24,26,0.1); border-radius:12px; padding:32px; }
+  .note { font-family:Arial, sans-serif; font-size:13px; color:#5A5E63; line-height:1.7; margin:0 0 24px; }
+  .note b { color:#16181A; }
+  .copybtn { font-family:Arial, sans-serif; font-size:12px; letter-spacing:0.08em; text-transform:uppercase;
+             background:#16181A; color:#fff; border:none; border-radius:999px; padding:11px 22px; cursor:pointer; }
+  .copied { color:#16181A; font-family:Arial, sans-serif; font-size:12px; margin-left:12px; }
+  hr { border:none; border-top:1px solid rgba(22,24,26,0.1); margin:28px 0; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <p class="note">
+    <b>So fügst du deine Signatur ein / How to install your signature:</b><br>
+    1. Markiere die Signatur unten (Anfang bis Ende) und kopiere sie (Ctrl/Cmd + C) — oder klick „Signatur kopieren“.<br>
+    2. <b>Gmail:</b> Einstellungen → „Signatur“ → einfügen (Ctrl/Cmd + V).<br>
+    &nbsp;&nbsp;&nbsp;<b>Outlook:</b> Datei → Optionen → E-Mail → Signaturen → einfügen.<br>
+    3. Ersetze Name, Titel und Telefon mit deinen Angaben.
+  </p>
+  <button class="copybtn" onclick="copySig()">Signatur kopieren</button>
+  <span class="copied" id="done"></span>
+
+  <hr>
+
+  <!-- ============ SIGNATURE START ============ -->
+  <div id="sig">
+    <table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse; font-family:Georgia, 'Times New Roman', serif;">
+      <tr>
+        <!-- Logo -->
+        <td style="vertical-align:top; padding-right:24px;">
+          <img src="https://baidas.ch/favicon.png" width="56" height="56" alt="Baidas & Baidas" style="display:block;" />
+        </td>
+        <!-- Divider -->
+        <td style="vertical-align:top; padding-right:24px;">
+          <div style="width:1px; height:96px; background:rgba(22,24,26,0.15);"></div>
+        </td>
+        <!-- Details -->
+        <td style="vertical-align:top;">
+          <div style="font-size:22px; color:#16181A; font-weight:normal; letter-spacing:0.01em;">Andreas Baidas</div>
+          <div style="font-family:Arial, sans-serif; font-size:12px; color:#9A9DA2; letter-spacing:0.14em; text-transform:uppercase; margin-top:3px;">Gesch&auml;ftsf&uuml;hrer &middot; Managing Director</div>
+
+          <div style="font-family:Arial, sans-serif; font-size:13px; color:#5A5E63; line-height:1.7; margin-top:14px;">
+            <a href="mailto:andreas@baidas.ch" style="color:#16181A; text-decoration:none;">andreas@baidas.ch</a><br>
+            <a href="https://baidas.ch" style="color:#16181A; text-decoration:none;">baidas.ch</a><br>
+            Baarerstrasse 12, 6300 Zug, Switzerland
+          </div>
+
+          <!-- Brand wordmark + locations -->
+          <div style="margin-top:16px; padding-top:14px; border-top:1px solid rgba(22,24,26,0.1);">
+            <div style="font-size:15px; color:#16181A; font-style:italic;">Baidas &amp; Baidas AG</div>
+            <div style="font-family:Arial, sans-serif; font-size:10px; color:#9A9DA2; letter-spacing:0.18em; text-transform:uppercase; margin-top:5px;">
+              Z&uuml;rich &middot; Dubai &middot; Abu Dhabi
+            </div>
+            <!-- Multilingual tagline -->
+            <div style="font-family:Arial, sans-serif; font-size:11px; color:#5A5E63; line-height:1.6; margin-top:8px;">
+              Baukunst &amp; Projektentwicklung<br>
+              Architectural Art &amp; Project Development<br>
+              Art Architectural &amp; D&eacute;veloppement
+            </div>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <!-- ============ SIGNATURE END ============ -->
+
+</div>
+
+<script>
+function copySig() {
+  var sig = document.getElementById('sig');
+  var range = document.createRange();
+  range.selectNode(sig);
+  var sel = window.getSelection();
+  sel.removeAllRanges();
+  sel.addRange(range);
+  try {
+    document.execCommand('copy');
+    document.getElementById('done').textContent = '✓ Kopiert — jetzt in Gmail/Outlook einfügen';
+  } catch (e) {
+    document.getElementById('done').textContent = 'Bitte manuell markieren und kopieren';
+  }
+  sel.removeAllRanges();
+}
+</script>
+</body>
+</html>
