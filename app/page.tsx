@@ -158,7 +158,7 @@ const LANGS = ["de", "en", "fr", "ar"] as const;
 const VIMEO_ID = "1197377063";
 // Contact form via Formspree: create a form at formspree.io (recipient
 // info@baidas.ch) and paste the endpoint URL here.
-const FORMSPREE_ENDPOINT = "https://formspree.io/f/REPLACE_WITH_YOUR_ID";
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/xkoawapo";
 // WhatsApp floating button: international number, digits only, no "+" (e.g. "971501234567").
 // Empty = button hidden.
 const WHATSAPP_NUMBER = "41786521111";
