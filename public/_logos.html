@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Helvetic Heights — HH Monogram</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{ --ink:#1B2A33; --slate:#4A6A85; --icy:#8AA0B5; --cream:#F4F0E9; --line:rgba(27,42,51,.12); }
+  *{box-sizing:border-box;}
+  body{margin:0;background:#EEF1F4;color:var(--ink);font-family:'Jost',system-ui,sans-serif;padding:46px 24px;}
+  .head{max-width:1080px;margin:0 auto 34px;}
+  .head h1{font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(2rem,5vw,3rem);margin:0 0 8px;}
+  .head p{color:var(--slate);font-size:13.5px;line-height:1.6;margin:0;max-width:70ch;}
+  .grid{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:22px;}
+  .card{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 8px 30px rgba(27,42,51,.06);}
+  .stage{padding:50px 36px;display:flex;align-items:center;justify-content:center;min-height:210px;}
+  .stage.dark{background:var(--ink);}
+  .stage.cream{background:var(--cream);}
+  .meta{padding:16px 22px 22px;border-top:1px solid var(--line);}
+  .tag{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--icy);}
+  .meta h2{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:1.4rem;margin:6px 0 6px;}
+  .meta p{font-size:12px;line-height:1.6;color:var(--slate);margin:0;}
+  .wmC{font-family:'Cormorant Garamond',serif;font-weight:300;letter-spacing:.02em;line-height:1;}
+  .wmS{font-family:'Jost',sans-serif;font-weight:400;letter-spacing:.36em;text-transform:uppercase;}
+  .sub{font-family:'Jost',sans-serif;font-weight:300;letter-spacing:.34em;text-transform:uppercase;font-size:8.5px;}
+  .span2{grid-column:1 / -1;}
+</style>
+</head>
+<body>
+  <div class="head">
+    <h1>Helvetic&nbsp;Heights — HH Monogram</h1>
+    <p>Zwei H als schlanke Türme · der Negativraum dazwischen bildet einen Berggipfel. Ein Konzept in mehreren Anwendungen.</p>
+  </div>
+
+  <div class="grid">
+
+    <!-- HERO: big mark + concept reveal -->
+    <div class="card span2">
+      <div style="display:grid;grid-template-columns:1fr 1fr;">
+        <div class="stage cream" style="min-height:300px;">
+          <svg width="200" height="200" viewBox="0 0 100 100" style="color:#1B2A33;">
+            <g fill="currentColor">
+              <rect x="14" y="8" width="7" height="84"/>
+              <rect x="79" y="8" width="7" height="84"/>
+              <polygon points="36,92 43,92 50,8 43,8"/>
+              <polygon points="64,92 57,92 50,8 57,8"/>
+              <rect x="21" y="46.5" width="20" height="7"/>
+              <rect x="59" y="46.5" width="20" height="7"/>
+            </g>
+          </svg>
+        </div>
+        <div class="stage" style="min-height:300px;">
+          <!-- concept reveal: negative peak tinted -->
+          <svg width="200" height="200" viewBox="0 0 100 100" style="color:#1B2A33;">
+            <polygon points="50,8 43,92 57,92" fill="#8AA0B5" opacity="0.9"/>
+            <g fill="currentColor">
+              <rect x="14" y="8" width="7" height="84"/>
+              <rect x="79" y="8" width="7" height="84"/>
+              <polygon points="36,92 43,92 50,8 43,8"/>
+              <polygon points="64,92 57,92 50,8 57,8"/>
+              <rect x="21" y="46.5" width="20" height="7"/>
+              <rect x="59" y="46.5" width="20" height="7"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+      <div class="meta">
+        <div class="tag">Das Konzept</div>
+        <h2>HH = zwei Türme · der Zwischenraum = Gipfel</h2>
+        <p>Links die reine Marke, rechts dieselbe Marke mit eingefärbtem Negativraum, damit man den verborgenen Berggipfel sieht. Die inneren H-Stege laufen oben zur Spitze zusammen.</p>
+      </div>
+    </div>
+
+    <!-- on dark -->
+    <div class="card">
+      <div class="stage dark">
+        <svg width="120" height="120" viewBox="0 0 100 100" style="color:#fff;">
+          <g fill="currentColor">
+            <rect x="14" y="8" width="7" height="84"/><rect x="79" y="8" width="7" height="84"/>
+            <polygon points="36,92 43,92 50,8 43,8"/><polygon points="64,92 57,92 50,8 57,8"/>
+            <rect x="21" y="46.5" width="20" height="7"/><rect x="59" y="46.5" width="20" height="7"/>
+          </g>
+        </svg>
+      </div>
+      <div class="meta"><div class="tag">Variante</div><h2>Auf Dunkel</h2><p>Weiß über dunklem Grund — z. B. über dem Hero-Video oder im Footer.</p></div>
+    </div>
+
+    <!-- favicon sizes -->
+    <div class="card">
+      <div class="stage" style="gap:26px;">
+        <svg width="64" height="64" viewBox="0 0 100 100" style="color:#1B2A33;"><g fill="currentColor"><rect x="14" y="8" width="7" height="84"/><rect x="79" y="8" width="7" height="84"/><polygon points="36,92 43,92 50,8 43,8"/><polygon points="64,92 57,92 50,8 57,8"/><rect x="21" y="46.5" width="20" height="7"/><rect x="59" y="46.5" width="20" height="7"/></g></svg>
+        <svg width="32" height="32" viewBox="0 0 100 100" style="color:#1B2A33;"><g fill="currentColor"><rect x="14" y="8" width="7" height="84"/><rect x="79" y="8" width="7" height="84"/><polygon points="36,92 43,92 50,8 43,8"/><polygon points="64,92 57,92 50,8 57,8"/><rect x="21" y="46.5" width="20" height="7"/><rect x="59" y="46.5" width="20" height="7"/></g></svg>
+        <svg width="20" height="20" viewBox="0 0 100 100" style="color:#1B2A33;"><g fill="currentColor"><rect x="14" y="8" width="7" height="84"/><rect x="79" y="8" width="7" height="84"/><polygon points="36,92 43,92 50,8 43,8"/><polygon points="64,92 57,92 50,8 57,8"/><rect x="21" y="46.5" width="20" height="7"/><rect x="59" y="46.5" width="20" height="7"/></g></svg>
+      </div>
+      <div class="meta"><div class="tag">Skalierung</div><h2>Bleibt klein lesbar</h2><p>Favicon / App-Icon / Social-Avatar — funktioniert bis 20px.</p></div>
+    </div>
+
+    <!-- horizontal lockup serif -->
+    <div class="card span2">
+      <div class="stage" style="gap:22px;justify-content:flex-start;padding-left:60px;">
+        <svg width="58" height="58" viewBox="0 0 100 100" style="color:#1B2A33;flex:none;"><g fill="currentColor"><rect x="14" y="8" width="7" height="84"/><rect x="79" y="8" width="7" height="84"/><polygon points="36,92 43,92 50,8 43,8"/><polygon points="64,92 57,92 50,8 57,8"/><rect x="21" y="46.5" width="20" height="7"/><rect x="59" y="46.5" width="20" height="7"/></g></svg>
+        <div>
+          <div class="wmC" style="font-size:2.1rem;">Helvetic Heights</div>
+          <div class="sub" style="color:var(--icy);margin-top:8px;">Architectural Art · Project Development</div>
+        </div>
+      </div>
+      <div class="meta"><div class="tag">Lockup A</div><h2>Monogramm + Serif-Wortmarke</h2><p>Für die Navigationsleiste — Marke links, „Helvetic Heights" in Cormorant rechts.</p></div>
+    </div>
+
+    <!-- horizontal lockup sans -->
+    <div class="card span2">
+      <div class="stage cream" style="gap:22px;justify-content:flex-start;padding-left:60px;">
+        <svg width="54" height="54" viewBox="0 0 100 100" style="color:#1B2A33;flex:none;"><g fill="currentColor"><rect x="14" y="8" width="7" height="84"/><rect x="79" y="8" width="7" height="84"/><polygon points="36,92 43,92 50,8 43,8"/><polygon points="64,92 57,92 50,8 57,8"/><rect x="21" y="46.5" width="20" height="7"/><rect x="59" y="46.5" width="20" height="7"/></g></svg>
+        <div>
+          <div class="wmS" style="font-size:1.25rem;">HELVETIC HEIGHTS</div>
+          <div class="sub" style="color:var(--slate);margin-top:10px;">Zürich · Dubai · Abu Dhabi</div>
+        </div>
+      </div>
+      <div class="meta"><div class="tag">Lockup B</div><h2>Monogramm + Sans-Wortmarke</h2><p>Alternativ moderner, weit gesperrte Versalien — sachlich, präzise „schweizerisch".</p></div>
+    </div>
+
+  </div>
+</body>
+</html>
