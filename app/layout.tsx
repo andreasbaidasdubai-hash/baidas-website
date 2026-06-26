@@ -38,7 +38,6 @@ export const metadata: Metadata = {
   title: "Baidas & Baidas AG — Baukunst & Projektentwicklung",
   description:
     "Exklusive Immobilien in besonders ausgewählten und werthaltigen Lagen. Zürich · Dubai · Abu Dhabi.",
-  icons: { icon: "/favicon.png" },
   openGraph: {
     title: "Baidas & Baidas AG — Baukunst & Projektentwicklung",
     description:
