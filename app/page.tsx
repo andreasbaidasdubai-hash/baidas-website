@@ -13,40 +13,49 @@ const SOFT  = "#9A9DA2";   // faint labels / captions
 const CREAM = "#F4F0E9";   // warm accent sections
 const LINE  = "rgba(22,24,26,0.12)";
 
-/* ─── REAL PROPERTY PHOTOS (from the Baidas Wix media library) ───── */
-const PHOTOS = [
-  /* curated project imagery (local /public/projekte) */
-  "/projekte/Seamont.jpg",
-  "/projekte/Flow25.png",
-  "/projekte/saadiyat-villa-6-1.jpg",
-  "/projekte/Saadiyat-4bed.jpg",
-  "/projekte/saadiyat-villa-6-2.jpg",
-  "/projekte/saadiyat-villa-6-7.jpg",
-  "/projekte/saadiyat-villa-6-11.jpg",
-  "/projekte/saadiyat-villa-4-3.jpg",
-  "/projekte/saadiyat-villa-4-4.jpg",
-  "/projekte/saadiyat-villa-6-13.jpg",
-  /* existing Wix media */
-  "https://static.wixstatic.com/media/b3010c_60046ffe836a44ea89cb7410bbbf771d~mv2.jpg",
-  "https://static.wixstatic.com/media/b3010c_01899069023c4a7eaa6330a88ccdef0d~mv2.jpg",
-  "https://static.wixstatic.com/media/b3010c_5b2633c90c194e7f8c060f43cf7aa85f~mv2.jpg",
-  "https://static.wixstatic.com/media/b3010c_30340c4d2d56484eb51be30d7d3f3201~mv2.jpg",
-  "https://static.wixstatic.com/media/b3010c_b88fc361c35d4e77b33ea2b863490de9~mv2.jpg",
-  "https://static.wixstatic.com/media/b3010c_5d6b384f8d854a6f9223eadc54951d2c~mv2.jpeg",
-  "https://static.wixstatic.com/media/b3010c_064e4e85e00d4f56972e4848c9adf83d~mv2.jpeg",
-  "https://static.wixstatic.com/media/b3010c_21d8d809f0ca43eb8b76d8852136c33f~mv2.jpg",
-  "https://static.wixstatic.com/media/b3010c_92d93a39a26349deae9dc2f1777f7924~mv2.jpg",
-  "https://static.wixstatic.com/media/b3010c_61e6de8da72a47e397bd3c356cf0fbe4~mv2.jpg",
-  "https://static.wixstatic.com/media/b3010c_060e28d385624cbeae4a1d26eff2a2b1~mv2.jpg",
-  "https://static.wixstatic.com/media/b3010c_6f1c757e7d4a4befa1cf19217c17b98d~mv2.jpg",
-  "https://static.wixstatic.com/media/b3010c_e877a03eef6140a49f9bd6e12336b8c5~mv2.jpeg",
-  "https://static.wixstatic.com/media/b3010c_25f702170036409d99c3ac8b3fc67176~mv2.jpeg",
-  "https://static.wixstatic.com/media/b3010c_fba9859cbc0a46db9d0b1d70a65f2fb4~mv2.jpg",
-  "https://static.wixstatic.com/media/b3010c_f7675e24b462404c93165f2aed7c7755~mv2.jpg",
-  "https://static.wixstatic.com/media/b3010c_dd33802823d641c9a1a8666c92d3104d~mv2.jpg",
-  "https://static.wixstatic.com/media/b3010c_7fe5112632b64edba0cd1a4a723bf3e1~mv2.jpg",
-  "https://static.wixstatic.com/media/b3010c_7a702d59c13e4df3b01e8cab8ec9f8b1~mv2.webp",
-  "https://static.wixstatic.com/media/b3010c_93f7bdc73bca4a3b89e332d6d73119b3~mv2.jpg",
+/* ─── REAL PROPERTY PHOTOS (from the Baidas Wix media library) ─────
+   Each entry carries a `name` shown as an always-visible caption on the
+   gallery tile. Leave `name` empty for an uncaptioned image. ── */
+const PHOTOS: { src: string; name: string }[] = [
+  /* Curated, interleaved order: the five Silvestris renders are spread
+     evenly through the grid and repeated locations are broken apart so no
+     two identical captions sit next to each other. Mix of local /public
+     imagery and the existing Wix media library. ── */
+  { src: "/projekte/silvestris-1.jpg", name: "Silvestris, Zürich" },
+  { src: "https://static.wixstatic.com/media/b3010c_30340c4d2d56484eb51be30d7d3f3201~mv2.jpg", name: "Haus am Tämberg, Zürich" },
+  { src: "/projekte/saadiyat-villa-6-1.jpg", name: "Saadiyat Lagoons, Al Ghaf" },
+  { src: "/projekte/Seamont.jpg", name: "Seamont, Reem Island" },
+  { src: "https://static.wixstatic.com/media/b3010c_60046ffe836a44ea89cb7410bbbf771d~mv2.jpg", name: "Haspelstrasse, 8041 Zürich" },
+  { src: "https://static.wixstatic.com/media/b3010c_b88fc361c35d4e77b33ea2b863490de9~mv2.jpg", name: "Haus am Tämberg, Zürich" },
+  { src: "/projekte/saadiyat-villa-4-3.jpg", name: "Saadiyat Lagoons, Ethir" },
+  { src: "/projekte/silvestris-2.jpg", name: "Silvestris, Zürich" },
+  { src: "https://static.wixstatic.com/media/b3010c_e877a03eef6140a49f9bd6e12336b8c5~mv2.jpeg", name: "Creek Edge, Dubai" },
+  { src: "/projekte/Saadiyat-4bed.jpg", name: "Saadiyat Lagoons, Al Ghaf" },
+  { src: "https://static.wixstatic.com/media/b3010c_5d6b384f8d854a6f9223eadc54951d2c~mv2.jpeg", name: "Turbinenstrasse, 8005 Zürich" },
+  { src: "https://static.wixstatic.com/media/b3010c_21d8d809f0ca43eb8b76d8852136c33f~mv2.jpg", name: "Haus am Tämberg, Zürich" },
+  { src: "/projekte/saadiyat-villa-6-2.jpg", name: "Saadiyat Lagoons, Al Ghaf" },
+  { src: "https://static.wixstatic.com/media/b3010c_01899069023c4a7eaa6330a88ccdef0d~mv2.jpg", name: "Haspelstrasse, 8041 Zürich" },
+  { src: "/projekte/silvestris-3.jpg", name: "Silvestris, Zürich" },
+  { src: "https://static.wixstatic.com/media/b3010c_dd33802823d641c9a1a8666c92d3104d~mv2.jpg", name: "Grove Residences, Saadiyat" },
+  { src: "https://static.wixstatic.com/media/b3010c_92d93a39a26349deae9dc2f1777f7924~mv2.jpg", name: "Haus am Tämberg, Zürich" },
+  { src: "/projekte/saadiyat-villa-4-4.jpg", name: "Saadiyat Lagoons, Ethir" },
+  { src: "https://static.wixstatic.com/media/b3010c_25f702170036409d99c3ac8b3fc67176~mv2.jpeg", name: "Creek Edge, Dubai" },
+  { src: "/projekte/saadiyat-villa-6-7.jpg", name: "Saadiyat Lagoons, Al Ghaf" },
+  { src: "https://static.wixstatic.com/media/b3010c_61e6de8da72a47e397bd3c356cf0fbe4~mv2.jpg", name: "Haus am Tämberg, Zürich" },
+  { src: "/projekte/silvestris-4.jpg", name: "Silvestris, Zürich" },
+  { src: "https://static.wixstatic.com/media/b3010c_f7675e24b462404c93165f2aed7c7755~mv2.jpg", name: "Saadiyat Lagoons" },
+  { src: "https://static.wixstatic.com/media/b3010c_064e4e85e00d4f56972e4848c9adf83d~mv2.jpeg", name: "Turbinenstrasse, 8005 Zürich" },
+  { src: "https://static.wixstatic.com/media/b3010c_5b2633c90c194e7f8c060f43cf7aa85f~mv2.jpg", name: "Haspelstrasse, 8041 Zürich" },
+  { src: "https://static.wixstatic.com/media/b3010c_060e28d385624cbeae4a1d26eff2a2b1~mv2.jpg", name: "Haus am Tämberg, Zürich" },
+  { src: "/projekte/saadiyat-villa-6-11.jpg", name: "Saadiyat Lagoons, Al Ghaf" },
+  { src: "/projekte/saadiyat-villa-6-13.jpg", name: "Saadiyat Lagoons, Ethir" },
+  { src: "/projekte/silvestris-5.jpg", name: "Silvestris, Zürich" },
+  { src: "https://static.wixstatic.com/media/b3010c_fba9859cbc0a46db9d0b1d70a65f2fb4~mv2.jpg", name: "Creek Edge, Dubai" },
+  { src: "https://static.wixstatic.com/media/b3010c_6f1c757e7d4a4befa1cf19217c17b98d~mv2.jpg", name: "Haus am Tämberg, Zürich" },
+  { src: "https://static.wixstatic.com/media/b3010c_7fe5112632b64edba0cd1a4a723bf3e1~mv2.jpg", name: "The Cape, Al Barari" },
+  { src: "/projekte/Flow25.png", name: "Flow25, Reem Island" },
+  { src: "https://static.wixstatic.com/media/b3010c_7a702d59c13e4df3b01e8cab8ec9f8b1~mv2.webp", name: "Ramhan Island" },
+  { src: "https://static.wixstatic.com/media/b3010c_93f7bdc73bca4a3b89e332d6d73119b3~mv2.jpg", name: "Haus am Tämberg, Zürich" },
 ];
 
 /* ─── CONTENT — German is verbatim from baidas Wix site; EN/FR are
@@ -327,15 +336,18 @@ export default function Home() {
             <p style={{ fontFamily: "var(--font-geist-sans)", fontSize: 15, lineHeight: 1.85, color: BODY }}>{t.projIntro}</p>
           </Reveal>
           <div className="[column-count:1] sm:[column-count:2] lg:[column-count:3]" style={{ columnGap: 16 }}>
-            {PHOTOS.map((src, i) => (
-              <Reveal key={src} delay={(i % 3) * 0.06} style={{ breakInside: "avoid", marginBottom: 16 }}>
+            {PHOTOS.map((photo, i) => (
+              <Reveal key={photo.src} delay={(i % 3) * 0.06} style={{ breakInside: "avoid", marginBottom: 16 }}>
                 <button onClick={() => setLb(i)}
-                  style={{ display: "block", width: "100%", overflow: "hidden", border: `1px solid ${LINE}`, cursor: "pointer", padding: 0, background: "#fff", lineHeight: 0 }}>
+                  style={{ position: "relative", display: "block", width: "100%", overflow: "hidden", border: `1px solid ${LINE}`, cursor: "pointer", padding: 0, background: "#fff", lineHeight: 0 }}>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={src} alt="" loading="lazy"
+                  <img src={photo.src} alt={photo.name} loading="lazy"
                     style={{ width: "100%", height: "auto", display: "block", transition: "transform 0.8s cubic-bezier(0.22,1,0.36,1)" }}
                     onMouseEnter={e => (e.currentTarget.style.transform = "scale(1.04)")}
                     onMouseLeave={e => (e.currentTarget.style.transform = "scale(1)")} />
+                  {photo.name && (
+                    <span style={{ position: "absolute", left: 0, right: 0, bottom: 0, padding: "2.4rem 1.1rem 0.95rem", lineHeight: 1.2, textAlign: "left", background: "linear-gradient(to top, rgba(14,27,42,0.82), rgba(14,27,42,0))", color: "#fff", fontFamily: "var(--font-cormorant)", fontWeight: 400, fontSize: "1.18rem", letterSpacing: "0.005em", pointerEvents: "none" }}>{photo.name}</span>
+                  )}
                 </button>
               </Reveal>
             ))}
@@ -455,8 +467,11 @@ export default function Home() {
             <motion.div initial={{ scale: 0.94 }} animate={{ scale: 1 }} exit={{ scale: 0.94 }} onClick={e => e.stopPropagation()}
               style={{ position: "relative", maxWidth: 1000, width: "100%" }}>
               <div style={{ position: "relative", width: "100%", height: "80vh" }}>
-                <Image src={PHOTOS[lb]} alt="" fill sizes="100vw" style={{ objectFit: "contain" }} unoptimized />
+                <Image src={PHOTOS[lb].src} alt={PHOTOS[lb].name} fill sizes="100vw" style={{ objectFit: "contain" }} unoptimized />
               </div>
+              {PHOTOS[lb].name && (
+                <p style={{ textAlign: "center", marginTop: 14, fontFamily: "var(--font-cormorant)", fontWeight: 300, fontSize: "1.5rem", color: "#fff", letterSpacing: "0.01em" }}>{PHOTOS[lb].name}</p>
+              )}
               <div style={{ display: "flex", justifyContent: "center", gap: 24, marginTop: 18 }}>
                 <button onClick={() => setLb((lb - 1 + PHOTOS.length) % PHOTOS.length)} style={{ background: "none", border: "none", cursor: "pointer", fontFamily: "var(--font-geist-sans)", fontSize: 11, letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(255,255,255,0.7)" }}>←</button>
                 <button onClick={() => setLb(null)} style={{ background: "none", border: "none", cursor: "pointer", fontFamily: "var(--font-geist-sans)", fontSize: 10, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(255,255,255,0.5)" }}>{t.close}</button>

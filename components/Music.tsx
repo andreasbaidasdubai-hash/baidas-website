@@ -6,7 +6,7 @@ import { MusicNotes, SpeakerSimpleX } from "@phosphor-icons/react";
 /* Background music player.
    Add your own .mp3 files to /public/music and list them in TRACKS to choose tracks. */
 const TRACKS = [
-  { src: "/music/blacktrendmusic-classical.mp3", title: "BlackTrendMusic — Classical" },
+  { src: "/music/johnny-ripper-in-a-dream.mp3", title: "Johnny_Ripper — In a Dream" },
 ];
 
 const VOLUME = 0.5;
