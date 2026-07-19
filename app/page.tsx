@@ -58,6 +58,27 @@ const PHOTOS: { src: string; name: string }[] = [
   { src: "https://static.wixstatic.com/media/b3010c_93f7bdc73bca4a3b89e332d6d73119b3~mv2.jpg", name: "Haus am Tämberg, Zürich" },
 ];
 
+/* Group the photos into one tile per project (curated display order). Tiles
+   with more than one image become a slider so the gallery stays compact. */
+const PROJECT_ORDER = [
+  "Silvestris, Zürich",
+  "Seamont, Reem Island",
+  "Saadiyat Lagoons, Al Ghaf",
+  "Haspelstrasse, 8041 Zürich",
+  "Saadiyat Lagoons, Ethir",
+  "Haus am Tämberg, Zürich",
+  "Creek Edge, Dubai",
+  "Turbinenstrasse, 8005 Zürich",
+  "Flow25, Reem Island",
+  "Grove Residences, Saadiyat",
+  "The Cape, Al Barari",
+  "Saadiyat Lagoons",
+  "Ramhan Island",
+];
+const PROJECTS: { name: string; images: string[] }[] = PROJECT_ORDER
+  .map(name => ({ name, images: PHOTOS.filter(p => p.name === name).map(p => p.src) }))
+  .filter(p => p.images.length > 0);
+
 /* ─── CONTENT — German is verbatim from baidas Wix site; EN/FR are
    faithful translations of that same content (nothing invented). ── */
 const T = {
@@ -209,13 +230,59 @@ const Eyebrow = ({ children, light = false }: { children: React.ReactNode; light
   </p>
 );
 
+/* One project = one gallery tile. Multiple images become a crossfade slider. */
+function ProjectCard({ project, onOpen }: { project: { name: string; images: string[] }; onOpen: (i: number) => void }) {
+  const [i, setI] = useState(0);
+  const n = project.images.length;
+  const step = (d: number) => setI(p => (p + d + n) % n);
+  const arrow: React.CSSProperties = {
+    position: "absolute", top: "50%", transform: "translateY(-50%)", zIndex: 3,
+    width: 36, height: 36, borderRadius: "50%", border: "none", cursor: "pointer",
+    background: "rgba(14,27,42,0.55)", color: "#fff", fontSize: 16, lineHeight: 1,
+    display: "flex", alignItems: "center", justifyContent: "center",
+    backdropFilter: "blur(4px)", transition: "background 0.25s, opacity 0.25s",
+  };
+  return (
+    <div style={{ position: "relative", width: "100%", aspectRatio: "3 / 2", overflow: "hidden", border: `1px solid ${LINE}`, background: "#0E1B2A" }}>
+      {project.images.map((src, k) => (
+        /* eslint-disable-next-line @next/next/no-img-element */
+        <img key={src} src={src} alt={project.name} loading="lazy"
+          onClick={() => onOpen(i)}
+          style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", cursor: "pointer",
+            opacity: k === i ? 1 : 0, transition: "opacity 0.7s cubic-bezier(0.22,1,0.36,1)" }} />
+      ))}
+      <span style={{ position: "absolute", left: 0, right: 0, bottom: 0, padding: "2.6rem 1.1rem 0.95rem", lineHeight: 1.2, textAlign: "left", background: "linear-gradient(to top, rgba(14,27,42,0.85), rgba(14,27,42,0))", color: "#fff", fontFamily: "var(--font-cormorant)", fontWeight: 400, fontSize: "1.18rem", letterSpacing: "0.005em", pointerEvents: "none", zIndex: 2 }}>{project.name}</span>
+      {n > 1 && (
+        <>
+          <button aria-label="Vorheriges Bild" onClick={() => step(-1)}
+            style={{ ...arrow, left: 10 }}
+            onMouseEnter={e => (e.currentTarget.style.background = "rgba(14,27,42,0.85)")}
+            onMouseLeave={e => (e.currentTarget.style.background = "rgba(14,27,42,0.55)")}>‹</button>
+          <button aria-label="Nächstes Bild" onClick={() => step(1)}
+            style={{ ...arrow, right: 10 }}
+            onMouseEnter={e => (e.currentTarget.style.background = "rgba(14,27,42,0.85)")}
+            onMouseLeave={e => (e.currentTarget.style.background = "rgba(14,27,42,0.55)")}>›</button>
+          <span style={{ position: "absolute", top: 10, right: 10, zIndex: 3, padding: "3px 9px", borderRadius: 999, background: "rgba(14,27,42,0.6)", color: "#fff", fontFamily: "var(--font-geist-sans)", fontSize: 11, letterSpacing: "0.06em", pointerEvents: "none" }}>{i + 1} / {n}</span>
+          <div style={{ position: "absolute", bottom: 12, left: 0, right: 0, zIndex: 3, display: "flex", justifyContent: "center", gap: 6 }}>
+            {project.images.map((s, k) => (
+              <button key={s} aria-label={`Bild ${k + 1}`} onClick={() => setI(k)}
+                style={{ width: k === i ? 18 : 6, height: 6, borderRadius: 999, border: "none", padding: 0, cursor: "pointer",
+                  background: k === i ? "#fff" : "rgba(255,255,255,0.5)", transition: "width 0.3s, background 0.3s" }} />
+            ))}
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
+
 export default function Home() {
   const { lang, setLang } = useLang();
   const t = T[lang];
   const reduce = useReducedMotion();
   const [scrolled, setScrolled] = useState(false);
   const [sent, setSent] = useState(false);
-  const [lb, setLb] = useState<number | null>(null);
+  const [lb, setLb] = useState<{ images: string[]; name: string; i: number } | null>(null);
 
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 60);
@@ -335,20 +402,10 @@ export default function Home() {
           <Reveal delay={0.1} style={{ maxWidth: "68ch", marginBottom: "clamp(2.5rem,5vw,4rem)" }}>
             <p style={{ fontFamily: "var(--font-geist-sans)", fontSize: 15, lineHeight: 1.85, color: BODY }}>{t.projIntro}</p>
           </Reveal>
-          <div className="[column-count:1] sm:[column-count:2] lg:[column-count:3]" style={{ columnGap: 16 }}>
-            {PHOTOS.map((photo, i) => (
-              <Reveal key={photo.src} delay={(i % 3) * 0.06} style={{ breakInside: "avoid", marginBottom: 16 }}>
-                <button onClick={() => setLb(i)}
-                  style={{ position: "relative", display: "block", width: "100%", overflow: "hidden", border: `1px solid ${LINE}`, cursor: "pointer", padding: 0, background: "#fff", lineHeight: 0 }}>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={photo.src} alt={photo.name} loading="lazy"
-                    style={{ width: "100%", height: "auto", display: "block", transition: "transform 0.8s cubic-bezier(0.22,1,0.36,1)" }}
-                    onMouseEnter={e => (e.currentTarget.style.transform = "scale(1.04)")}
-                    onMouseLeave={e => (e.currentTarget.style.transform = "scale(1)")} />
-                  {photo.name && (
-                    <span style={{ position: "absolute", left: 0, right: 0, bottom: 0, padding: "2.4rem 1.1rem 0.95rem", lineHeight: 1.2, textAlign: "left", background: "linear-gradient(to top, rgba(14,27,42,0.82), rgba(14,27,42,0))", color: "#fff", fontFamily: "var(--font-cormorant)", fontWeight: 400, fontSize: "1.18rem", letterSpacing: "0.005em", pointerEvents: "none" }}>{photo.name}</span>
-                  )}
-                </button>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3" style={{ gap: 16 }}>
+            {PROJECTS.map((project, i) => (
+              <Reveal key={project.name} delay={(i % 3) * 0.06}>
+                <ProjectCard project={project} onOpen={(idx) => setLb({ images: project.images, name: project.name, i: idx })} />
               </Reveal>
             ))}
           </div>
@@ -467,15 +524,15 @@ export default function Home() {
             <motion.div initial={{ scale: 0.94 }} animate={{ scale: 1 }} exit={{ scale: 0.94 }} onClick={e => e.stopPropagation()}
               style={{ position: "relative", maxWidth: 1000, width: "100%" }}>
               <div style={{ position: "relative", width: "100%", height: "80vh" }}>
-                <Image src={PHOTOS[lb].src} alt={PHOTOS[lb].name} fill sizes="100vw" style={{ objectFit: "contain" }} unoptimized />
+                <Image src={lb.images[lb.i]} alt={lb.name} fill sizes="100vw" style={{ objectFit: "contain" }} unoptimized />
               </div>
-              {PHOTOS[lb].name && (
-                <p style={{ textAlign: "center", marginTop: 14, fontFamily: "var(--font-cormorant)", fontWeight: 300, fontSize: "1.5rem", color: "#fff", letterSpacing: "0.01em" }}>{PHOTOS[lb].name}</p>
-              )}
+              <p style={{ textAlign: "center", marginTop: 14, fontFamily: "var(--font-cormorant)", fontWeight: 300, fontSize: "1.5rem", color: "#fff", letterSpacing: "0.01em" }}>
+                {lb.name}{lb.images.length > 1 && <span style={{ fontSize: "1rem", opacity: 0.6 }}>{"  ·  "}{lb.i + 1} / {lb.images.length}</span>}
+              </p>
               <div style={{ display: "flex", justifyContent: "center", gap: 24, marginTop: 18 }}>
-                <button onClick={() => setLb((lb - 1 + PHOTOS.length) % PHOTOS.length)} style={{ background: "none", border: "none", cursor: "pointer", fontFamily: "var(--font-geist-sans)", fontSize: 11, letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(255,255,255,0.7)" }}>←</button>
+                <button onClick={() => setLb({ ...lb, i: (lb.i - 1 + lb.images.length) % lb.images.length })} style={{ background: "none", border: "none", cursor: "pointer", fontFamily: "var(--font-geist-sans)", fontSize: 11, letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(255,255,255,0.7)" }}>←</button>
                 <button onClick={() => setLb(null)} style={{ background: "none", border: "none", cursor: "pointer", fontFamily: "var(--font-geist-sans)", fontSize: 10, letterSpacing: "0.2em", textTransform: "uppercase", color: "rgba(255,255,255,0.5)" }}>{t.close}</button>
-                <button onClick={() => setLb((lb + 1) % PHOTOS.length)} style={{ background: "none", border: "none", cursor: "pointer", fontFamily: "var(--font-geist-sans)", fontSize: 11, letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(255,255,255,0.7)" }}>→</button>
+                <button onClick={() => setLb({ ...lb, i: (lb.i + 1) % lb.images.length })} style={{ background: "none", border: "none", cursor: "pointer", fontFamily: "var(--font-geist-sans)", fontSize: 11, letterSpacing: "0.14em", textTransform: "uppercase", color: "rgba(255,255,255,0.7)" }}>→</button>
               </div>
             </motion.div>
           </motion.div>

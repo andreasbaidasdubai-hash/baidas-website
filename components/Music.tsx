@@ -9,7 +9,7 @@ const TRACKS = [
   { src: "/music/johnny-ripper-in-a-dream.mp3", title: "Johnny_Ripper — In a Dream" },
 ];
 
-const VOLUME = 0.5;
+const VOLUME = 0.3;
 
 function fade(a: HTMLAudioElement, target: number, ms: number) {
   const steps = 24;
