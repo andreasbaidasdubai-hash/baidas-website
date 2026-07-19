@@ -64,7 +64,7 @@ export default function Music() {
         ref={audioRef}
         src={TRACKS[idx].src}
         loop={TRACKS.length === 1}
-        preload="auto"
+        preload="none"
         onEnded={() => { if (TRACKS.length > 1) setIdx(i => (i + 1) % TRACKS.length); }}
       />
       <motion.button

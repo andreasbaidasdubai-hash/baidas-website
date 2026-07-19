@@ -245,10 +245,10 @@ function ProjectCard({ project, onOpen }: { project: { name: string; images: str
   return (
     <div style={{ position: "relative", width: "100%", aspectRatio: "3 / 2", overflow: "hidden", border: `1px solid ${LINE}`, background: "#0E1B2A" }}>
       {project.images.map((src, k) => (
-        /* eslint-disable-next-line @next/next/no-img-element */
-        <img key={src} src={src} alt={project.name} loading="lazy"
+        <Image key={src} src={src} alt={project.name} fill
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 380px"
           onClick={() => onOpen(i)}
-          style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", cursor: "pointer",
+          style={{ objectFit: "cover", cursor: "pointer",
             opacity: k === i ? 1 : 0, transition: "opacity 0.7s cubic-bezier(0.22,1,0.36,1)" }} />
       ))}
       <span style={{ position: "absolute", left: 0, right: 0, bottom: 0, padding: "2.6rem 1.1rem 0.95rem", lineHeight: 1.2, textAlign: "left", background: "linear-gradient(to top, rgba(14,27,42,0.85), rgba(14,27,42,0))", color: "#fff", fontFamily: "var(--font-cormorant)", fontWeight: 400, fontSize: "1.18rem", letterSpacing: "0.005em", pointerEvents: "none", zIndex: 2 }}>{project.name}</span>
@@ -423,7 +423,7 @@ export default function Home() {
                 style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: "100vw", height: "56.25vw", minHeight: "100%", minWidth: "177.78vh", border: 0, pointerEvents: "none" }}
               />
             ) : (
-              <video autoPlay muted loop playsInline preload="metadata" src={PROJECT_VIDEO_SRC}
+              <video autoPlay muted loop playsInline preload="none" src={PROJECT_VIDEO_SRC}
                 style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
             )}
           </div>
