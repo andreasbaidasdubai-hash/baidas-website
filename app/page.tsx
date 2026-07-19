@@ -198,6 +198,15 @@ const WHATSAPP_MSG = "Guten Tag, ich interessiere mich für Baidas & Baidas.";
 const PROJECT_VIDEO_VIMEO_ID = "";
 const PROJECT_VIDEO_SRC = "/bau.mov";
 
+// Live construction-site camera (embedded via iframe). Empty = hidden.
+const LIVECAM_SRC = "https://bau-cam.ch/dba02/livebild.php";
+const CAM: Record<string, { label: string; title: string; intro: string }> = {
+  de: { label: "Baustelle", title: "Live von der Baustelle", intro: "Ein Blick in Echtzeit auf eines unserer laufenden Bauvorhaben." },
+  en: { label: "Construction Site", title: "Live from the Site", intro: "A real-time view of one of our ongoing developments." },
+  fr: { label: "Chantier", title: "En direct du chantier", intro: "Une vue en temps réel de l'un de nos projets en cours." },
+  ar: { label: "موقع البناء", title: "بث مباشر من موقع البناء", intro: "إطلالة مباشرة على أحد مشاريعنا الجارية." },
+};
+
 /* original brand mark (icon extracted from logo.svg) — recolors via `color` */
 function LogoIcon({ color, size = 42 }: { color: string; size?: number }) {
   return (
@@ -426,6 +435,27 @@ export default function Home() {
               <video autoPlay muted loop playsInline preload="none" src={PROJECT_VIDEO_SRC}
                 style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
             )}
+          </div>
+        </section>
+      )}
+
+      {/* ── BAUSTELLE LIVE-CAM ── */}
+      {LIVECAM_SRC && (
+        <section id="baustelle" style={{ background: CREAM, borderBottom: `1px solid ${LINE}`, padding: "clamp(6rem,12vw,10rem) 0" }}>
+          <div style={{ maxWidth: 1180, margin: "0 auto", padding: "0 clamp(1.5rem,5vw,4rem)" }}>
+            <Reveal><Eyebrow>{CAM[lang].label}</Eyebrow></Reveal>
+            <Reveal delay={0.05}>
+              <h2 style={{ fontFamily: "var(--font-cormorant)", fontWeight: 300, fontSize: "clamp(2.4rem,5vw,3.6rem)", color: INK, letterSpacing: "-0.01em", margin: "0 0 1.6rem" }}>{CAM[lang].title}</h2>
+            </Reveal>
+            <Reveal delay={0.1} style={{ maxWidth: "68ch", marginBottom: "clamp(2.5rem,5vw,4rem)" }}>
+              <p style={{ fontFamily: "var(--font-geist-sans)", fontSize: 15, lineHeight: 1.85, color: BODY }}>{CAM[lang].intro}</p>
+            </Reveal>
+            <Reveal delay={0.15}>
+              <div style={{ position: "relative", width: "100%", aspectRatio: "16 / 9", overflow: "hidden", border: `1px solid ${LINE}`, background: "#0E1B2A" }}>
+                <iframe src={LIVECAM_SRC} title="Baidas & Baidas — Baustelle Live" loading="lazy"
+                  style={{ position: "absolute", inset: 0, width: "100%", height: "100%", border: 0 }} />
+              </div>
+            </Reveal>
           </div>
         </section>
       )}
