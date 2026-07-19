@@ -207,38 +207,6 @@ const CAM: Record<string, { label: string; title: string; intro: string }> = {
   ar: { label: "موقع البناء", title: "بث مباشر من موقع البناء", intro: "إطلالة مباشرة على أحد مشاريعنا الجارية." },
 };
 
-// Owner / About-us block. OWNER_PHOTO: drop a portrait into /public and set the
-// path here; empty = elegant "AB" monogram placeholder.
-// NOTE: quote + bio below are PLACEHOLDER copy — replace with Andreas's own words.
-const OWNER_PHOTO = "/team/andreas-baidas.jpg";
-const OWNER_NAME = "Andreas Baidas";
-const OWNER: Record<string, { label: string; role: string; quote: string; bio: string }> = {
-  de: {
-    label: "Über uns",
-    role: "Inhaber",
-    quote: "Wir bauen nicht einfach Immobilien — wir schaffen Werte, die Generationen überdauern.",
-    bio: "Andreas Baidas führt Baidas & Baidas mit einem kompromisslosen Anspruch an Qualität, Lage und Gestaltung. Von der Akquisition erstklassiger Grundstücke bis zur Fertigstellung begleitet er jedes Projekt persönlich — im engen Zusammenspiel mit führenden Architekten, ausgewählten Handwerksbetrieben und renommierten Interior Designern.",
-  },
-  en: {
-    label: "About Us",
-    role: "Owner",
-    quote: "We don't simply build real estate — we create values that outlast generations.",
-    bio: "Andreas Baidas leads Baidas & Baidas with an uncompromising commitment to quality, location and design. From the acquisition of prime plots through to final completion, he accompanies every project personally — working closely with leading architects, selected craftsmen and renowned interior designers.",
-  },
-  fr: {
-    label: "À propos",
-    role: "Propriétaire",
-    quote: "Nous ne construisons pas simplement des biens immobiliers — nous créons des valeurs qui traversent les générations.",
-    bio: "Andreas Baidas dirige Baidas & Baidas avec une exigence sans compromis en matière de qualité, d'emplacement et de design. De l'acquisition de terrains d'exception jusqu'à l'achèvement, il accompagne personnellement chaque projet — en étroite collaboration avec des architectes de premier plan, des artisans sélectionnés et des architectes d'intérieur renommés.",
-  },
-  ar: {
-    label: "من نحن",
-    role: "المالك",
-    quote: "نحن لا نبني العقارات فحسب — بل نصنع قيمًا تدوم عبر الأجيال.",
-    bio: "يقود أندرياس بيداس شركة Baidas & Baidas بالتزام لا هوادة فيه تجاه الجودة والموقع والتصميم. من اقتناء أرقى قطع الأراضي وحتى الإنجاز النهائي، يرافق كل مشروع شخصياً — بالتعاون الوثيق مع نخبة المهندسين المعماريين والحرفيين المختارين ومصممي الديكور المرموقين.",
-  },
-};
-
 /* original brand mark (icon extracted from logo.svg) — recolors via `color` */
 function LogoIcon({ color, size = 42 }: { color: string; size?: number }) {
   return (
@@ -441,28 +409,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── OWNER / ABOUT US ── */}
-      <section id="owner" style={{ padding: "clamp(6rem,12vw,10rem) clamp(1.5rem,5vw,4rem)", maxWidth: 1180, margin: "0 auto", borderTop: `1px solid ${LINE}` }}>
-        <Reveal><Eyebrow>{OWNER[lang].label}</Eyebrow></Reveal>
-        <div className="grid grid-cols-1 lg:grid-cols-2" style={{ gap: "clamp(2.5rem,5vw,5rem)", alignItems: "center", marginTop: "clamp(1.5rem,3vw,2.5rem)" }}>
-          <Reveal>
-            <div style={{ position: "relative", width: "100%", maxWidth: 460, aspectRatio: "4 / 5", overflow: "hidden", border: `1px solid ${LINE}`, background: "#0E1B2A", display: "flex", alignItems: "center", justifyContent: "center" }}>
-              {OWNER_PHOTO ? (
-                <Image src={OWNER_PHOTO} alt={OWNER_NAME} fill sizes="(max-width: 1024px) 100vw, 460px" style={{ objectFit: "cover" }} />
-              ) : (
-                <span style={{ fontFamily: "var(--font-cormorant)", fontWeight: 300, fontSize: "clamp(3.5rem,9vw,6rem)", color: "rgba(255,255,255,0.92)", letterSpacing: "0.06em" }}>AB</span>
-              )}
-            </div>
-          </Reveal>
-          <Reveal dir="right" delay={0.1}>
-            <p style={{ fontFamily: "var(--font-cormorant)", fontStyle: "italic", fontSize: "clamp(1.6rem,3vw,2.3rem)", lineHeight: 1.35, color: INK, margin: "0 0 2rem" }}>«{OWNER[lang].quote}»</p>
-            <p style={{ fontFamily: "var(--font-cormorant)", fontWeight: 500, fontSize: "1.5rem", color: INK, margin: "0 0 2px" }}>{OWNER_NAME}</p>
-            <p style={{ fontFamily: "var(--font-geist-sans)", fontSize: 12, letterSpacing: "0.18em", textTransform: "uppercase", color: SOFT, margin: "0 0 1.6rem" }}>{OWNER[lang].role}</p>
-            <p style={{ fontFamily: "var(--font-geist-sans)", fontSize: 15, lineHeight: 1.85, color: BODY, margin: 0 }}>{OWNER[lang].bio}</p>
-          </Reveal>
-        </div>
-      </section>
-
       {/* ── IMMOBILIEN / PROJEKTE — gallery ── */}
       <section id="projekte" style={{ background: CREAM, borderTop: `1px solid ${LINE}`, borderBottom: `1px solid ${LINE}`, padding: "clamp(6rem,12vw,10rem) 0" }}>
         <div style={{ maxWidth: 1180, margin: "0 auto", padding: "0 clamp(1.5rem,5vw,4rem)" }}>
@@ -497,22 +443,6 @@ export default function Home() {
               <video autoPlay muted loop playsInline preload="none" src={PROJECT_VIDEO_SRC}
                 style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
             )}
-          </div>
-        </section>
-      )}
-
-      {/* ── BAUSTELLE LIVE-CAM — full-bleed band ── */}
-      {LIVECAM_SRC && (
-        <section id="baustelle" style={{ background: "#0E1B2A", borderTop: `1px solid ${LINE}`, borderBottom: `1px solid ${LINE}` }}>
-          <div style={{ position: "relative", width: "100%", aspectRatio: "16 / 9", overflow: "hidden" }}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={`/api/livecam?t=${camTick}`} alt={CAM[lang].title} loading="lazy"
-              style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
-            <span style={{ position: "absolute", top: "clamp(1rem,3vw,2rem)", left: "clamp(1rem,3vw,2rem)", display: "inline-flex", alignItems: "center", gap: 9, padding: "7px 15px", borderRadius: 999, background: "rgba(14,27,42,0.55)", backdropFilter: "blur(6px)", color: "#fff", fontFamily: "var(--font-geist-sans)", fontSize: 11, letterSpacing: "0.18em", textTransform: "uppercase" }}>
-              <motion.span aria-hidden animate={reduce ? {} : { opacity: [1, 0.25, 1] }} transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
-                style={{ width: 8, height: 8, borderRadius: "50%", background: "#e5484d", display: "inline-block" }} />
-              {CAM[lang].label} · Live
-            </span>
           </div>
         </section>
       )}
@@ -575,6 +505,22 @@ export default function Home() {
           </Reveal>
         </div>
       </section>
+
+      {/* ── BAUSTELLE LIVE-CAM — full-bleed band (below the contact form) ── */}
+      {LIVECAM_SRC && (
+        <section id="baustelle" style={{ background: "#0E1B2A", borderTop: `1px solid ${LINE}`, borderBottom: `1px solid ${LINE}` }}>
+          <div style={{ position: "relative", width: "100%", aspectRatio: "16 / 9", overflow: "hidden" }}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={`/api/livecam?t=${camTick}`} alt={CAM[lang].title} loading="lazy"
+              style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
+            <span style={{ position: "absolute", top: "clamp(1rem,3vw,2rem)", left: "clamp(1rem,3vw,2rem)", display: "inline-flex", alignItems: "center", gap: 9, padding: "7px 15px", borderRadius: 999, background: "rgba(14,27,42,0.55)", backdropFilter: "blur(6px)", color: "#fff", fontFamily: "var(--font-geist-sans)", fontSize: 11, letterSpacing: "0.18em", textTransform: "uppercase" }}>
+              <motion.span aria-hidden animate={reduce ? {} : { opacity: [1, 0.25, 1] }} transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
+                style={{ width: 8, height: 8, borderRadius: "50%", background: "#e5484d", display: "inline-block" }} />
+              {CAM[lang].label} · Live
+            </span>
+          </div>
+        </section>
+      )}
 
       {/* ── FOOTER ── */}
       <footer style={{ background: INK, padding: "clamp(4rem,8vw,6rem) clamp(1.5rem,5vw,4rem) 2.5rem" }}>
