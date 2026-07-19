@@ -210,7 +210,7 @@ const CAM: Record<string, { label: string; title: string; intro: string }> = {
 // Owner / About-us block. OWNER_PHOTO: drop a portrait into /public and set the
 // path here; empty = elegant "AB" monogram placeholder.
 // NOTE: quote + bio below are PLACEHOLDER copy — replace with Andreas's own words.
-const OWNER_PHOTO = "";
+const OWNER_PHOTO = "/team/andreas-baidas.jpg";
 const OWNER_NAME = "Andreas Baidas";
 const OWNER: Record<string, { label: string; role: string; quote: string; bio: string }> = {
   de: {
@@ -324,6 +324,14 @@ export default function Home() {
   const [scrolled, setScrolled] = useState(false);
   const [sent, setSent] = useState(false);
   const [lb, setLb] = useState<{ images: string[]; name: string; i: number } | null>(null);
+  const [camTick, setCamTick] = useState(0);
+
+  // Refresh the live construction-cam frame every 15s.
+  useEffect(() => {
+    if (!LIVECAM_SRC) return;
+    const id = setInterval(() => setCamTick(t => t + 1), 15000);
+    return () => clearInterval(id);
+  }, []);
 
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 60);
@@ -493,23 +501,18 @@ export default function Home() {
         </section>
       )}
 
-      {/* ── BAUSTELLE LIVE-CAM ── */}
+      {/* ── BAUSTELLE LIVE-CAM — full-bleed band ── */}
       {LIVECAM_SRC && (
-        <section id="baustelle" style={{ background: CREAM, borderBottom: `1px solid ${LINE}`, padding: "clamp(6rem,12vw,10rem) 0" }}>
-          <div style={{ maxWidth: 1180, margin: "0 auto", padding: "0 clamp(1.5rem,5vw,4rem)" }}>
-            <Reveal><Eyebrow>{CAM[lang].label}</Eyebrow></Reveal>
-            <Reveal delay={0.05}>
-              <h2 style={{ fontFamily: "var(--font-cormorant)", fontWeight: 300, fontSize: "clamp(2.4rem,5vw,3.6rem)", color: INK, letterSpacing: "-0.01em", margin: "0 0 1.6rem" }}>{CAM[lang].title}</h2>
-            </Reveal>
-            <Reveal delay={0.1} style={{ maxWidth: "68ch", marginBottom: "clamp(2.5rem,5vw,4rem)" }}>
-              <p style={{ fontFamily: "var(--font-geist-sans)", fontSize: 15, lineHeight: 1.85, color: BODY }}>{CAM[lang].intro}</p>
-            </Reveal>
-            <Reveal delay={0.15}>
-              <div style={{ position: "relative", width: "100%", aspectRatio: "16 / 9", overflow: "hidden", border: `1px solid ${LINE}`, background: "#0E1B2A" }}>
-                <iframe src={LIVECAM_SRC} title="Baidas & Baidas — Baustelle Live" loading="lazy"
-                  style={{ position: "absolute", inset: 0, width: "100%", height: "100%", border: 0 }} />
-              </div>
-            </Reveal>
+        <section id="baustelle" style={{ background: "#0E1B2A", borderTop: `1px solid ${LINE}`, borderBottom: `1px solid ${LINE}` }}>
+          <div style={{ position: "relative", width: "100%", aspectRatio: "16 / 9", overflow: "hidden" }}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={`/api/livecam?t=${camTick}`} alt={CAM[lang].title} loading="lazy"
+              style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
+            <span style={{ position: "absolute", top: "clamp(1rem,3vw,2rem)", left: "clamp(1rem,3vw,2rem)", display: "inline-flex", alignItems: "center", gap: 9, padding: "7px 15px", borderRadius: 999, background: "rgba(14,27,42,0.55)", backdropFilter: "blur(6px)", color: "#fff", fontFamily: "var(--font-geist-sans)", fontSize: 11, letterSpacing: "0.18em", textTransform: "uppercase" }}>
+              <motion.span aria-hidden animate={reduce ? {} : { opacity: [1, 0.25, 1] }} transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
+                style={{ width: 8, height: 8, borderRadius: "50%", background: "#e5484d", display: "inline-block" }} />
+              {CAM[lang].label} · Live
+            </span>
           </div>
         </section>
       )}
