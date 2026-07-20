@@ -267,7 +267,7 @@ function FeatureVideo({ src, poster, label, sub }: { src: string; poster: string
       </video>
       <span style={{ position: "absolute", left: 0, right: 0, bottom: 0, padding: "clamp(2.5rem,6vw,4rem) clamp(1.5rem,5vw,4rem) clamp(1.25rem,3vw,2rem)", background: "linear-gradient(to top, rgba(14,27,42,0.6), rgba(14,27,42,0))", pointerEvents: "none", textAlign: "left" }}>
         <span style={{ display: "block", fontFamily: "var(--font-cormorant)", fontWeight: 300, fontSize: "clamp(1.8rem,4vw,3rem)", lineHeight: 1.1, letterSpacing: "-0.01em", color: "#fff" }}>{label}</span>
-        <span style={{ display: "block", marginTop: 8, fontFamily: "var(--font-geist-sans)", fontSize: 11, letterSpacing: "0.24em", textTransform: "uppercase", color: "rgba(255,255,255,0.75)" }}>{sub}</span>
+        {sub && <span style={{ display: "block", marginTop: 8, fontFamily: "var(--font-geist-sans)", fontSize: 11, letterSpacing: "0.24em", textTransform: "uppercase", color: "rgba(255,255,255,0.75)" }}>{sub}</span>}
       </span>
     </div>
   );
@@ -456,7 +456,7 @@ export default function Home() {
       {/* ── RAMHAN ISLAND — feature film (autoplay, muted, looped) ── */}
       {RAMHAN_VIDEO && (
         <section id="ramhan" style={{ borderTop: `1px solid ${LINE}`, borderBottom: `1px solid ${LINE}` }}>
-          <FeatureVideo src={RAMHAN_VIDEO} poster={RAMHAN_POSTER} label="Ramhan Island" sub="Abu Dhabi" />
+          <FeatureVideo src={RAMHAN_VIDEO} poster={RAMHAN_POSTER} label="Ramhan Island" sub="" />
         </section>
       )}
 
