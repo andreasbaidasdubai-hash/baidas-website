@@ -55,16 +55,18 @@ const PHOTOS: { src: string; name: string }[] = [
   { src: "/projekte/silvestris-5.jpg", name: "Silvestris, Zürich" },
   { src: "https://static.wixstatic.com/media/b3010c_fba9859cbc0a46db9d0b1d70a65f2fb4~mv2.jpg", name: "Creek Edge, Dubai" },
   { src: "https://static.wixstatic.com/media/b3010c_6f1c757e7d4a4befa1cf19217c17b98d~mv2.jpg", name: "Haus am Tämberg, Zürich" },
-  { src: "/projekte/the-cape-1.jpg", name: "The Cape, Al Barari" },
   { src: "/projekte/the-cape-2.jpg", name: "The Cape, Al Barari" },
-  { src: "/projekte/the-cape-3.jpg", name: "The Cape, Al Barari" },
   { src: "/projekte/the-cape-4.jpg", name: "The Cape, Al Barari" },
+  { src: "/projekte/the-cape-1.jpg", name: "The Cape, Al Barari" },
+  { src: "/projekte/the-cape-3.jpg", name: "The Cape, Al Barari" },
+  { src: "https://static.wixstatic.com/media/b3010c_7fe5112632b64edba0cd1a4a723bf3e1~mv2.jpg", name: "The Cape, Al Barari" },
   { src: "/projekte/flow25-1.jpg", name: "Flow25, Reem Island" },
   { src: "/projekte/flow25-2.jpg", name: "Flow25, Reem Island" },
-  { src: "/projekte/ramhan-1.jpg", name: "Ramhan Island" },
-  { src: "/projekte/ramhan-2.jpg", name: "Ramhan Island" },
   { src: "/projekte/ramhan-3.jpg", name: "Ramhan Island" },
+  { src: "/projekte/ramhan-2.jpg", name: "Ramhan Island" },
   { src: "/projekte/ramhan-4.jpg", name: "Ramhan Island" },
+  { src: "/projekte/ramhan-1.jpg", name: "Ramhan Island" },
+  { src: "https://static.wixstatic.com/media/b3010c_7a702d59c13e4df3b01e8cab8ec9f8b1~mv2.webp", name: "Ramhan Island" },
   { src: "https://static.wixstatic.com/media/b3010c_93f7bdc73bca4a3b89e332d6d73119b3~mv2.jpg", name: "Haus am Tämberg, Zürich" },
 ];
 
@@ -72,17 +74,17 @@ const PHOTOS: { src: string; name: string }[] = [
    with more than one image become a slider so the gallery stays compact. */
 const PROJECT_ORDER = [
   "Silvestris, Zürich",
+  "Ramhan Island",
+  "The Cape, Al Barari",
   "Seamont Autograph, Reem Island",
-  "Saadiyat Lagoons, Al Ghaf",
-  "Haspelstrasse, 8041 Zürich",
-  "Saadiyat Lagoons, Ethir",
   "Haus am Tämberg, Zürich",
   "Creek Edge, Dubai",
-  "Turbinenstrasse, 8005 Zürich",
+  "Saadiyat Lagoons, Al Ghaf",
+  "Haspelstrasse, 8041 Zürich",
   "Flow25, Reem Island",
+  "Turbinenstrasse, 8005 Zürich",
+  "Saadiyat Lagoons, Ethir",
   "Grove Residences, Saadiyat",
-  "The Cape, Al Barari",
-  "Ramhan Island",
 ];
 const PROJECTS: { name: string; images: string[] }[] = PROJECT_ORDER
   .map(name => ({ name, images: PHOTOS.filter(p => p.name === name).map(p => p.src) }))
@@ -214,7 +216,7 @@ const LIVECAM_SRC = "https://bau-cam.ch/dba02/livebild.php";
 // don't depend on it). Autoplays muted + looped. Poster reuses the Ramhan
 // render from the gallery for an instant first paint. Empty = hidden.
 const RAMHAN_VIDEO = "/ramhan-island.mp4";
-const RAMHAN_POSTER = "/projekte/ramhan-1.jpg";
+const RAMHAN_POSTER = "/projekte/ramhan-3.jpg";
 const CAM: Record<string, { label: string; title: string; intro: string }> = {
   de: { label: "Baustelle", title: "Live von der Baustelle", intro: "Ein Blick in Echtzeit auf eines unserer laufenden Bauvorhaben." },
   en: { label: "Construction Site", title: "Live from the Site", intro: "A real-time view of one of our ongoing developments." },
