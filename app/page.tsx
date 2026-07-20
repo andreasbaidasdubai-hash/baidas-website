@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import { motion, useReducedMotion, AnimatePresence } from "motion/react";
 import { useLang } from "@/context/LanguageContext";
 import { Reveal } from "@/components/Reveal";
-import Music from "@/components/Music";
 
 /* ─── PALETTE — beyond-style: white / cream / ink ────────────────── */
 const INK   = "#16181A";   // headings, nav-solid, footer
@@ -244,6 +243,7 @@ function ProjectCard({ project, onOpen }: { project: { name: string; images: str
   const [i, setI] = useState(0);
   const n = project.images.length;
   const step = (d: number) => setI(p => (p + d + n) % n);
+  const [hover, setHover] = useState(false);
   const arrow: React.CSSProperties = {
     position: "absolute", top: "50%", transform: "translateY(-50%)", zIndex: 3,
     width: 36, height: 36, borderRadius: "50%", border: "none", cursor: "pointer",
@@ -252,13 +252,18 @@ function ProjectCard({ project, onOpen }: { project: { name: string; images: str
     backdropFilter: "blur(4px)", transition: "background 0.25s, opacity 0.25s",
   };
   return (
-    <div style={{ position: "relative", width: "100%", aspectRatio: "3 / 2", overflow: "hidden", border: `1px solid ${LINE}`, background: "#0E1B2A" }}>
+    <div onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}
+      style={{ position: "relative", width: "100%", aspectRatio: "3 / 2", overflow: "hidden", background: "#E9E3D8",
+        boxShadow: hover ? "0 20px 44px -22px rgba(14,27,42,0.38)" : "none",
+        transition: "box-shadow 0.6s cubic-bezier(0.22,1,0.36,1)" }}>
       {project.images.map((src, k) => (
         <Image key={src} src={src} alt={project.name} fill
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 380px"
           onClick={() => onOpen(i)}
           style={{ objectFit: "cover", cursor: "pointer",
-            opacity: k === i ? 1 : 0, transition: "opacity 0.7s cubic-bezier(0.22,1,0.36,1)" }} />
+            opacity: k === i ? 1 : 0,
+            transform: hover ? "scale(1.045)" : "scale(1)",
+            transition: "opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.9s cubic-bezier(0.22,1,0.36,1)" }} />
       ))}
       <span style={{ position: "absolute", left: 0, right: 0, bottom: 0, padding: "2.6rem 1.1rem 0.95rem", lineHeight: 1.2, textAlign: "left", background: "linear-gradient(to top, rgba(14,27,42,0.85), rgba(14,27,42,0))", color: "#fff", fontFamily: "var(--font-cormorant)", fontWeight: 400, fontSize: "1.18rem", letterSpacing: "0.005em", pointerEvents: "none", zIndex: 2 }}>{project.name}</span>
       {n > 1 && (
@@ -586,8 +591,6 @@ export default function Home() {
           </svg>
         </a>
       )}
-
-      <Music />
     </main>
   );
 }
