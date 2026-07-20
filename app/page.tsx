@@ -23,7 +23,11 @@ const PHOTOS: { src: string; name: string }[] = [
   { src: "/projekte/silvestris-1.jpg", name: "Silvestris, Zürich" },
   { src: "https://static.wixstatic.com/media/b3010c_30340c4d2d56484eb51be30d7d3f3201~mv2.jpg", name: "Haus am Tämberg, Zürich" },
   { src: "/projekte/saadiyat-villa-6-1.jpg", name: "Saadiyat Lagoons, Al Ghaf" },
-  { src: "/projekte/Seamont.jpg", name: "Seamont Autograph, Reem Island" },
+  { src: "/projekte/seamont-autograph-1.jpg", name: "Seamont Autograph, Reem Island" },
+  { src: "/projekte/seamont-autograph-2.jpg", name: "Seamont Autograph, Reem Island" },
+  { src: "/projekte/seamont-autograph-3.jpg", name: "Seamont Autograph, Reem Island" },
+  { src: "/projekte/seamont-autograph-4.jpg", name: "Seamont Autograph, Reem Island" },
+  { src: "/projekte/seamont-autograph-5.jpg", name: "Seamont Autograph, Reem Island" },
   { src: "https://static.wixstatic.com/media/b3010c_60046ffe836a44ea89cb7410bbbf771d~mv2.jpg", name: "Haspelstrasse, 8041 Zürich" },
   { src: "https://static.wixstatic.com/media/b3010c_b88fc361c35d4e77b33ea2b863490de9~mv2.jpg", name: "Haus am Tämberg, Zürich" },
   { src: "/projekte/saadiyat-villa-4-3.jpg", name: "Saadiyat Lagoons, Ethir" },
@@ -51,9 +55,16 @@ const PHOTOS: { src: string; name: string }[] = [
   { src: "/projekte/silvestris-5.jpg", name: "Silvestris, Zürich" },
   { src: "https://static.wixstatic.com/media/b3010c_fba9859cbc0a46db9d0b1d70a65f2fb4~mv2.jpg", name: "Creek Edge, Dubai" },
   { src: "https://static.wixstatic.com/media/b3010c_6f1c757e7d4a4befa1cf19217c17b98d~mv2.jpg", name: "Haus am Tämberg, Zürich" },
-  { src: "https://static.wixstatic.com/media/b3010c_7fe5112632b64edba0cd1a4a723bf3e1~mv2.jpg", name: "The Cape, Al Barari" },
-  { src: "/projekte/Flow25.png", name: "Flow25, Reem Island" },
-  { src: "https://static.wixstatic.com/media/b3010c_7a702d59c13e4df3b01e8cab8ec9f8b1~mv2.webp", name: "Ramhan Island" },
+  { src: "/projekte/the-cape-1.jpg", name: "The Cape, Al Barari" },
+  { src: "/projekte/the-cape-2.jpg", name: "The Cape, Al Barari" },
+  { src: "/projekte/the-cape-3.jpg", name: "The Cape, Al Barari" },
+  { src: "/projekte/the-cape-4.jpg", name: "The Cape, Al Barari" },
+  { src: "/projekte/flow25-1.jpg", name: "Flow25, Reem Island" },
+  { src: "/projekte/flow25-2.jpg", name: "Flow25, Reem Island" },
+  { src: "/projekte/ramhan-1.jpg", name: "Ramhan Island" },
+  { src: "/projekte/ramhan-2.jpg", name: "Ramhan Island" },
+  { src: "/projekte/ramhan-3.jpg", name: "Ramhan Island" },
+  { src: "/projekte/ramhan-4.jpg", name: "Ramhan Island" },
   { src: "https://static.wixstatic.com/media/b3010c_93f7bdc73bca4a3b89e332d6d73119b3~mv2.jpg", name: "Haus am Tämberg, Zürich" },
 ];
 
@@ -203,7 +214,7 @@ const LIVECAM_SRC = "https://bau-cam.ch/dba02/livebild.php";
 // don't depend on it). Autoplays muted + looped. Poster reuses the Ramhan
 // render from the gallery for an instant first paint. Empty = hidden.
 const RAMHAN_VIDEO = "/ramhan-island.mp4";
-const RAMHAN_POSTER = "https://static.wixstatic.com/media/b3010c_7a702d59c13e4df3b01e8cab8ec9f8b1~mv2.webp";
+const RAMHAN_POSTER = "/projekte/ramhan-1.jpg";
 const CAM: Record<string, { label: string; title: string; intro: string }> = {
   de: { label: "Baustelle", title: "Live von der Baustelle", intro: "Ein Blick in Echtzeit auf eines unserer laufenden Bauvorhaben." },
   en: { label: "Construction Site", title: "Live from the Site", intro: "A real-time view of one of our ongoing developments." },
