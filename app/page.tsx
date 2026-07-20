@@ -469,9 +469,18 @@ export default function Home() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2" style={{ gap: "clamp(3rem,6vw,6rem)", alignItems: "start", paddingTop: "clamp(2.5rem,5vw,3.5rem)", borderTop: `1px solid ${LINE}` }}>
           <Reveal>
-            <div style={{ marginBottom: 20 }}><LogoLockup color={INK} iconSize={50} fontSize="21px" stacked /></div>
-            <p style={{ fontFamily: "var(--font-geist-sans)", fontSize: 14, color: BODY, lineHeight: 1.8 }}>Baidas &amp; Baidas AG<br />Baarerstrasse 12<br />6300 Zug</p>
-            <a href="mailto:info@baidas.ch" style={{ display: "inline-block", marginTop: 16, fontFamily: "var(--font-geist-sans)", fontSize: 14.5, color: INK, textDecoration: "none", borderBottom: `1px solid ${INK}`, paddingBottom: 2 }}>info@baidas.ch</a>
+            <div style={{ marginBottom: 24 }}><LogoLockup color={INK} iconSize={50} fontSize="21px" stacked /></div>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "clamp(1.75rem,4vw,3rem)" }}>
+              <div>
+                <p style={{ fontFamily: "var(--font-geist-sans)", fontSize: 10.5, letterSpacing: "0.22em", textTransform: "uppercase", color: SOFT, margin: "0 0 8px" }}>Zug</p>
+                <p style={{ fontFamily: "var(--font-geist-sans)", fontSize: 14, color: BODY, lineHeight: 1.8, margin: 0 }}>Baidas &amp; Baidas AG<br />Baarerstrasse 12<br />6300 Zug</p>
+              </div>
+              <div>
+                <p style={{ fontFamily: "var(--font-geist-sans)", fontSize: 10.5, letterSpacing: "0.22em", textTransform: "uppercase", color: SOFT, margin: "0 0 8px" }}>Dubai</p>
+                <p style={{ fontFamily: "var(--font-geist-sans)", fontSize: 14, color: BODY, lineHeight: 1.8, margin: 0 }}>Central Park Tower<br />DIFC, Dubai</p>
+              </div>
+            </div>
+            <a href="mailto:info@baidas.ch" style={{ display: "inline-block", marginTop: 20, fontFamily: "var(--font-geist-sans)", fontSize: 14.5, color: INK, textDecoration: "none", borderBottom: `1px solid ${INK}`, paddingBottom: 2 }}>info@baidas.ch</a>
           </Reveal>
 
           <Reveal dir="right" delay={0.15}>
@@ -546,6 +555,7 @@ export default function Home() {
             <div>
               <p style={{ fontFamily: "var(--font-geist-sans)", fontSize: 9.5, letterSpacing: "0.25em", textTransform: "uppercase", color: "rgba(255,255,255,0.4)", marginBottom: 18 }}>Kontakt</p>
               <p style={{ fontFamily: "var(--font-geist-sans)", fontSize: 13.5, color: "rgba(255,255,255,0.72)", lineHeight: 1.7 }}>Baidas &amp; Baidas AG<br />Baarerstrasse 12<br />6300 Zug</p>
+              <p style={{ fontFamily: "var(--font-geist-sans)", fontSize: 13.5, color: "rgba(255,255,255,0.72)", lineHeight: 1.7, marginTop: 14 }}>Central Park Tower<br />DIFC, Dubai</p>
               <a href="mailto:info@baidas.ch" style={{ display: "inline-block", marginTop: 12, fontFamily: "var(--font-geist-sans)", fontSize: 13.5, color: "#fff", textDecoration: "none" }}>info@baidas.ch</a>
             </div>
           </div>
