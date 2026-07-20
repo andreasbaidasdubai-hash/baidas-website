@@ -370,6 +370,10 @@ export default function Home() {
 
       {/* ── HERO ── */}
       <section id="top" style={{ position: "relative", height: "100dvh", overflow: "hidden", background: "#0E1B2A" }}>
+        {/* Poster (video first frame) paints instantly while the Vimeo player loads. */}
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/hero-poster.jpg" alt="" aria-hidden="true" fetchPriority="high"
+          style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
         {VIMEO_ID ? (
           <div style={{ position: "absolute", inset: 0, overflow: "hidden" }}>
             <iframe
@@ -473,7 +477,7 @@ export default function Home() {
             <div style={{ display: "flex", flexWrap: "wrap", gap: "clamp(1.75rem,4vw,3rem)" }}>
               <div>
                 <p style={{ fontFamily: "var(--font-geist-sans)", fontSize: 10.5, letterSpacing: "0.22em", textTransform: "uppercase", color: SOFT, margin: "0 0 8px" }}>Zug</p>
-                <p style={{ fontFamily: "var(--font-geist-sans)", fontSize: 14, color: BODY, lineHeight: 1.8, margin: 0 }}>Baidas &amp; Baidas AG<br />Baarerstrasse 12<br />6300 Zug</p>
+                <p style={{ fontFamily: "var(--font-geist-sans)", fontSize: 14, color: BODY, lineHeight: 1.8, margin: 0 }}>Baarerstrasse 12<br />6300 Zug</p>
               </div>
               <div>
                 <p style={{ fontFamily: "var(--font-geist-sans)", fontSize: 10.5, letterSpacing: "0.22em", textTransform: "uppercase", color: SOFT, margin: "0 0 8px" }}>Dubai</p>
@@ -554,7 +558,7 @@ export default function Home() {
             </div>
             <div>
               <p style={{ fontFamily: "var(--font-geist-sans)", fontSize: 9.5, letterSpacing: "0.25em", textTransform: "uppercase", color: "rgba(255,255,255,0.4)", marginBottom: 18 }}>Kontakt</p>
-              <p style={{ fontFamily: "var(--font-geist-sans)", fontSize: 13.5, color: "rgba(255,255,255,0.72)", lineHeight: 1.7 }}>Baidas &amp; Baidas AG<br />Baarerstrasse 12<br />6300 Zug</p>
+              <p style={{ fontFamily: "var(--font-geist-sans)", fontSize: 13.5, color: "rgba(255,255,255,0.72)", lineHeight: 1.7 }}>Baarerstrasse 12<br />6300 Zug</p>
               <p style={{ fontFamily: "var(--font-geist-sans)", fontSize: 13.5, color: "rgba(255,255,255,0.72)", lineHeight: 1.7, marginTop: 14 }}>Central Park Tower<br />DIFC, Dubai</p>
               <a href="mailto:info@baidas.ch" style={{ display: "inline-block", marginTop: 12, fontFamily: "var(--font-geist-sans)", fontSize: 13.5, color: "#fff", textDecoration: "none" }}>info@baidas.ch</a>
             </div>
@@ -590,7 +594,7 @@ export default function Home() {
         <a href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MSG)}`}
           target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"
           style={{
-            position: "fixed", bottom: 80, right: 22, zIndex: 120,
+            position: "fixed", bottom: 24, right: 22, zIndex: 120,
             width: 48, height: 48, borderRadius: "50%",
             display: "flex", alignItems: "center", justifyContent: "center",
             background: "#25D366", boxShadow: "0 6px 18px rgba(0,0,0,0.28)",
