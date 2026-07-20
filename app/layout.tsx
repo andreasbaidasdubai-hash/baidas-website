@@ -35,11 +35,11 @@ const notoArabic = Noto_Sans_Arabic({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://baidas.ch"),
-  title: "Baidas & Baidas AG — Baukunst & Projektentwicklung",
+  title: "Baidas & Baidas AG — Immobilienentwicklung & Investments",
   description:
     "Exklusive Immobilien in besonders ausgewählten und werthaltigen Lagen. Zürich · Dubai · Abu Dhabi.",
   openGraph: {
-    title: "Baidas & Baidas AG — Baukunst & Projektentwicklung",
+    title: "Baidas & Baidas AG — Immobilienentwicklung & Investments",
     description:
       "Exklusive Immobilien in besonders ausgewählten und werthaltigen Lagen. Zürich · Dubai · Abu Dhabi.",
     url: "https://baidas.ch",

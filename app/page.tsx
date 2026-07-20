@@ -83,7 +83,7 @@ const PROJECTS: { name: string; images: string[] }[] = PROJECT_ORDER
 const T = {
   de: {
     nav: [["Projekte", "#projekte"], ["Akquisition", "#akquisition"]],
-    heroEyebrow: "Baukunst & Projektentwicklung",
+    heroEyebrow: "Immobilienentwicklung & Investments",
     heroTitle: "Baidas & Baidas",
     discover: "Entdecken",
     aboutLabel: "Unser Versprechen",
@@ -107,7 +107,7 @@ const T = {
   },
   en: {
     nav: [["Projects", "#projekte"], ["Acquisition", "#akquisition"]],
-    heroEyebrow: "Architectural Art & Project Development",
+    heroEyebrow: "Real Estate Development & Investments",
     heroTitle: "Baidas & Baidas",
     discover: "Discover",
     aboutLabel: "Our Promise",
@@ -131,7 +131,7 @@ const T = {
   },
   fr: {
     nav: [["Projets", "#projekte"], ["Acquisition", "#akquisition"]],
-    heroEyebrow: "Art Architectural & Développement de Projets",
+    heroEyebrow: "Développement Immobilier & Investissements",
     heroTitle: "Baidas & Baidas",
     discover: "Découvrir",
     aboutLabel: "Notre Promesse",
@@ -155,7 +155,7 @@ const T = {
   },
   ar: {
     nav: [["المشاريع", "#projekte"], ["الاستحواذ", "#akquisition"]],
-    heroEyebrow: "فنّ العمارة وتطوير المشاريع",
+    heroEyebrow: "تطوير عقاري واستثمارات",
     heroTitle: "Baidas & Baidas",
     discover: "اكتشف",
     aboutLabel: "وعدنا",
