@@ -200,9 +200,10 @@ const PROJECT_VIDEO_SRC = "/bau.mov";
 // Live construction-site camera (embedded via iframe). Empty = hidden.
 const LIVECAM_SRC = "https://bau-cam.ch/dba02/livebild.php";
 
-// Ramhan Island feature film (streamed from the Eagle Hills CDN). Loads only
-// on click. Poster reuses the Ramhan Island render from the gallery. Empty = hidden.
-const RAMHAN_VIDEO = "https://ramhanislandcdn.eaglehills.ai/video/homepage/Homepage%20Video%20-desktop.mp4";
+// Ramhan Island film — self-hosted (mirrored from the Eagle Hills CDN so we
+// don't depend on it). Autoplays muted + looped. Poster reuses the Ramhan
+// render from the gallery for an instant first paint. Empty = hidden.
+const RAMHAN_VIDEO = "/ramhan-island.mp4";
 const RAMHAN_POSTER = "https://static.wixstatic.com/media/b3010c_7a702d59c13e4df3b01e8cab8ec9f8b1~mv2.webp";
 const CAM: Record<string, { label: string; title: string; intro: string }> = {
   de: { label: "Baustelle", title: "Live von der Baustelle", intro: "Ein Blick in Echtzeit auf eines unserer laufenden Bauvorhaben." },
@@ -243,30 +244,19 @@ const Eyebrow = ({ children, light = false }: { children: React.ReactNode; light
   </p>
 );
 
-/* Cinematic click-to-play feature film (full-bleed 16:9). Video loads on click. */
+/* Cinematic autoplay film band (full-bleed 16:9), muted + looped, poster for
+   an instant first paint. */
 function FeatureVideo({ src, poster, label, sub }: { src: string; poster: string; label: string; sub: string }) {
-  const [play, setPlay] = useState(false);
   return (
     <div style={{ position: "relative", width: "100%", aspectRatio: "16 / 9", overflow: "hidden", background: "#0E1B2A" }}>
-      {play ? (
-        <video src={src} autoPlay controls playsInline
-          style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
-      ) : (
-        <button onClick={() => setPlay(true)} aria-label={`${label} — Film abspielen`}
-          style={{ position: "absolute", inset: 0, width: "100%", height: "100%", border: "none", padding: 0, margin: 0, cursor: "pointer", background: "none", display: "block" }}>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={poster} alt={label} loading="lazy"
-            style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
-          <span style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(14,27,42,0.15) 0%, rgba(14,27,42,0.15) 55%, rgba(14,27,42,0.72) 100%)" }} />
-          <span style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: "clamp(64px,9vw,92px)", height: "clamp(64px,9vw,92px)", borderRadius: "50%", background: "rgba(255,255,255,0.14)", backdropFilter: "blur(6px)", border: "1px solid rgba(255,255,255,0.5)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-            <span style={{ marginLeft: "0.18em", borderStyle: "solid", borderWidth: "11px 0 11px 18px", borderColor: "transparent transparent transparent #fff" }} />
-          </span>
-          <span style={{ position: "absolute", left: "clamp(1.5rem,5vw,4rem)", bottom: "clamp(1.5rem,4vw,2.75rem)", textAlign: "left", color: "#fff" }}>
-            <span style={{ display: "block", fontFamily: "var(--font-cormorant)", fontWeight: 300, fontSize: "clamp(1.8rem,4vw,3rem)", lineHeight: 1.1, letterSpacing: "-0.01em" }}>{label}</span>
-            <span style={{ display: "block", marginTop: 8, fontFamily: "var(--font-geist-sans)", fontSize: 11, letterSpacing: "0.24em", textTransform: "uppercase", color: "rgba(255,255,255,0.75)" }}>{sub}</span>
-          </span>
-        </button>
-      )}
+      <video autoPlay muted loop playsInline preload="none" poster={poster}
+        style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }}>
+        <source src={src} type="video/mp4" />
+      </video>
+      <span style={{ position: "absolute", left: 0, right: 0, bottom: 0, padding: "clamp(2.5rem,6vw,4rem) clamp(1.5rem,5vw,4rem) clamp(1.25rem,3vw,2rem)", background: "linear-gradient(to top, rgba(14,27,42,0.6), rgba(14,27,42,0))", pointerEvents: "none", textAlign: "left" }}>
+        <span style={{ display: "block", fontFamily: "var(--font-cormorant)", fontWeight: 300, fontSize: "clamp(1.8rem,4vw,3rem)", lineHeight: 1.1, letterSpacing: "-0.01em", color: "#fff" }}>{label}</span>
+        <span style={{ display: "block", marginTop: 8, fontFamily: "var(--font-geist-sans)", fontSize: 11, letterSpacing: "0.24em", textTransform: "uppercase", color: "rgba(255,255,255,0.75)" }}>{sub}</span>
+      </span>
     </div>
   );
 }
@@ -451,6 +441,13 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── RAMHAN ISLAND — feature film (autoplay, muted, looped) ── */}
+      {RAMHAN_VIDEO && (
+        <section id="ramhan" style={{ borderTop: `1px solid ${LINE}`, borderBottom: `1px solid ${LINE}` }}>
+          <FeatureVideo src={RAMHAN_VIDEO} poster={RAMHAN_POSTER} label="Ramhan Island" sub="Abu Dhabi" />
+        </section>
+      )}
+
       {/* ── IMMOBILIEN / PROJEKTE — gallery ── */}
       <section id="projekte" style={{ background: CREAM, borderTop: `1px solid ${LINE}`, borderBottom: `1px solid ${LINE}`, padding: "clamp(6rem,12vw,10rem) 0" }}>
         <div style={{ maxWidth: 1180, margin: "0 auto", padding: "0 clamp(1.5rem,5vw,4rem)" }}>
@@ -470,13 +467,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* ── RAMHAN ISLAND — feature film (click to play) ── */}
-      {RAMHAN_VIDEO && (
-        <section id="ramhan" style={{ borderTop: `1px solid ${LINE}`, borderBottom: `1px solid ${LINE}` }}>
-          <FeatureVideo src={RAMHAN_VIDEO} poster={RAMHAN_POSTER} label="Ramhan Island" sub="Abu Dhabi" />
-        </section>
-      )}
 
       {/* ── CONSTRUCTION VIDEO BAND (optional, looping) ── */}
       {(PROJECT_VIDEO_VIMEO_ID || PROJECT_VIDEO_SRC) && (
