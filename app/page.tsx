@@ -23,7 +23,7 @@ const PHOTOS: { src: string; name: string }[] = [
   { src: "/projekte/silvestris-1.jpg", name: "Silvestris, Zürich" },
   { src: "https://static.wixstatic.com/media/b3010c_30340c4d2d56484eb51be30d7d3f3201~mv2.jpg", name: "Haus am Tämberg, Zürich" },
   { src: "/projekte/saadiyat-villa-6-1.jpg", name: "Saadiyat Lagoons, Al Ghaf" },
-  { src: "/projekte/Seamont.jpg", name: "Seamont, Reem Island" },
+  { src: "/projekte/Seamont.jpg", name: "Seamont Autograph, Reem Island" },
   { src: "https://static.wixstatic.com/media/b3010c_60046ffe836a44ea89cb7410bbbf771d~mv2.jpg", name: "Haspelstrasse, 8041 Zürich" },
   { src: "https://static.wixstatic.com/media/b3010c_b88fc361c35d4e77b33ea2b863490de9~mv2.jpg", name: "Haus am Tämberg, Zürich" },
   { src: "/projekte/saadiyat-villa-4-3.jpg", name: "Saadiyat Lagoons, Ethir" },
@@ -42,7 +42,7 @@ const PHOTOS: { src: string; name: string }[] = [
   { src: "/projekte/saadiyat-villa-6-7.jpg", name: "Saadiyat Lagoons, Al Ghaf" },
   { src: "https://static.wixstatic.com/media/b3010c_61e6de8da72a47e397bd3c356cf0fbe4~mv2.jpg", name: "Haus am Tämberg, Zürich" },
   { src: "/projekte/silvestris-4.jpg", name: "Silvestris, Zürich" },
-  { src: "https://static.wixstatic.com/media/b3010c_f7675e24b462404c93165f2aed7c7755~mv2.jpg", name: "Saadiyat Lagoons" },
+  { src: "https://static.wixstatic.com/media/b3010c_f7675e24b462404c93165f2aed7c7755~mv2.jpg", name: "Saadiyat Lagoons, Al Ghaf" },
   { src: "https://static.wixstatic.com/media/b3010c_064e4e85e00d4f56972e4848c9adf83d~mv2.jpeg", name: "Turbinenstrasse, 8005 Zürich" },
   { src: "https://static.wixstatic.com/media/b3010c_5b2633c90c194e7f8c060f43cf7aa85f~mv2.jpg", name: "Haspelstrasse, 8041 Zürich" },
   { src: "https://static.wixstatic.com/media/b3010c_060e28d385624cbeae4a1d26eff2a2b1~mv2.jpg", name: "Haus am Tämberg, Zürich" },
@@ -61,7 +61,7 @@ const PHOTOS: { src: string; name: string }[] = [
    with more than one image become a slider so the gallery stays compact. */
 const PROJECT_ORDER = [
   "Silvestris, Zürich",
-  "Seamont, Reem Island",
+  "Seamont Autograph, Reem Island",
   "Saadiyat Lagoons, Al Ghaf",
   "Haspelstrasse, 8041 Zürich",
   "Saadiyat Lagoons, Ethir",
@@ -71,7 +71,6 @@ const PROJECT_ORDER = [
   "Flow25, Reem Island",
   "Grove Residences, Saadiyat",
   "The Cape, Al Barari",
-  "Saadiyat Lagoons",
   "Ramhan Island",
 ];
 const PROJECTS: { name: string; images: string[] }[] = PROJECT_ORDER
