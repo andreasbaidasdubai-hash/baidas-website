@@ -195,8 +195,8 @@ const LANGS = ["de", "en", "fr", "ar"] as const;
 
 /* ─── DEPLOY CONFIG — fill these in for production ───────────────── */
 // Hero video via Vimeo: upload the video to Vimeo, then paste its numeric ID
-// (from the URL vimeo.com/XXXXXXXXX). While empty, local /landing.mp4 is used.
-const VIMEO_ID = "1197377063";
+// (from the URL vimeo.com/XXXXXXXXX). While empty, the local graded hero video is used.
+const VIMEO_ID = "";
 // Contact form via Formspree: create a form at formspree.io (recipient
 // info@baidas.ch) and paste the endpoint URL here.
 const FORMSPREE_ENDPOINT = "https://formspree.io/f/xkoawapo";
@@ -419,9 +419,9 @@ export default function Home() {
             />
           </div>
         ) : (
-          <video autoPlay muted loop playsInline preload="auto"
+          <video autoPlay muted loop playsInline preload="auto" poster="/hero-poster.jpg"
             style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }}>
-            <source src="/landing.mp4" type="video/mp4" />
+            <source src="/silvestris-landing.mp4" type="video/mp4" />
           </video>
         )}
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to bottom, rgba(10,18,28,0.5) 0%, rgba(10,18,28,0.3) 45%, rgba(10,18,28,0.62) 100%)" }} />
