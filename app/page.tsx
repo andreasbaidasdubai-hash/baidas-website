@@ -30,6 +30,7 @@ const PHOTOS: { src: string; name: string }[] = [
   { src: "/projekte/seamont-autograph-5.jpg", name: "Seamont Autograph, Reem Island" },
   { src: "https://static.wixstatic.com/media/b3010c_60046ffe836a44ea89cb7410bbbf771d~mv2.jpg", name: "Haspelstrasse, 8041 Zürich" },
   { src: "https://static.wixstatic.com/media/b3010c_b88fc361c35d4e77b33ea2b863490de9~mv2.jpg", name: "Haus am Tämberg, Zürich" },
+  { src: "/projekte/saadiyat-ethir-1.jpg", name: "Saadiyat Lagoons, Ethir" },
   { src: "/projekte/saadiyat-villa-4-3.jpg", name: "Saadiyat Lagoons, Ethir" },
   { src: "/projekte/silvestris-2.jpg", name: "Silvestris, Zürich" },
   { src: "https://static.wixstatic.com/media/b3010c_e877a03eef6140a49f9bd6e12336b8c5~mv2.jpeg", name: "Creek Edge, Dubai" },
