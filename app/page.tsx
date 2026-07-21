@@ -21,6 +21,7 @@ const PHOTOS: { src: string; name: string }[] = [
      two identical captions sit next to each other. Mix of local /public
      imagery and the existing Wix media library. ── */
   { src: "/projekte/silvestris-1.jpg", name: "Silvestris, Zürich" },
+  { src: "https://static.wixstatic.com/media/b3010c_92d93a39a26349deae9dc2f1777f7924~mv2.jpg", name: "Haus am Tämberg, Zürich" },
   { src: "https://static.wixstatic.com/media/b3010c_30340c4d2d56484eb51be30d7d3f3201~mv2.jpg", name: "Haus am Tämberg, Zürich" },
   { src: "/projekte/saadiyat-villa-6-1.jpg", name: "Saadiyat Lagoons, Al Ghaf" },
   { src: "/projekte/seamont-autograph-1.jpg", name: "Seamont Autograph, Reem Island" },
@@ -43,7 +44,6 @@ const PHOTOS: { src: string; name: string }[] = [
   { src: "/projekte/silvestris-3.jpg", name: "Silvestris, Zürich" },
   { src: "/projekte/grove-1.jpg", name: "Grove Residences, Saadiyat" },
   { src: "https://static.wixstatic.com/media/b3010c_dd33802823d641c9a1a8666c92d3104d~mv2.jpg", name: "Grove Residences, Saadiyat" },
-  { src: "https://static.wixstatic.com/media/b3010c_92d93a39a26349deae9dc2f1777f7924~mv2.jpg", name: "Haus am Tämberg, Zürich" },
   { src: "/projekte/saadiyat-villa-4-4.jpg", name: "Saadiyat Lagoons, Ethir" },
   { src: "https://static.wixstatic.com/media/b3010c_25f702170036409d99c3ac8b3fc67176~mv2.jpeg", name: "Creek Edge Villas, Dubai" },
   { src: "/projekte/saadiyat-villa-6-7.jpg", name: "Saadiyat Lagoons, Al Ghaf" },
