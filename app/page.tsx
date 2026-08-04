@@ -248,7 +248,7 @@ const VIMEO_ID = "";
 const FORMSPREE_ENDPOINT = "https://formspree.io/f/xkoawapo";
 // WhatsApp floating button: international number, digits only, no "+" (e.g. "971501234567").
 // Empty = button hidden.
-const WHATSAPP_NUMBER = "41786521111";
+const WHATSAPP_NUMBER = ""; // hidden for a more exclusive feel — visitors use the contact form / info@baidas.ch. Restore the number to re-enable.
 const WHATSAPP_MSG = "Guten Tag, ich interessiere mich für Baidas & Baidas.";
 // Optional looping construction video under the project gallery.
 // Set a Vimeo ID (preferred) or a local /public path to enable it. Empty = hidden.

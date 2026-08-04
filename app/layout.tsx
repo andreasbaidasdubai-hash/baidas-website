@@ -33,31 +33,103 @@ const notoArabic = Noto_Sans_Arabic({
   display: "swap",
 });
 
+const SITE_DESCRIPTION =
+  "Baidas & Baidas AG entwickelt exklusive Immobilien in besonders ausgewählten und werthaltigen Lagen in Zürich, Dubai und Abu Dhabi. Gegründet von Andreas Baidas.";
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://baidas.ch"),
-  title: "Baidas & Baidas AG — Immobilienentwicklung & Investments",
-  description:
-    "Exklusive Immobilien in besonders ausgewählten und werthaltigen Lagen. Zürich · Dubai · Abu Dhabi.",
+  title: {
+    default: "Baidas & Baidas AG — Immobilienentwicklung & Investments",
+    template: "%s | Baidas & Baidas AG",
+  },
+  description: SITE_DESCRIPTION,
+  applicationName: "Baidas & Baidas AG",
+  keywords: [
+    "Baidas & Baidas",
+    "Baidas und Baidas",
+    "Baidas & Baidas AG",
+    "Andreas Baidas",
+    "Immobilienentwicklung",
+    "Immobilien Zürich",
+    "Real Estate Dubai",
+    "Real Estate Abu Dhabi",
+    "Immobilien Investment",
+    "Projektentwicklung",
+    "Co-Investment",
+    "Luxusimmobilien",
+    "Grundstück verkaufen",
+  ],
+  authors: [{ name: "Andreas Baidas" }, { name: "Baidas & Baidas AG" }],
+  creator: "Andreas Baidas",
+  publisher: "Baidas & Baidas AG",
+  alternates: { canonical: "/" },
+  robots: "index, follow",
   openGraph: {
     title: "Baidas & Baidas AG — Immobilienentwicklung & Investments",
-    description:
-      "Exklusive Immobilien in besonders ausgewählten und werthaltigen Lagen. Zürich · Dubai · Abu Dhabi.",
+    description: SITE_DESCRIPTION,
     url: "https://baidas.ch",
     siteName: "Baidas & Baidas AG",
     locale: "de_CH",
+    alternateLocale: ["en_US", "fr_FR", "ar_AE"],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Baidas & Baidas AG",
-    description: "Exklusive Immobilien in besten Lagen. Zürich · Dubai · Abu Dhabi.",
+    title: "Baidas & Baidas AG — Immobilienentwicklung & Investments",
+    description: SITE_DESCRIPTION,
   },
+};
+
+// Structured data (JSON-LD) so search engines understand the brand entity
+// "Baidas & Baidas AG" and the person "Andreas Baidas".
+const JSON_LD = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://baidas.ch/#organization",
+      name: "Baidas & Baidas AG",
+      alternateName: ["Baidas & Baidas", "Baidas und Baidas"],
+      url: "https://baidas.ch",
+      logo: "https://baidas.ch/logo-black.png",
+      email: "info@baidas.ch",
+      description: SITE_DESCRIPTION,
+      areaServed: ["Zürich", "Dubai", "Abu Dhabi"],
+      address: [
+        { "@type": "PostalAddress", streetAddress: "Baarerstrasse 12", postalCode: "6300", addressLocality: "Zug", addressCountry: "CH" },
+        { "@type": "PostalAddress", streetAddress: "Central Park Tower, DIFC", addressLocality: "Dubai", addressCountry: "AE" },
+      ],
+      founder: { "@id": "https://baidas.ch/#andreas-baidas" },
+    },
+    {
+      "@type": "Person",
+      "@id": "https://baidas.ch/#andreas-baidas",
+      name: "Andreas Baidas",
+      jobTitle: "Immobilienentwickler & Investor",
+      worksFor: { "@id": "https://baidas.ch/#organization" },
+      image: "https://baidas.ch/team/andreas-portrait.jpg",
+      url: "https://baidas.ch",
+      description: "Andreas Baidas is a real estate developer, investor, and founder of Baidas & Baidas.",
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://baidas.ch/#website",
+      name: "Baidas & Baidas AG",
+      url: "https://baidas.ch",
+      publisher: { "@id": "https://baidas.ch/#organization" },
+      inLanguage: ["de", "en", "fr", "ar"],
+    },
+  ],
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="de" className={`${GeistSans.variable} ${cormorant.variable} ${poppins.variable} ${amiri.variable} ${notoArabic.variable}`}>
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD) }}
+        />
         <LanguageProvider>{children}</LanguageProvider>
       </body>
     </html>
