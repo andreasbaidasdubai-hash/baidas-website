@@ -92,8 +92,35 @@ const PROJECT_ORDER = [
   "Saadiyat Lagoons, Ethir",
   "Grove Residences, Saadiyat",
 ];
-const PROJECTS: { name: string; images: string[] }[] = PROJECT_ORDER
-  .map(name => ({ name, images: PHOTOS.filter(p => p.name === name).map(p => p.src) }))
+/* Build phase / status per project (keyed by canonical name). */
+const PROJECT_STATUS: Record<string, string> = {
+  "Silvestris, Zürich": "aushub",
+  "Ramhan Island": "rohbau",
+  "The Cape, Al Barari": "rohbau",
+  "Seamont Autograph, Reem Island": "aushub",
+  "Haus am Tämberg, Zürich": "realisiert",
+  "Creek Edge Villas, Dubai": "realisiert",
+  "Saadiyat Lagoons, Al Ghaf": "innenausbau",
+  "Haspelstrasse, 8041 Zürich": "fertiggestellt",
+  "Flow25, Reem Island": "aushub",
+  "Turbinenstrasse, 8005 Zürich": "fertiggestellt",
+  "Saadiyat Lagoons, Ethir": "innenausbau",
+  "Grove Residences, Saadiyat": "abnahme",
+};
+
+/* Status label translations (de/en/fr/ar). */
+const STATUS_LABEL: Record<string, Record<Lang, string>> = {
+  aushub:         { de: "Aushub", en: "Excavation", fr: "Terrassement", ar: "الحفر" },
+  rohbau:         { de: "Rohbau", en: "Structural Works", fr: "Gros œuvre", ar: "الأعمال الإنشائية" },
+  innenausbau:    { de: "Innenausbau", en: "Interior Fit-out", fr: "Aménagement intérieur", ar: "التشطيبات الداخلية" },
+  abnahme:        { de: "Abnahme", en: "Handover", fr: "Réception", ar: "التسليم" },
+  fertiggestellt: { de: "Fertiggestellt", en: "Completed", fr: "Achevé", ar: "مكتمل" },
+  realisiert:     { de: "Realisiert", en: "Realised", fr: "Réalisé", ar: "منجز" },
+};
+const DONE_STATUS = ["fertiggestellt", "realisiert"];
+
+const PROJECTS: { name: string; images: string[]; status?: string }[] = PROJECT_ORDER
+  .map(name => ({ name, images: PHOTOS.filter(p => p.name === name).map(p => p.src), status: PROJECT_STATUS[name] }))
   .filter(p => p.images.length > 0);
 
 /* ─── CONTENT — German is verbatim from baidas Wix site; EN/FR are
@@ -324,7 +351,7 @@ function FeatureVideo({ src, poster, label, sub }: { src: string; poster: string
 }
 
 /* One project = one gallery tile. Multiple images become a crossfade slider. */
-function ProjectCard({ project, onOpen }: { project: { name: string; images: string[] }; onOpen: (i: number) => void }) {
+function ProjectCard({ project, statusLabel, statusDone, onOpen }: { project: { name: string; images: string[] }; statusLabel?: string; statusDone?: boolean; onOpen: (i: number) => void }) {
   const [i, setI] = useState(0);
   const n = project.images.length;
   const step = (d: number) => setI(p => (p + d + n) % n);
@@ -350,6 +377,14 @@ function ProjectCard({ project, onOpen }: { project: { name: string; images: str
             transform: hover ? "scale(1.045)" : "scale(1)",
             transition: "opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.9s cubic-bezier(0.22,1,0.36,1)" }} />
       ))}
+      {statusLabel && (
+        <span style={{ position: "absolute", top: 12, left: 12, zIndex: 3, padding: "5px 11px", borderRadius: 999,
+          background: statusDone ? "rgba(244,240,233,0.94)" : "rgba(14,27,42,0.62)",
+          color: statusDone ? "#16181A" : "#fff", backdropFilter: "blur(6px)",
+          fontFamily: "var(--font-geist-sans)", fontSize: 10, letterSpacing: "0.14em", textTransform: "uppercase", fontWeight: 600, whiteSpace: "nowrap", pointerEvents: "none" }}>
+          {statusLabel}
+        </span>
+      )}
       <span style={{ position: "absolute", left: 0, right: 0, bottom: 0, padding: "2.6rem 1.1rem 0.95rem", lineHeight: 1.2, textAlign: "left", background: "linear-gradient(to top, rgba(14,27,42,0.85), rgba(14,27,42,0))", color: "#fff", fontFamily: "var(--font-cormorant)", fontWeight: 400, fontSize: "1.18rem", letterSpacing: "0.005em", pointerEvents: "none", zIndex: 2 }}>{project.name}</span>
       {n > 1 && (
         <>
@@ -757,7 +792,7 @@ export default function Home() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3" style={{ gap: 16 }}>
             {PROJECTS.map((project, i) => (
               <Reveal key={project.name} delay={(i % 3) * 0.06}>
-                <ProjectCard project={project} onOpen={(idx) => setLb({ images: project.images, name: project.name, i: idx })} />
+                <ProjectCard project={project} statusLabel={project.status ? STATUS_LABEL[project.status][lang] : undefined} statusDone={DONE_STATUS.includes(project.status || "")} onOpen={(idx) => setLb({ images: project.images, name: project.name, i: idx })} />
               </Reveal>
             ))}
           </div>
