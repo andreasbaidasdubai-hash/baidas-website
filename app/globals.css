@@ -51,4 +51,7 @@ body {
   font-family: "Helvetica Neue", Arial, sans-serif;
   font-style: normal;
   font-weight: 500;
+  font-size: 0.55em;
+  vertical-align: 0.06em;
+  margin: 0 0.02em;
 }
