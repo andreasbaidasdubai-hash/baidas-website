@@ -101,9 +101,9 @@ const PROJECT_STATUS: Record<string, string> = {
   "Haus am Tämberg, Zürich": "realisiert",
   "Creek Edge Villas, Dubai": "realisiert",
   "Saadiyat Lagoons, Al Ghaf": "innenausbau",
-  "Haspelstrasse, 8041 Zürich": "fertiggestellt",
+  "Haspelstrasse, 8041 Zürich": "realisiert",
   "Flow25, Reem Island": "aushub",
-  "Turbinenstrasse, 8005 Zürich": "fertiggestellt",
+  "Turbinenstrasse, 8005 Zürich": "realisiert",
   "Saadiyat Lagoons, Ethir": "innenausbau",
   "Grove Residences, Saadiyat": "abnahme",
 };
@@ -646,7 +646,7 @@ export default function Home() {
           <Reveal>
             <div style={{ position: "relative", width: "100%", maxWidth: 460, aspectRatio: "2 / 3", overflow: "hidden", background: "#E9E3D8" }}>
               <Image
-                src="/team/andreas-portrait-final.jpg"
+                src="/team/andreas-portrait-final-2.jpg"
                 alt={t.founderName}
                 fill
                 sizes="(max-width: 1024px) 100vw, 460px"
