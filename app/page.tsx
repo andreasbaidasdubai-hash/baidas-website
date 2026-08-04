@@ -1,8 +1,8 @@
 "use client";
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, useReducedMotion, AnimatePresence } from "motion/react";
-import { useLang } from "@/context/LanguageContext";
+import { useLang, type Lang } from "@/context/LanguageContext";
 import { Reveal } from "@/components/Reveal";
 
 /* ─── PALETTE — beyond-style: white / cream / ink ────────────────── */
@@ -111,6 +111,10 @@ const T = {
       "Das Entwickeln und Bauen hochwertiger Wohnimmobilien auf exklusiven Grundstücken auf der Grundlage einer Baukunst von höchster handwerklicher Perfektion ist unser Versprechen.",
       "Alle Bauphasen, von der Planung bis zu den verschiedenen Ausführungsstadien, sind einem kompromisslosen Qualitätsanspruch unterworfen: von der Auswahl erstklassiger Grundstücke und Standorte, der Beauftragung führender, stilprägender Architekten, der Zusammenarbeit mit ausgewählten Handwerksbetrieben, bis hin zur kreativen Ausgestaltung der Objekte durch Kooperationen mit führenden Interior Designern und Landschaftsarchitekten.",
     ],
+    founderLabel: "Inhaber",
+    founderName: "Andreas Baidas",
+    founderRole: "Immobilienentwickler & Investor",
+    founderP: "Andreas Baidas ist ein professioneller Immobilienentwickler und Investor mit einer ausgeprägten Leidenschaft für Immobilien, Interior Design und Kunst. Als Inhaber von Baidas & Baidas bringt er sein Gespür und seine Erfahrung in jede Entscheidung ein - von der Auswahl der Grundstücke über die architektonische Handschrift bis zur gestalterischen Vollendung jedes Projekts.",
     projLabel: "Immobilien",
     projTitle: "Projekte",
     projIntro: "Unsere Immobilienprojekte erstrecken sich über Zürich, Dubai und Abu Dhabi. In unserer Rolle als Projektentwickler übernehmen wir den gesamten Prozess – von der Anschaffung der Grundstücke bis hin zur Fertigstellung der Bauvorhaben. Darüber hinaus engagieren wir uns auch als Investoren in Bauprojekten, um deren Erfolg und Rentabilität zu sichern.",
@@ -118,6 +122,8 @@ const T = {
     acqTitle: "Grundstück anbieten",
     acqP1: "Baidas & Baidas kauft bebaubare Grundstücke in guten und sehr guten Wohnlagen in Zürich, Dubai und Abu Dhabi, um auf ihnen besonders hochwertige Eigentumswohnungen oder Einfamilienhäuser zu errichten.",
     acqP2: "Sie haben ein passendes Grundstück oder eine Bestandsimmobilie und wollen diese zum Kauf anbieten? Selbstverständlich können Sie uns aus Diskretionsgründen auch direkt und persönlich kontaktieren. Wir freuen uns über Ihre Kontaktaufnahme.",
+    coLabel: "Co-Investment",
+    acqP3: "Sie sind ein etablierter und renommierter Projektentwickler und suchen einen Partner für die Co-Investition in Ihr Vorhaben? Baidas & Baidas beteiligt sich als verlässlicher Kapital- und Entwicklungspartner an ausgewählten Bauprojekten in Zürich, Dubai und Abu Dhabi. Wir freuen uns auf eine vertrauliche Kontaktaufnahme.",
     namePh: "Ihr Name", emailPh: "Ihre E-Mail", msgPh: "Ihre Nachricht",
     send: "Anfrage senden", sent: "Vielen Dank — wir melden uns in Kürze.",
     footerNav: [["Über Uns", "#about"], ["Immobilien", "#projekte"], ["Akquisition", "#akquisition"]],
@@ -135,6 +141,10 @@ const T = {
       "The development and construction of high-quality residential properties on exclusive plots, founded on architectural craftsmanship of the highest perfection, is our promise.",
       "Every construction phase, from planning through the various stages of execution, is subject to an uncompromising standard of quality: from the selection of first-class plots and locations, the commissioning of leading, style-defining architects, the collaboration with selected craftsmen, through to the creative design of the properties in cooperation with leading interior designers and landscape architects.",
     ],
+    founderLabel: "Owner",
+    founderName: "Andreas Baidas",
+    founderRole: "Real Estate Developer & Investor",
+    founderP: "Andreas Baidas is a professional real estate developer and investor with a genuine passion for property, interior design and art. As the owner of Baidas & Baidas, he brings his instinct and expertise to every decision - from selecting the sites and shaping the architecture to the final finish of each project.",
     projLabel: "Properties",
     projTitle: "Projects",
     projIntro: "Our real-estate projects span Zürich, Dubai and Abu Dhabi. As project developers we manage the entire process — from acquiring the land through to completion of the buildings. Beyond that, we also act as investors in construction projects to secure their success and profitability.",
@@ -142,6 +152,8 @@ const T = {
     acqTitle: "Offer a property",
     acqP1: "Baidas & Baidas purchases buildable plots in good and very good residential locations in Zürich, Dubai and Abu Dhabi, in order to build particularly high-quality condominiums or single-family homes on them.",
     acqP2: "Do you have a suitable plot or an existing property you would like to offer for sale? For reasons of discretion, you are of course welcome to contact us directly and personally. We look forward to hearing from you.",
+    coLabel: "Co-Investment",
+    acqP3: "Are you an established and reputable developer seeking a partner to co-invest in your project? Baidas & Baidas participates as a reliable capital and development partner in selected construction projects in Zürich, Dubai and Abu Dhabi. We would welcome a confidential conversation.",
     namePh: "Your name", emailPh: "Your email", msgPh: "Your message",
     send: "Send enquiry", sent: "Thank you — we will be in touch shortly.",
     footerNav: [["About", "#about"], ["Properties", "#projekte"], ["Acquisition", "#akquisition"]],
@@ -159,6 +171,10 @@ const T = {
       "Le développement et la construction de biens résidentiels de haute qualité sur des terrains exclusifs, fondés sur un art architectural d'une perfection artisanale absolue, telle est notre promesse.",
       "Chaque phase de construction, de la planification aux différents stades d'exécution, est soumise à une exigence de qualité sans compromis : de la sélection de terrains et d'emplacements de premier choix, au mandat d'architectes de renom au style affirmé, à la collaboration avec des artisans sélectionnés, jusqu'à l'aménagement créatif des biens en coopération avec des architectes d'intérieur et paysagistes de premier plan.",
     ],
+    founderLabel: "Propriétaire",
+    founderName: "Andreas Baidas",
+    founderRole: "Promoteur Immobilier & Investisseur",
+    founderP: "Andreas Baidas est un promoteur immobilier et investisseur professionnel, animé par une véritable passion pour l'immobilier, le design d'intérieur et l'art. En tant que propriétaire de Baidas & Baidas, il met son intuition et son expertise au service de chaque décision - du choix des terrains à l'écriture architecturale, jusqu'à la finition de chaque projet.",
     projLabel: "Immobilier",
     projTitle: "Projets",
     projIntro: "Nos projets immobiliers s'étendent sur Zurich, Dubaï et Abu Dhabi. En tant que promoteurs, nous prenons en charge l'ensemble du processus — de l'acquisition des terrains jusqu'à l'achèvement des constructions. Par ailleurs, nous nous engageons également comme investisseurs dans des projets de construction afin d'en garantir le succès et la rentabilité.",
@@ -166,6 +182,8 @@ const T = {
     acqTitle: "Proposer un terrain",
     acqP1: "Baidas & Baidas achète des terrains constructibles dans de bons et très bons emplacements résidentiels à Zurich, Dubaï et Abu Dhabi, afin d'y édifier des appartements en propriété ou des maisons individuelles de très haute qualité.",
     acqP2: "Vous possédez un terrain approprié ou un bien existant et souhaitez le proposer à la vente ? Pour des raisons de discrétion, vous pouvez bien entendu nous contacter directement et personnellement. Nous nous réjouissons de votre prise de contact.",
+    coLabel: "Co-Investissement",
+    acqP3: "Vous êtes un promoteur établi et reconnu à la recherche d'un partenaire pour co-investir dans votre projet ? Baidas & Baidas s'engage comme partenaire fiable en capital et en développement dans des projets de construction sélectionnés à Zurich, Dubaï et Abu Dhabi. Nous serions ravis d'un échange confidentiel.",
     namePh: "Votre nom", emailPh: "Votre e-mail", msgPh: "Votre message",
     send: "Envoyer", sent: "Merci — nous vous contacterons bientôt.",
     footerNav: [["À Propos", "#about"], ["Immobilier", "#projekte"], ["Acquisition", "#akquisition"]],
@@ -183,6 +201,10 @@ const T = {
       "إنّ تطوير وبناء عقارات سكنية فاخرة على أراضٍ حصرية، استناداً إلى فنّ معماري يبلغ أعلى درجات الإتقان الحِرفي، هو وعدنا.",
       "تخضع جميع مراحل البناء، من التخطيط وحتى مختلف مراحل التنفيذ، لمعيار جودة لا يقبل المساومة: من اختيار الأراضي والمواقع من الطراز الأول، وتكليف نخبة من المعماريين أصحاب الطابع المميّز، والتعاون مع ورشٍ حِرفية منتقاة، وصولاً إلى التصميم الإبداعي للمشاريع بالتعاون مع روّاد مصممي الديكور الداخلي ومهندسي تنسيق الحدائق.",
     ],
+    founderLabel: "المالك",
+    founderName: "أندرياس بيداس",
+    founderRole: "مطوّر عقاري ومستثمر",
+    founderP: "أندرياس بيداس مطوّر عقاري ومستثمر محترف، تحدوه شغفٌ حقيقي بالعقارات والتصميم الداخلي والفن. وبصفته مالك بيداس آند بيداس، يضع حدسه وخبرته في خدمة كل قرار - من اختيار الأراضي وصياغة الطابع المعماري وصولاً إلى اللمسة الأخيرة في كل مشروع.",
     projLabel: "العقارات",
     projTitle: "المشاريع",
     projIntro: "تمتدّ مشاريعنا العقارية عبر زيورخ ودبي وأبوظبي. وبصفتنا مطوّرين عقاريين، نتولّى العملية بأكملها — من شراء الأراضي وحتى إنجاز المشاريع الإنشائية. كما نساهم أيضاً كمستثمرين في المشاريع الإنشائية لضمان نجاحها ورِبحيتها.",
@@ -190,6 +212,8 @@ const T = {
     acqTitle: "اعرض أرضك",
     acqP1: "تشتري بيداس آند بيداس أراضيَ قابلة للبناء في مواقع سكنية جيدة وممتازة في زيورخ ودبي وأبوظبي، لتشييد شققٍ تمليك أو فللٍ سكنية فائقة الجودة عليها.",
     acqP2: "هل لديك أرض مناسبة أو عقار قائم وترغب في عرضه للبيع؟ يمكنك بالطبع التواصل معنا مباشرةً وبشكل شخصي حفاظاً على السرّية. يسعدنا تواصلك معنا.",
+    coLabel: "الاستثمار المشترك",
+    acqP3: "هل أنت مطوّر عقاري راسخ وذو سمعة طيبة وتبحث عن شريك للاستثمار المشترك في مشروعك؟ تشارك بيداس آند بيداس كشريك موثوق في رأس المال والتطوير في مشاريع إنشائية مختارة في زيورخ ودبي وأبوظبي. يسعدنا تواصلك السرّي معنا.",
     namePh: "اسمك", emailPh: "بريدك الإلكتروني", msgPh: "رسالتك",
     send: "إرسال الطلب", sent: "شكراً جزيلاً — سنتواصل معك قريباً.",
     footerNav: [["من نحن", "#about"], ["العقارات", "#projekte"], ["الاستحواذ", "#akquisition"]],
@@ -331,6 +355,86 @@ function ProjectCard({ project, onOpen }: { project: { name: string; images: str
   );
 }
 
+/* Full language names shown inside the dropdown menu (trigger shows the code). */
+const LANG_LABEL: Record<Lang, string> = { de: "Deutsch", en: "English", fr: "Français", ar: "العربية" };
+
+/* Language selector as a dropdown menu. Trigger shows the active code (DE),
+   the panel lists all languages. Closes on outside-click / Escape, and aligns
+   to the inline-end edge so it mirrors correctly in Arabic (RTL). */
+function LanguageDropdown({ lang, setLang, scrolled }: { lang: Lang; setLang: (l: Lang) => void; scrolled: boolean }) {
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+  const color = scrolled ? INK : "#fff";
+
+  useEffect(() => {
+    if (!open) return;
+    const onDoc = (e: MouseEvent) => { if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false); };
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setOpen(false); };
+    document.addEventListener("mousedown", onDoc);
+    document.addEventListener("keydown", onKey);
+    return () => { document.removeEventListener("mousedown", onDoc); document.removeEventListener("keydown", onKey); };
+  }, [open]);
+
+  return (
+    <div ref={ref} style={{ position: "relative" }}>
+      <button
+        type="button" aria-haspopup="listbox" aria-expanded={open} aria-label="Sprache / Language"
+        onClick={() => setOpen(o => !o)}
+        style={{
+          display: "inline-flex", alignItems: "center", gap: 6, background: "none", border: "none", cursor: "pointer",
+          padding: "6px 2px", color, opacity: 0.82, transition: "opacity 0.25s",
+          fontFamily: "var(--font-geist-sans)", fontSize: 11.5, letterSpacing: "0.16em", textTransform: "uppercase",
+        }}
+        onMouseEnter={e => (e.currentTarget.style.opacity = "1")}
+        onMouseLeave={e => (e.currentTarget.style.opacity = "0.82")}
+      >
+        {lang.toUpperCase()}
+        <svg width="9" height="9" viewBox="0 0 10 6" aria-hidden="true"
+          style={{ transform: open ? "rotate(180deg)" : "rotate(0deg)", transition: "transform 0.25s" }}>
+          <path d="M1 1l4 4 4-4" fill="none" stroke={color} strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      </button>
+
+      <AnimatePresence>
+        {open && (
+          <motion.ul
+            role="listbox"
+            initial={{ opacity: 0, y: -6 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -6 }} transition={{ duration: 0.16 }}
+            style={{
+              position: "absolute", insetInlineEnd: 0, top: "calc(100% + 12px)", listStyle: "none", margin: 0, padding: 6,
+              minWidth: 148, background: "#fff", border: `1px solid ${LINE}`, borderRadius: 12,
+              boxShadow: "0 18px 44px -20px rgba(14,27,42,0.35)", zIndex: 300,
+            }}
+          >
+            {LANGS.map(l => {
+              const active = l === lang;
+              return (
+                <li key={l} role="option" aria-selected={active}>
+                  <button
+                    type="button" onClick={() => { setLang(l); setOpen(false); }}
+                    style={{
+                      display: "flex", alignItems: "center", justifyContent: "space-between", gap: 18, width: "100%",
+                      padding: "10px 14px", borderRadius: 8, border: "none", cursor: "pointer", textAlign: "start",
+                      background: active ? CREAM : "transparent", color: INK,
+                      fontFamily: "var(--font-geist-sans)", fontSize: 13.5, letterSpacing: "0.01em",
+                      opacity: active ? 1 : 0.72, transition: "background 0.18s, opacity 0.18s",
+                    }}
+                    onMouseEnter={e => { if (!active) e.currentTarget.style.background = "rgba(22,24,26,0.045)"; e.currentTarget.style.opacity = "1"; }}
+                    onMouseLeave={e => { if (!active) e.currentTarget.style.background = "transparent"; e.currentTarget.style.opacity = active ? "1" : "0.72"; }}
+                  >
+                    <span>{LANG_LABEL[l]}</span>
+                    <span style={{ fontSize: 10.5, letterSpacing: "0.14em", color: SOFT }}>{l.toUpperCase()}</span>
+                  </button>
+                </li>
+              );
+            })}
+          </motion.ul>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
+
 export default function Home() {
   const { lang, setLang } = useLang();
   const t = T[lang];
@@ -400,12 +504,7 @@ export default function Home() {
             ))}
           </nav>
           <span style={{ width: 1, height: 16, background: scrolled ? LINE : "rgba(255,255,255,0.4)" }} />
-          <div style={{ display: "flex", gap: 10 }}>
-            {LANGS.map(l => (
-              <button key={l} onClick={() => setLang(l)}
-                style={{ ...navLink, opacity: lang === l ? 1 : 0.5, fontWeight: lang === l ? 600 : 400 }}>{l.toUpperCase()}</button>
-            ))}
-          </div>
+          <LanguageDropdown lang={lang} setLang={setLang} scrolled={scrolled} />
         </div>
       </motion.header>
 
@@ -457,6 +556,36 @@ export default function Home() {
             <Reveal delay={0.3}><p style={{ fontFamily: "var(--font-geist-sans)", fontSize: 15, lineHeight: 1.85, color: BODY, margin: 0 }}>{t.aboutP[2]}</p></Reveal>
           </div>
         </div>
+
+        {/* ── FOUNDER — Andreas Baidas portrait + short intro ── */}
+        <div
+          className="grid grid-cols-1 lg:grid-cols-[0.82fr_1.18fr]"
+          style={{ gap: "clamp(2.5rem,5vw,5rem)", alignItems: "center", marginTop: "clamp(4.5rem,9vw,7rem)", paddingTop: "clamp(3rem,6vw,4.5rem)", borderTop: `1px solid ${LINE}` }}
+        >
+          <Reveal>
+            <div style={{ position: "relative", width: "100%", maxWidth: 460, aspectRatio: "2 / 3", overflow: "hidden", background: "#E9E3D8" }}>
+              <Image
+                src="/team/andreas-portrait.jpg"
+                alt={t.founderName}
+                fill
+                sizes="(max-width: 1024px) 100vw, 460px"
+                style={{ objectFit: "cover", objectPosition: "50% 30%" }}
+              />
+            </div>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <Eyebrow>{t.founderLabel}</Eyebrow>
+            <h3 style={{ fontFamily: "var(--font-cormorant)", fontWeight: 300, fontSize: "clamp(2rem,4vw,3rem)", color: INK, lineHeight: 1.1, letterSpacing: "-0.01em", margin: 0 }}>
+              {t.founderName}
+            </h3>
+            <p style={{ fontFamily: "var(--font-geist-sans)", fontSize: 11, letterSpacing: "0.22em", textTransform: "uppercase", color: SOFT, margin: "12px 0 26px" }}>
+              {t.founderRole}
+            </p>
+            <p style={{ fontFamily: "var(--font-geist-sans)", fontSize: 15, lineHeight: 1.85, color: BODY, margin: 0, maxWidth: "60ch" }}>
+              {t.founderP}
+            </p>
+          </Reveal>
+        </div>
       </section>
 
       {/* ── RAMHAN ISLAND — feature film (autoplay, muted, looped) ── */}
@@ -466,51 +595,13 @@ export default function Home() {
         </section>
       )}
 
-      {/* ── IMMOBILIEN / PROJEKTE — gallery ── */}
-      <section id="projekte" style={{ background: CREAM, borderTop: `1px solid ${LINE}`, borderBottom: `1px solid ${LINE}`, padding: "clamp(6rem,12vw,10rem) 0" }}>
-        <div style={{ maxWidth: 1180, margin: "0 auto", padding: "0 clamp(1.5rem,5vw,4rem)" }}>
-          <Reveal><Eyebrow>{t.projLabel}</Eyebrow></Reveal>
-          <Reveal delay={0.05}>
-            <h2 style={{ fontFamily: "var(--font-cormorant)", fontWeight: 300, fontSize: "clamp(2.4rem,5vw,3.6rem)", color: INK, letterSpacing: "-0.01em", margin: "0 0 1.6rem" }}>{t.projTitle}</h2>
-          </Reveal>
-          <Reveal delay={0.1} style={{ maxWidth: "68ch", marginBottom: "clamp(2.5rem,5vw,4rem)" }}>
-            <p style={{ fontFamily: "var(--font-geist-sans)", fontSize: 15, lineHeight: 1.85, color: BODY }}>{t.projIntro}</p>
-          </Reveal>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3" style={{ gap: 16 }}>
-            {PROJECTS.map((project, i) => (
-              <Reveal key={project.name} delay={(i % 3) * 0.06}>
-                <ProjectCard project={project} onOpen={(idx) => setLb({ images: project.images, name: project.name, i: idx })} />
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── CONSTRUCTION VIDEO BAND (optional, looping) ── */}
-      {(PROJECT_VIDEO_VIMEO_ID || PROJECT_VIDEO_SRC) && (
-        <section style={{ background: "#0E1B2A", borderBottom: `1px solid ${LINE}` }}>
-          <div style={{ position: "relative", width: "100%", aspectRatio: "16 / 9", overflow: "hidden" }}>
-            {PROJECT_VIDEO_VIMEO_ID ? (
-              <iframe
-                src={`https://player.vimeo.com/video/${PROJECT_VIDEO_VIMEO_ID}?background=1&autoplay=1&loop=1&muted=1&dnt=1`}
-                allow="autoplay; fullscreen" title="Baidas & Baidas — Bau"
-                style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: "100vw", height: "56.25vw", minHeight: "100%", minWidth: "177.78vh", border: 0, pointerEvents: "none" }}
-              />
-            ) : (
-              <video autoPlay muted loop playsInline preload="none" src={PROJECT_VIDEO_SRC}
-                style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
-            )}
-          </div>
-        </section>
-      )}
-
       {/* ── AKQUISITION / KONTAKT ── */}
       <section id="akquisition" style={{ padding: "clamp(6rem,12vw,11rem) clamp(1.5rem,5vw,4rem)", maxWidth: 1180, margin: "0 auto" }}>
         <Reveal><Eyebrow>{t.acqLabel}</Eyebrow></Reveal>
         <Reveal delay={0.05}>
           <h2 style={{ fontFamily: "var(--font-cormorant)", fontWeight: 300, fontSize: "clamp(2.4rem,5vw,3.6rem)", color: INK, lineHeight: 1.08, letterSpacing: "-0.01em", margin: "0 0 2rem" }}>{t.acqTitle}</h2>
         </Reveal>
-        <div className="grid grid-cols-1 lg:grid-cols-2" style={{ gap: "clamp(2rem,5vw,5rem)", marginBottom: "clamp(3.5rem,7vw,5.5rem)" }}>
+        <div className="grid grid-cols-1 lg:grid-cols-2" style={{ gap: "clamp(2rem,5vw,5rem)", marginBottom: "clamp(2rem,4vw,3rem)" }}>
           <Reveal delay={0.1}>
             <p style={{ fontFamily: "var(--font-cormorant)", fontStyle: "italic", fontSize: "clamp(1.4rem,2.4vw,1.85rem)", lineHeight: 1.45, color: INK, margin: 0 }}>{t.acqP1}</p>
           </Reveal>
@@ -518,6 +609,14 @@ export default function Home() {
             <p style={{ fontFamily: "var(--font-geist-sans)", fontSize: 15, lineHeight: 1.85, color: BODY, margin: 0 }}>{t.acqP2}</p>
           </Reveal>
         </div>
+
+        {/* Co-investment invitation for established developers */}
+        <Reveal delay={0.25}>
+          <div style={{ marginBottom: "clamp(3.5rem,7vw,5.5rem)", paddingTop: "clamp(2.5rem,5vw,3.5rem)", borderTop: `1px solid ${LINE}` }}>
+            <p style={{ fontFamily: "var(--font-geist-sans)", fontSize: 10.5, letterSpacing: "0.22em", textTransform: "uppercase", color: SOFT, margin: "0 0 16px" }}>{t.coLabel}</p>
+            <p style={{ fontFamily: "var(--font-cormorant)", fontStyle: "italic", fontSize: "clamp(1.35rem,2.2vw,1.75rem)", lineHeight: 1.5, color: INK, margin: 0, maxWidth: "62ch" }}>{t.acqP3}</p>
+          </div>
+        </Reveal>
 
         <div className="grid grid-cols-1 lg:grid-cols-2" style={{ gap: "clamp(3rem,6vw,6rem)", alignItems: "start", paddingTop: "clamp(2.5rem,5vw,3.5rem)", borderTop: `1px solid ${LINE}` }}>
           <Reveal>
@@ -569,6 +668,44 @@ export default function Home() {
               </form>
             )}
           </Reveal>
+        </div>
+      </section>
+
+      {/* ── CONSTRUCTION VIDEO BAND (optional, looping) ── */}
+      {(PROJECT_VIDEO_VIMEO_ID || PROJECT_VIDEO_SRC) && (
+        <section style={{ background: "#0E1B2A", borderBottom: `1px solid ${LINE}` }}>
+          <div style={{ position: "relative", width: "100%", aspectRatio: "16 / 9", overflow: "hidden" }}>
+            {PROJECT_VIDEO_VIMEO_ID ? (
+              <iframe
+                src={`https://player.vimeo.com/video/${PROJECT_VIDEO_VIMEO_ID}?background=1&autoplay=1&loop=1&muted=1&dnt=1`}
+                allow="autoplay; fullscreen" title="Baidas & Baidas — Bau"
+                style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%,-50%)", width: "100vw", height: "56.25vw", minHeight: "100%", minWidth: "177.78vh", border: 0, pointerEvents: "none" }}
+              />
+            ) : (
+              <video autoPlay muted loop playsInline preload="none" src={PROJECT_VIDEO_SRC}
+                style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }} />
+            )}
+          </div>
+        </section>
+      )}
+
+      {/* ── IMMOBILIEN / PROJEKTE — gallery ── */}
+      <section id="projekte" style={{ background: CREAM, borderTop: `1px solid ${LINE}`, borderBottom: `1px solid ${LINE}`, padding: "clamp(6rem,12vw,10rem) 0" }}>
+        <div style={{ maxWidth: 1180, margin: "0 auto", padding: "0 clamp(1.5rem,5vw,4rem)" }}>
+          <Reveal><Eyebrow>{t.projLabel}</Eyebrow></Reveal>
+          <Reveal delay={0.05}>
+            <h2 style={{ fontFamily: "var(--font-cormorant)", fontWeight: 300, fontSize: "clamp(2.4rem,5vw,3.6rem)", color: INK, letterSpacing: "-0.01em", margin: "0 0 1.6rem" }}>{t.projTitle}</h2>
+          </Reveal>
+          <Reveal delay={0.1} style={{ maxWidth: "68ch", marginBottom: "clamp(2.5rem,5vw,4rem)" }}>
+            <p style={{ fontFamily: "var(--font-geist-sans)", fontSize: 15, lineHeight: 1.85, color: BODY }}>{t.projIntro}</p>
+          </Reveal>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3" style={{ gap: 16 }}>
+            {PROJECTS.map((project, i) => (
+              <Reveal key={project.name} delay={(i % 3) * 0.06}>
+                <ProjectCard project={project} onOpen={(idx) => setLb({ images: project.images, name: project.name, i: idx })} />
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
 
