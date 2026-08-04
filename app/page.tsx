@@ -114,7 +114,10 @@ const T = {
     founderLabel: "Inhaber",
     founderName: "Andreas Baidas",
     founderRole: "Immobilienentwickler & Investor",
-    founderP: "Andreas Baidas ist ein professioneller Immobilienentwickler und Investor mit einer ausgeprägten Leidenschaft für Immobilien, Interior Design und Kunst. Als Inhaber von Baidas & Baidas bringt er sein Gespür und seine Erfahrung in jede Entscheidung ein - von der Auswahl der Grundstücke über die architektonische Handschrift bis zur gestalterischen Vollendung jedes Projekts.",
+    founderP: [
+      "Andreas Baidas ist Immobilienentwickler, Investor und Gründer von Baidas & Baidas. Geboren in Deutschland und aufgewachsen in London, begann er seine Laufbahn als Sales Trader in Zürich und lebt heute zwischen der Schweiz und den Vereinigten Arabischen Emiraten.",
+      "Er ist persönlich in jedes Projekt eingebunden - von der Standortwahl über die architektonische Ausrichtung bis zur finalen Ausführung, mit einem klaren Fokus auf Qualität, Design und langfristigen Wert.",
+    ],
     projLabel: "Immobilien",
     projTitle: "Projekte",
     projIntro: "Unsere Immobilienprojekte erstrecken sich über Zürich, Dubai und Abu Dhabi. In unserer Rolle als Projektentwickler übernehmen wir den gesamten Prozess – von der Anschaffung der Grundstücke bis hin zur Fertigstellung der Bauvorhaben. Darüber hinaus engagieren wir uns auch als Investoren in Bauprojekten, um deren Erfolg und Rentabilität zu sichern.",
@@ -144,7 +147,10 @@ const T = {
     founderLabel: "Owner",
     founderName: "Andreas Baidas",
     founderRole: "Real Estate Developer & Investor",
-    founderP: "Andreas Baidas is a professional real estate developer and investor with a genuine passion for property, interior design and art. As the owner of Baidas & Baidas, he brings his instinct and expertise to every decision - from selecting the sites and shaping the architecture to the final finish of each project.",
+    founderP: [
+      "Andreas Baidas is a real estate developer, investor, and founder of Baidas & Baidas. Born in Germany and raised in London, he began his career as a sales trader in Zurich and now divides his time between Switzerland and the UAE.",
+      "He is personally involved in every project, from site selection and architectural direction to final execution, with a clear focus on quality, design, and long-term value.",
+    ],
     projLabel: "Properties",
     projTitle: "Projects",
     projIntro: "Our real-estate projects span Zürich, Dubai and Abu Dhabi. As project developers we manage the entire process — from acquiring the land through to completion of the buildings. Beyond that, we also act as investors in construction projects to secure their success and profitability.",
@@ -174,7 +180,10 @@ const T = {
     founderLabel: "Propriétaire",
     founderName: "Andreas Baidas",
     founderRole: "Promoteur Immobilier & Investisseur",
-    founderP: "Andreas Baidas est un promoteur immobilier et investisseur professionnel, animé par une véritable passion pour l'immobilier, le design d'intérieur et l'art. En tant que propriétaire de Baidas & Baidas, il met son intuition et son expertise au service de chaque décision - du choix des terrains à l'écriture architecturale, jusqu'à la finition de chaque projet.",
+    founderP: [
+      "Andreas Baidas est promoteur immobilier, investisseur et fondateur de Baidas & Baidas. Né en Allemagne et élevé à Londres, il a débuté sa carrière comme sales trader à Zurich et partage aujourd'hui son temps entre la Suisse et les Émirats arabes unis.",
+      "Il s'implique personnellement dans chaque projet, du choix du site à la direction architecturale jusqu'à l'exécution finale, avec une attention claire portée à la qualité, au design et à la valeur à long terme.",
+    ],
     projLabel: "Immobilier",
     projTitle: "Projets",
     projIntro: "Nos projets immobiliers s'étendent sur Zurich, Dubaï et Abu Dhabi. En tant que promoteurs, nous prenons en charge l'ensemble du processus — de l'acquisition des terrains jusqu'à l'achèvement des constructions. Par ailleurs, nous nous engageons également comme investisseurs dans des projets de construction afin d'en garantir le succès et la rentabilité.",
@@ -204,7 +213,10 @@ const T = {
     founderLabel: "المالك",
     founderName: "أندرياس بيداس",
     founderRole: "مطوّر عقاري ومستثمر",
-    founderP: "أندرياس بيداس مطوّر عقاري ومستثمر محترف، تحدوه شغفٌ حقيقي بالعقارات والتصميم الداخلي والفن. وبصفته مالك بيداس آند بيداس، يضع حدسه وخبرته في خدمة كل قرار - من اختيار الأراضي وصياغة الطابع المعماري وصولاً إلى اللمسة الأخيرة في كل مشروع.",
+    founderP: [
+      "أندرياس بيداس مطوّر عقاري ومستثمر ومؤسس بيداس آند بيداس. وُلد في ألمانيا ونشأ في لندن، وبدأ مسيرته المهنية متداولاً في المبيعات في زيورخ، ويتنقّل اليوم بين سويسرا ودولة الإمارات العربية المتحدة.",
+      "يشارك شخصياً في كل مشروع، من اختيار الموقع والتوجيه المعماري وصولاً إلى التنفيذ النهائي، مع تركيز واضح على الجودة والتصميم والقيمة على المدى الطويل.",
+    ],
     projLabel: "العقارات",
     projTitle: "المشاريع",
     projIntro: "تمتدّ مشاريعنا العقارية عبر زيورخ ودبي وأبوظبي. وبصفتنا مطوّرين عقاريين، نتولّى العملية بأكملها — من شراء الأراضي وحتى إنجاز المشاريع الإنشائية. كما نساهم أيضاً كمستثمرين في المشاريع الإنشائية لضمان نجاحها ورِبحيتها.",
@@ -581,9 +593,11 @@ export default function Home() {
             <p style={{ fontFamily: "var(--font-geist-sans)", fontSize: 11, letterSpacing: "0.22em", textTransform: "uppercase", color: SOFT, margin: "12px 0 26px" }}>
               {t.founderRole}
             </p>
-            <p style={{ fontFamily: "var(--font-geist-sans)", fontSize: 15, lineHeight: 1.85, color: BODY, margin: 0, maxWidth: "60ch" }}>
-              {t.founderP}
-            </p>
+            {t.founderP.map((para, i) => (
+              <p key={i} style={{ fontFamily: "var(--font-geist-sans)", fontSize: 15, lineHeight: 1.85, color: BODY, margin: i === 0 ? "0 0 18px" : 0, maxWidth: "60ch" }}>
+                {para}
+              </p>
+            ))}
           </Reveal>
         </div>
       </section>
