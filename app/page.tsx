@@ -104,7 +104,7 @@ const T = {
     heroEyebrow: "Immobilienentwicklung & Investments",
     heroTitle: "Baidas & Baidas",
     discover: "Entdecken",
-    aboutLabel: "Unser Versprechen",
+    aboutLabel: "Über Uns",
     aboutTitle: "Exklusive Immobilien",
     aboutP: [
       "Baidas & Baidas baut exklusive Immobilien in besonders ausgewählten und werthaltigen Lagen.",
@@ -125,8 +125,9 @@ const T = {
     acqTitle: "Grundstück anbieten",
     acqP1: "Baidas & Baidas kauft bebaubare Grundstücke in guten und sehr guten Wohnlagen in Zürich, Dubai und Abu Dhabi, um auf ihnen besonders hochwertige Eigentumswohnungen oder Einfamilienhäuser zu errichten.",
     acqP2: "Sie haben ein passendes Grundstück oder eine Bestandsimmobilie und wollen diese zum Kauf anbieten? Selbstverständlich können Sie uns aus Diskretionsgründen auch direkt und persönlich kontaktieren. Wir freuen uns über Ihre Kontaktaufnahme.",
-    coLabel: "Co-Investment",
-    acqP3: "Sie sind ein etablierter und renommierter Projektentwickler und suchen einen Partner für die Co-Investition in Ihr Vorhaben? Baidas & Baidas beteiligt sich als verlässlicher Kapital- und Entwicklungspartner an ausgewählten Bauprojekten in Zürich, Dubai und Abu Dhabi. Wir freuen uns auf eine vertrauliche Kontaktaufnahme.",
+    coTitle: "Co-Investment",
+    coLead: "Sie sind ein etablierter und renommierter Projektentwickler und suchen einen Partner für die Co-Investition in Ihr Vorhaben?",
+    coBody: "Baidas & Baidas beteiligt sich als verlässlicher Kapital- und Entwicklungspartner an ausgewählten Bauprojekten in Zürich, Dubai und Abu Dhabi. Wir freuen uns auf eine vertrauliche Kontaktaufnahme.",
     namePh: "Ihr Name", emailPh: "Ihre E-Mail", msgPh: "Ihre Nachricht",
     send: "Anfrage senden", sent: "Vielen Dank — wir melden uns in Kürze.",
     footerNav: [["Über Uns", "#about"], ["Akquisition", "#akquisition"], ["Immobilien", "#projekte"]],
@@ -137,7 +138,7 @@ const T = {
     heroEyebrow: "Real Estate Development & Investments",
     heroTitle: "Baidas & Baidas",
     discover: "Discover",
-    aboutLabel: "Our Promise",
+    aboutLabel: "About Us",
     aboutTitle: "Exclusive Properties",
     aboutP: [
       "Baidas & Baidas builds exclusive properties in specially selected, value-retaining locations.",
@@ -158,8 +159,9 @@ const T = {
     acqTitle: "Offer a property",
     acqP1: "Baidas & Baidas purchases buildable plots in good and very good residential locations in Zürich, Dubai and Abu Dhabi, in order to build particularly high-quality condominiums or single-family homes on them.",
     acqP2: "Do you have a suitable plot or an existing property you would like to offer for sale? For reasons of discretion, you are of course welcome to contact us directly and personally. We look forward to hearing from you.",
-    coLabel: "Co-Investment",
-    acqP3: "Are you an established and reputable developer seeking a partner to co-invest in your project? Baidas & Baidas participates as a reliable capital and development partner in selected construction projects in Zürich, Dubai and Abu Dhabi. We would welcome a confidential conversation.",
+    coTitle: "Co-Investment",
+    coLead: "Are you an established and reputable developer seeking a partner to co-invest in your project?",
+    coBody: "Baidas & Baidas participates as a reliable capital and development partner in selected construction projects in Zürich, Dubai and Abu Dhabi. We would welcome a confidential conversation.",
     namePh: "Your name", emailPh: "Your email", msgPh: "Your message",
     send: "Send enquiry", sent: "Thank you — we will be in touch shortly.",
     footerNav: [["About", "#about"], ["Acquisition", "#akquisition"], ["Properties", "#projekte"]],
@@ -170,7 +172,7 @@ const T = {
     heroEyebrow: "Développement Immobilier & Investissements",
     heroTitle: "Baidas & Baidas",
     discover: "Découvrir",
-    aboutLabel: "Notre Promesse",
+    aboutLabel: "À Propos",
     aboutTitle: "Propriétés Exclusives",
     aboutP: [
       "Baidas & Baidas construit des propriétés exclusives dans des emplacements spécialement sélectionnés et de grande valeur.",
@@ -191,8 +193,9 @@ const T = {
     acqTitle: "Proposer un terrain",
     acqP1: "Baidas & Baidas achète des terrains constructibles dans de bons et très bons emplacements résidentiels à Zurich, Dubaï et Abu Dhabi, afin d'y édifier des appartements en propriété ou des maisons individuelles de très haute qualité.",
     acqP2: "Vous possédez un terrain approprié ou un bien existant et souhaitez le proposer à la vente ? Pour des raisons de discrétion, vous pouvez bien entendu nous contacter directement et personnellement. Nous nous réjouissons de votre prise de contact.",
-    coLabel: "Co-Investissement",
-    acqP3: "Vous êtes un promoteur établi et reconnu à la recherche d'un partenaire pour co-investir dans votre projet ? Baidas & Baidas s'engage comme partenaire fiable en capital et en développement dans des projets de construction sélectionnés à Zurich, Dubaï et Abu Dhabi. Nous serions ravis d'un échange confidentiel.",
+    coTitle: "Co-Investissement",
+    coLead: "Vous êtes un promoteur établi et reconnu à la recherche d'un partenaire pour co-investir dans votre projet ?",
+    coBody: "Baidas & Baidas s'engage comme partenaire fiable en capital et en développement dans des projets de construction sélectionnés à Zurich, Dubaï et Abu Dhabi. Nous serions ravis d'un échange confidentiel.",
     namePh: "Votre nom", emailPh: "Votre e-mail", msgPh: "Votre message",
     send: "Envoyer", sent: "Merci — nous vous contacterons bientôt.",
     footerNav: [["À Propos", "#about"], ["Acquisition", "#akquisition"], ["Immobilier", "#projekte"]],
@@ -203,7 +206,7 @@ const T = {
     heroEyebrow: "تطوير عقاري واستثمارات",
     heroTitle: "Baidas & Baidas",
     discover: "اكتشف",
-    aboutLabel: "وعدنا",
+    aboutLabel: "من نحن",
     aboutTitle: "عقارات حصرية",
     aboutP: [
       "تبني بيداس آند بيداس عقارات حصرية في مواقع مختارة بعناية وذات قيمة عالية.",
@@ -224,8 +227,9 @@ const T = {
     acqTitle: "اعرض أرضك",
     acqP1: "تشتري بيداس آند بيداس أراضيَ قابلة للبناء في مواقع سكنية جيدة وممتازة في زيورخ ودبي وأبوظبي، لتشييد شققٍ تمليك أو فللٍ سكنية فائقة الجودة عليها.",
     acqP2: "هل لديك أرض مناسبة أو عقار قائم وترغب في عرضه للبيع؟ يمكنك بالطبع التواصل معنا مباشرةً وبشكل شخصي حفاظاً على السرّية. يسعدنا تواصلك معنا.",
-    coLabel: "الاستثمار المشترك",
-    acqP3: "هل أنت مطوّر عقاري راسخ وذو سمعة طيبة وتبحث عن شريك للاستثمار المشترك في مشروعك؟ تشارك بيداس آند بيداس كشريك موثوق في رأس المال والتطوير في مشاريع إنشائية مختارة في زيورخ ودبي وأبوظبي. يسعدنا تواصلك السرّي معنا.",
+    coTitle: "الاستثمار المشترك",
+    coLead: "هل أنت مطوّر عقاري راسخ وذو سمعة طيبة وتبحث عن شريك للاستثمار المشترك في مشروعك؟",
+    coBody: "تشارك بيداس آند بيداس كشريك موثوق في رأس المال والتطوير في مشاريع إنشائية مختارة في زيورخ ودبي وأبوظبي. يسعدنا تواصلك السرّي معنا.",
     namePh: "اسمك", emailPh: "بريدك الإلكتروني", msgPh: "رسالتك",
     send: "إرسال الطلب", sent: "شكراً جزيلاً — سنتواصل معك قريباً.",
     footerNav: [["من نحن", "#about"], ["الاستحواذ", "#akquisition"], ["العقارات", "#projekte"]],
@@ -552,18 +556,18 @@ export default function Home() {
       </section>
 
       {/* ── ABOUT / VERSPRECHEN ── */}
-      <section id="about" style={{ padding: "clamp(6rem,12vw,11rem) clamp(1.5rem,5vw,4rem)", maxWidth: 1180, margin: "0 auto" }}>
+      <section id="about" style={{ padding: "clamp(5rem,9vw,8rem) clamp(1.5rem,5vw,4rem)", maxWidth: 1180, margin: "0 auto" }}>
         <Reveal><Eyebrow>{t.aboutLabel}</Eyebrow></Reveal>
-        <Reveal delay={0.08}>
-          <h2 style={{ fontFamily: "var(--font-cormorant)", fontWeight: 300, fontSize: "clamp(2.6rem,6vw,4.5rem)", color: INK, lineHeight: 1.08, letterSpacing: "-0.01em", margin: "0 0 3rem", maxWidth: "14ch" }}>
-            {t.aboutTitle}
-          </h2>
-        </Reveal>
-        <div className="grid grid-cols-1 lg:grid-cols-2" style={{ gap: "clamp(2rem,5vw,5rem)" }}>
-          <Reveal delay={0.1}>
-            <p style={{ fontFamily: "var(--font-cormorant)", fontStyle: "italic", fontSize: "clamp(1.5rem,2.6vw,2rem)", lineHeight: 1.4, color: INK, margin: 0 }}>{t.aboutP[0]}</p>
+        <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr]" style={{ gap: "clamp(2rem,5vw,5rem)", alignItems: "start", marginTop: "clamp(1.25rem,3vw,2.25rem)" }}>
+          <Reveal delay={0.08}>
+            <h2 style={{ fontFamily: "var(--font-cormorant)", fontWeight: 300, fontSize: "clamp(2.6rem,6vw,4.5rem)", color: INK, lineHeight: 1.08, letterSpacing: "-0.01em", margin: 0, maxWidth: "12ch" }}>
+              {t.aboutTitle}
+            </h2>
           </Reveal>
           <div>
+            <Reveal delay={0.12}>
+              <p style={{ fontFamily: "var(--font-cormorant)", fontStyle: "italic", fontSize: "clamp(1.5rem,2.6vw,2rem)", lineHeight: 1.4, color: INK, margin: "0 0 26px" }}>{t.aboutP[0]}</p>
+            </Reveal>
             <Reveal delay={0.2}><p style={{ fontFamily: "var(--font-geist-sans)", fontSize: 15, lineHeight: 1.85, color: BODY, marginBottom: 22 }}>{t.aboutP[1]}</p></Reveal>
             <Reveal delay={0.3}><p style={{ fontFamily: "var(--font-geist-sans)", fontSize: 15, lineHeight: 1.85, color: BODY, margin: 0 }}>{t.aboutP[2]}</p></Reveal>
           </div>
@@ -624,13 +628,20 @@ export default function Home() {
           </Reveal>
         </div>
 
-        {/* Co-investment invitation for established developers */}
-        <Reveal delay={0.25}>
-          <div style={{ marginBottom: "clamp(3.5rem,7vw,5.5rem)", paddingTop: "clamp(2.5rem,5vw,3.5rem)", borderTop: `1px solid ${LINE}` }}>
-            <p style={{ fontFamily: "var(--font-geist-sans)", fontSize: 10.5, letterSpacing: "0.22em", textTransform: "uppercase", color: SOFT, margin: "0 0 16px" }}>{t.coLabel}</p>
-            <p style={{ fontFamily: "var(--font-cormorant)", fontStyle: "italic", fontSize: "clamp(1.35rem,2.2vw,1.75rem)", lineHeight: 1.5, color: INK, margin: 0, maxWidth: "62ch" }}>{t.acqP3}</p>
+        {/* Co-investment — same layout/style as the Grundstück-anbieten block above */}
+        <div style={{ marginTop: "clamp(3.5rem,7vw,5rem)", marginBottom: "clamp(3.5rem,7vw,5.5rem)", paddingTop: "clamp(3rem,6vw,4.5rem)", borderTop: `1px solid ${LINE}` }}>
+          <Reveal>
+            <h2 style={{ fontFamily: "var(--font-cormorant)", fontWeight: 300, fontSize: "clamp(2.4rem,5vw,3.6rem)", color: INK, lineHeight: 1.08, letterSpacing: "-0.01em", margin: "0 0 2rem" }}>{t.coTitle}</h2>
+          </Reveal>
+          <div className="grid grid-cols-1 lg:grid-cols-2" style={{ gap: "clamp(2rem,5vw,5rem)" }}>
+            <Reveal delay={0.1}>
+              <p style={{ fontFamily: "var(--font-cormorant)", fontStyle: "italic", fontSize: "clamp(1.4rem,2.4vw,1.85rem)", lineHeight: 1.45, color: INK, margin: 0 }}>{t.coLead}</p>
+            </Reveal>
+            <Reveal delay={0.2}>
+              <p style={{ fontFamily: "var(--font-geist-sans)", fontSize: 15, lineHeight: 1.85, color: BODY, margin: 0 }}>{t.coBody}</p>
+            </Reveal>
           </div>
-        </Reveal>
+        </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2" style={{ gap: "clamp(3rem,6vw,6rem)", alignItems: "start", paddingTop: "clamp(2.5rem,5vw,3.5rem)", borderTop: `1px solid ${LINE}` }}>
           <Reveal>
