@@ -533,22 +533,22 @@ export default function Home() {
           <LogoLockup color={navTextColor} iconSize={44} fontSize="clamp(17px,2vw,23px)" hideText />
         </button>
 
-        <div style={{ display: "flex", alignItems: "center", gap: "clamp(12px,3vw,26px)" }}>
-          <nav className="hidden md:flex" style={{ gap: "clamp(14px,2.4vw,28px)", alignItems: "center" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: "clamp(10px,3vw,26px)" }}>
+          <nav style={{ display: "flex", gap: "clamp(12px,2.4vw,28px)", alignItems: "center" }}>
             {t.nav.map(([l, h]) => {
               const isActive = h === `#${active}`;
               return (
                 <button key={h} onClick={() => goTo(h)}
-                  style={{ ...navLink, opacity: isActive ? 1 : 0.82, borderBottom: `1px solid ${isActive ? navTextColor : "transparent"}`, paddingBottom: 3 }}
+                  style={{ ...navLink, whiteSpace: "nowrap", opacity: isActive ? 1 : 0.82, borderBottom: `1px solid ${isActive ? navTextColor : "transparent"}`, paddingBottom: 3 }}
                   onMouseEnter={e => (e.currentTarget.style.opacity = "1")}
                   onMouseLeave={e => (e.currentTarget.style.opacity = isActive ? "1" : "0.82")}>{l}</button>
               );
             })}
           </nav>
-          <span className="hidden md:block" style={{ width: 1, height: 16, background: scrolled ? LINE : "rgba(255,255,255,0.4)" }} />
+          <span style={{ width: 1, height: 16, background: scrolled ? LINE : "rgba(255,255,255,0.4)", flexShrink: 0 }} />
           <LanguageDropdown lang={lang} setLang={setLang} scrolled={scrolled} />
-          <button onClick={() => goTo("#kontakt")}
-            style={{ background: navTextColor, color: scrolled ? "#fff" : INK, border: "none", borderRadius: 999, padding: "9px 20px", cursor: "pointer", fontFamily: "var(--font-geist-sans)", fontSize: 11, letterSpacing: "0.14em", textTransform: "uppercase", fontWeight: 500, whiteSpace: "nowrap", transition: "background 0.4s ease, color 0.4s ease" }}>
+          <button onClick={() => goTo("#kontakt")} className="hidden md:inline-flex"
+            style={{ alignItems: "center", background: navTextColor, color: scrolled ? "#fff" : INK, border: "none", borderRadius: 999, padding: "9px 20px", cursor: "pointer", fontFamily: "var(--font-geist-sans)", fontSize: 11, letterSpacing: "0.14em", textTransform: "uppercase", fontWeight: 500, whiteSpace: "nowrap", transition: "background 0.4s ease, color 0.4s ease" }}>
             {t.contactCta}
           </button>
         </div>
@@ -611,7 +611,7 @@ export default function Home() {
           <Reveal>
             <div style={{ position: "relative", width: "100%", maxWidth: 460, aspectRatio: "2 / 3", overflow: "hidden", background: "#E9E3D8" }}>
               <Image
-                src="/team/andreas-portrait-2026.jpg"
+                src="/team/andreas-portrait-final.jpg"
                 alt={t.founderName}
                 fill
                 sizes="(max-width: 1024px) 100vw, 460px"
