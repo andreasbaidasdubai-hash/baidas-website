@@ -5,12 +5,15 @@ import { LanguageProvider } from "@/context/LanguageContext";
 const languages = { "de-CH": "/", en: "/en", fr: "/fr", ar: "/ar", "x-default": "/" };
 
 export const metadata: Metadata = {
-  alternates: { canonical: "/", languages },
+  title: "Baidas & Baidas AG — Real Estate Development & Investments",
+  description:
+    "Baidas & Baidas AG develops exclusive real estate in specially selected, value-retaining locations in Zurich, Dubai and Abu Dhabi. Founded by Andreas Baidas.",
+  alternates: { canonical: "/en", languages },
 };
 
 export default function Page() {
   return (
-    <LanguageProvider initial="de">
+    <LanguageProvider initial="en">
       <Site />
     </LanguageProvider>
   );

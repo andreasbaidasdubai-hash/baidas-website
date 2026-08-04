@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Cormorant_Garamond, Poppins, Amiri, Noto_Sans_Arabic } from "next/font/google";
 import { GeistSans } from "geist/font/sans";
 import "./globals.css";
-import { LanguageProvider } from "@/context/LanguageContext";
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
@@ -130,7 +129,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD) }}
         />
-        <LanguageProvider>{children}</LanguageProvider>
+        {children}
       </body>
     </html>
   );
