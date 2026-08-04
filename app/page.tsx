@@ -100,7 +100,7 @@ const PROJECTS: { name: string; images: string[] }[] = PROJECT_ORDER
    faithful translations of that same content (nothing invented). ── */
 const T = {
   de: {
-    nav: [["Projekte", "#projekte"], ["Akquisition", "#akquisition"]],
+    nav: [["Akquisition", "#akquisition"], ["Projekte", "#projekte"]],
     heroEyebrow: "Immobilienentwicklung & Investments",
     heroTitle: "Baidas & Baidas",
     discover: "Entdecken",
@@ -126,11 +126,11 @@ const T = {
     acqP3: "Sie sind ein etablierter und renommierter Projektentwickler und suchen einen Partner für die Co-Investition in Ihr Vorhaben? Baidas & Baidas beteiligt sich als verlässlicher Kapital- und Entwicklungspartner an ausgewählten Bauprojekten in Zürich, Dubai und Abu Dhabi. Wir freuen uns auf eine vertrauliche Kontaktaufnahme.",
     namePh: "Ihr Name", emailPh: "Ihre E-Mail", msgPh: "Ihre Nachricht",
     send: "Anfrage senden", sent: "Vielen Dank — wir melden uns in Kürze.",
-    footerNav: [["Über Uns", "#about"], ["Immobilien", "#projekte"], ["Akquisition", "#akquisition"]],
+    footerNav: [["Über Uns", "#about"], ["Akquisition", "#akquisition"], ["Immobilien", "#projekte"]],
     close: "Schliessen",
   },
   en: {
-    nav: [["Projects", "#projekte"], ["Acquisition", "#akquisition"]],
+    nav: [["Acquisition", "#akquisition"], ["Projects", "#projekte"]],
     heroEyebrow: "Real Estate Development & Investments",
     heroTitle: "Baidas & Baidas",
     discover: "Discover",
@@ -156,11 +156,11 @@ const T = {
     acqP3: "Are you an established and reputable developer seeking a partner to co-invest in your project? Baidas & Baidas participates as a reliable capital and development partner in selected construction projects in Zürich, Dubai and Abu Dhabi. We would welcome a confidential conversation.",
     namePh: "Your name", emailPh: "Your email", msgPh: "Your message",
     send: "Send enquiry", sent: "Thank you — we will be in touch shortly.",
-    footerNav: [["About", "#about"], ["Properties", "#projekte"], ["Acquisition", "#akquisition"]],
+    footerNav: [["About", "#about"], ["Acquisition", "#akquisition"], ["Properties", "#projekte"]],
     close: "Close",
   },
   fr: {
-    nav: [["Projets", "#projekte"], ["Acquisition", "#akquisition"]],
+    nav: [["Acquisition", "#akquisition"], ["Projets", "#projekte"]],
     heroEyebrow: "Développement Immobilier & Investissements",
     heroTitle: "Baidas & Baidas",
     discover: "Découvrir",
@@ -186,11 +186,11 @@ const T = {
     acqP3: "Vous êtes un promoteur établi et reconnu à la recherche d'un partenaire pour co-investir dans votre projet ? Baidas & Baidas s'engage comme partenaire fiable en capital et en développement dans des projets de construction sélectionnés à Zurich, Dubaï et Abu Dhabi. Nous serions ravis d'un échange confidentiel.",
     namePh: "Votre nom", emailPh: "Votre e-mail", msgPh: "Votre message",
     send: "Envoyer", sent: "Merci — nous vous contacterons bientôt.",
-    footerNav: [["À Propos", "#about"], ["Immobilier", "#projekte"], ["Acquisition", "#akquisition"]],
+    footerNav: [["À Propos", "#about"], ["Acquisition", "#akquisition"], ["Immobilier", "#projekte"]],
     close: "Fermer",
   },
   ar: {
-    nav: [["المشاريع", "#projekte"], ["الاستحواذ", "#akquisition"]],
+    nav: [["الاستحواذ", "#akquisition"], ["المشاريع", "#projekte"]],
     heroEyebrow: "تطوير عقاري واستثمارات",
     heroTitle: "Baidas & Baidas",
     discover: "اكتشف",
@@ -216,7 +216,7 @@ const T = {
     acqP3: "هل أنت مطوّر عقاري راسخ وذو سمعة طيبة وتبحث عن شريك للاستثمار المشترك في مشروعك؟ تشارك بيداس آند بيداس كشريك موثوق في رأس المال والتطوير في مشاريع إنشائية مختارة في زيورخ ودبي وأبوظبي. يسعدنا تواصلك السرّي معنا.",
     namePh: "اسمك", emailPh: "بريدك الإلكتروني", msgPh: "رسالتك",
     send: "إرسال الطلب", sent: "شكراً جزيلاً — سنتواصل معك قريباً.",
-    footerNav: [["من نحن", "#about"], ["العقارات", "#projekte"], ["الاستحواذ", "#akquisition"]],
+    footerNav: [["من نحن", "#about"], ["الاستحواذ", "#akquisition"], ["العقارات", "#projekte"]],
     close: "إغلاق",
   },
 } as const;
