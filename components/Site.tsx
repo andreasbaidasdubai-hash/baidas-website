@@ -320,7 +320,7 @@ function LogoLockup({ color, iconSize = 42, fontSize = "22px", gap = 13, stacked
     <span className="brand" style={{ display: "inline-flex", flexDirection: stacked ? "column" : "row", alignItems: stacked ? "flex-start" : "center", gap: stacked ? 12 : gap }}>
       <LogoIcon color={color} size={iconSize} />
       <span className={hideText ? "hidden sm:inline" : undefined} style={{ fontFamily: "var(--font-poppins)", fontWeight: 600, fontSize, letterSpacing: "0.01em", color, whiteSpace: "nowrap", transition: "color 0.4s" }}>
-        Baidas<span style={{ fontSize: "0.66em", fontWeight: 600, opacity: 0.5, margin: "0 0.2em" }}>&amp;</span>Baidas
+        Baidas<span className="amp" style={{ fontFamily: "var(--font-cormorant)", fontStyle: "italic", fontSize: "0.95em", fontWeight: 500, opacity: 0.7, margin: "0 0.1em" }}>&amp;</span>Baidas
       </span>
     </span>
   );
