@@ -646,7 +646,7 @@ export default function Home() {
           <Reveal>
             <div style={{ position: "relative", width: "100%", maxWidth: 460, aspectRatio: "2 / 3", overflow: "hidden", background: "#E9E3D8" }}>
               <Image
-                src="/team/andreas-portrait-final-2.jpg"
+                src="/team/andreas-portrait-inhaber.jpg"
                 alt={t.founderName}
                 fill
                 sizes="(max-width: 1024px) 100vw, 460px"
