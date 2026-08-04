@@ -35,6 +35,12 @@ export default function ImpressumPage() {
           <p style={{ margin: "0 0 1.6rem" }}>
             Vertretungsberechtigte Person: Andreas Baidas
           </p>
+          <p style={{ margin: "0 0 1.6rem" }}>
+            Rechtsform: Aktiengesellschaft (AG)<br />
+            Sitz: Zug<br />
+            UID: CHE-327.201.018<br />
+            Handelsregister-Nr.: CH-170-3050334-9
+          </p>
           <p style={{ margin: 0, color: SOFT, fontSize: 13 }}>
             Weitere Niederlassung: Central Park Tower, DIFC, Dubai (VAE).
           </p>
