@@ -45,8 +45,10 @@ body {
 [dir="rtl"] .brand, [dir="rtl"] .brand * {
   font-family: var(--font-poppins), sans-serif !important;
 }
-/* clear, unambiguous sans-serif ampersand in every context */
-.brand .amp, [dir="rtl"] .brand .amp {
-  font-family: "Helvetica Neue", Arial, sans-serif !important;
-  font-style: normal !important;
+/* clear, unambiguous ampersand for inline "Baidas & Baidas" in prose
+   (the italic serif "&" otherwise reads like an "e") */
+.amp {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-style: normal;
+  font-weight: 500;
 }

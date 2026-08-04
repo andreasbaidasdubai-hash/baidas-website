@@ -320,7 +320,7 @@ function LogoLockup({ color, iconSize = 42, fontSize = "22px", gap = 13, stacked
     <span className="brand" style={{ display: "inline-flex", flexDirection: stacked ? "column" : "row", alignItems: stacked ? "flex-start" : "center", gap: stacked ? 12 : gap }}>
       <LogoIcon color={color} size={iconSize} />
       <span className={hideText ? "hidden sm:inline" : undefined} style={{ fontFamily: "var(--font-poppins)", fontWeight: 600, fontSize, letterSpacing: "0.01em", color, whiteSpace: "nowrap", transition: "color 0.4s" }}>
-        Baidas<span className="amp" style={{ fontFamily: '"Helvetica Neue", Arial, sans-serif', fontStyle: "normal", fontSize: "0.82em", fontWeight: 600, opacity: 0.85, margin: "0 0.12em" }}>&amp;</span>Baidas
+        Baidas<span style={{ fontSize: "0.66em", fontWeight: 600, opacity: 0.5, margin: "0 0.2em" }}>&amp;</span>Baidas
       </span>
     </span>
   );
@@ -490,6 +490,17 @@ function LanguageDropdown({ lang, scrolled }: { lang: Lang; scrolled: boolean })
   );
 }
 
+/* Wrap any "&" in prose with a clear upright ampersand (the italic serif "&" reads like an "e"). */
+function amp(text: string): React.ReactNode {
+  if (!text.includes("&")) return text;
+  const out: React.ReactNode[] = [];
+  text.split("&").forEach((part, i) => {
+    if (i > 0) out.push(<span key={"amp" + i} className="amp">{"&"}</span>);
+    out.push(part);
+  });
+  return out;
+}
+
 export default function Home() {
   const { lang } = useLang();
   const t = T[lang];
@@ -631,7 +642,7 @@ export default function Home() {
           </Reveal>
           <div>
             <Reveal delay={0.12}>
-              <p style={{ fontFamily: "var(--font-cormorant)", fontStyle: "italic", fontSize: "clamp(1.5rem,2.6vw,2rem)", lineHeight: 1.4, color: INK, margin: "0 0 26px" }}>{t.aboutP[0]}</p>
+              <p style={{ fontFamily: "var(--font-cormorant)", fontStyle: "italic", fontSize: "clamp(1.5rem,2.6vw,2rem)", lineHeight: 1.4, color: INK, margin: "0 0 26px" }}>{amp(t.aboutP[0])}</p>
             </Reveal>
             <Reveal delay={0.2}><p style={{ fontFamily: "var(--font-geist-sans)", fontSize: 15, lineHeight: 1.85, color: BODY, marginBottom: 22 }}>{t.aboutP[1]}</p></Reveal>
             <Reveal delay={0.3}><p style={{ fontFamily: "var(--font-geist-sans)", fontSize: 15, lineHeight: 1.85, color: BODY, margin: 0 }}>{t.aboutP[2]}</p></Reveal>
@@ -686,7 +697,7 @@ export default function Home() {
         </Reveal>
         <div className="grid grid-cols-1 lg:grid-cols-2" style={{ gap: "clamp(2rem,5vw,5rem)", marginBottom: "clamp(2rem,4vw,3rem)" }}>
           <Reveal delay={0.1}>
-            <p style={{ fontFamily: "var(--font-cormorant)", fontStyle: "italic", fontSize: "clamp(1.4rem,2.4vw,1.85rem)", lineHeight: 1.45, color: INK, margin: 0 }}>{t.acqP1}</p>
+            <p style={{ fontFamily: "var(--font-cormorant)", fontStyle: "italic", fontSize: "clamp(1.4rem,2.4vw,1.85rem)", lineHeight: 1.45, color: INK, margin: 0 }}>{amp(t.acqP1)}</p>
           </Reveal>
           <Reveal delay={0.2}>
             <p style={{ fontFamily: "var(--font-geist-sans)", fontSize: 15, lineHeight: 1.85, color: BODY, margin: 0 }}>{t.acqP2}</p>
@@ -700,7 +711,7 @@ export default function Home() {
           </Reveal>
           <div className="grid grid-cols-1 lg:grid-cols-2" style={{ gap: "clamp(2rem,5vw,5rem)" }}>
             <Reveal delay={0.1}>
-              <p style={{ fontFamily: "var(--font-cormorant)", fontStyle: "italic", fontSize: "clamp(1.4rem,2.4vw,1.85rem)", lineHeight: 1.45, color: INK, margin: 0 }}>{t.coLead}</p>
+              <p style={{ fontFamily: "var(--font-cormorant)", fontStyle: "italic", fontSize: "clamp(1.4rem,2.4vw,1.85rem)", lineHeight: 1.45, color: INK, margin: 0 }}>{amp(t.coLead)}</p>
             </Reveal>
             <Reveal delay={0.2}>
               <p style={{ fontFamily: "var(--font-geist-sans)", fontSize: 15, lineHeight: 1.85, color: BODY, margin: 0 }}>{t.coBody}</p>
