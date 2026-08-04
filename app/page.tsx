@@ -100,10 +100,11 @@ const PROJECTS: { name: string; images: string[] }[] = PROJECT_ORDER
    faithful translations of that same content (nothing invented). ── */
 const T = {
   de: {
-    nav: [["Akquisition", "#akquisition"], ["Projekte", "#projekte"]],
+    nav: [["Über Uns", "#about"], ["Akquisition", "#akquisition"], ["Projekte", "#projekte"]],
     heroEyebrow: "Immobilienentwicklung & Investments",
     heroTitle: "Baidas & Baidas",
     discover: "Entdecken",
+    contactCta: "Kontakt",
     aboutLabel: "Über Uns",
     aboutTitle: "Exklusive Immobilien",
     aboutP: [
@@ -115,7 +116,7 @@ const T = {
     founderName: "Andreas Baidas",
     founderRole: "Immobilienentwickler & Investor",
     founderP: [
-      "Andreas Baidas ist Immobilienentwickler, Investor und Gründer von Baidas & Baidas. Geboren in Deutschland und aufgewachsen in London, begann er seine Laufbahn als Sales Trader in Zürich und lebt heute zwischen der Schweiz und den Vereinigten Arabischen Emiraten.",
+      "Andreas Baidas ist ein Schweizer Immobilienentwickler, Investor und Gründer von Baidas & Baidas. Aufgewachsen in London, begann er seine Laufbahn als Sales Trader in Zürich und lebt heute zwischen der Schweiz und den Vereinigten Arabischen Emiraten.",
       "Er ist persönlich in jedes Projekt eingebunden - von der Standortwahl über die architektonische Ausrichtung bis zur finalen Ausführung, mit einem klaren Fokus auf Qualität, Design und langfristigen Wert.",
     ],
     projLabel: "Immobilien",
@@ -134,10 +135,11 @@ const T = {
     close: "Schliessen",
   },
   en: {
-    nav: [["Acquisition", "#akquisition"], ["Projects", "#projekte"]],
+    nav: [["About", "#about"], ["Acquisition", "#akquisition"], ["Projects", "#projekte"]],
     heroEyebrow: "Real Estate Development & Investments",
     heroTitle: "Baidas & Baidas",
     discover: "Discover",
+    contactCta: "Contact",
     aboutLabel: "About Us",
     aboutTitle: "Exclusive Properties",
     aboutP: [
@@ -149,7 +151,7 @@ const T = {
     founderName: "Andreas Baidas",
     founderRole: "Real Estate Developer & Investor",
     founderP: [
-      "Andreas Baidas is a real estate developer, investor, and founder of Baidas & Baidas. Born in Germany and raised in London, he began his career as a sales trader in Zurich and now divides his time between Switzerland and the UAE.",
+      "Andreas Baidas is a Swiss real estate developer, investor, and founder of Baidas & Baidas. Raised in London, he began his career as a sales trader in Zurich and now divides his time between Switzerland and the UAE.",
       "He is personally involved in every project, from site selection and architectural direction to final execution, with a clear focus on quality, design, and long-term value.",
     ],
     projLabel: "Properties",
@@ -168,10 +170,11 @@ const T = {
     close: "Close",
   },
   fr: {
-    nav: [["Acquisition", "#akquisition"], ["Projets", "#projekte"]],
+    nav: [["À Propos", "#about"], ["Acquisition", "#akquisition"], ["Projets", "#projekte"]],
     heroEyebrow: "Développement Immobilier & Investissements",
     heroTitle: "Baidas & Baidas",
     discover: "Découvrir",
+    contactCta: "Contact",
     aboutLabel: "À Propos",
     aboutTitle: "Propriétés Exclusives",
     aboutP: [
@@ -183,7 +186,7 @@ const T = {
     founderName: "Andreas Baidas",
     founderRole: "Promoteur Immobilier & Investisseur",
     founderP: [
-      "Andreas Baidas est promoteur immobilier, investisseur et fondateur de Baidas & Baidas. Né en Allemagne et élevé à Londres, il a débuté sa carrière comme sales trader à Zurich et partage aujourd'hui son temps entre la Suisse et les Émirats arabes unis.",
+      "Andreas Baidas est un promoteur immobilier suisse, investisseur et fondateur de Baidas & Baidas. Élevé à Londres, il a débuté sa carrière comme sales trader à Zurich et partage aujourd'hui son temps entre la Suisse et les Émirats arabes unis.",
       "Il s'implique personnellement dans chaque projet, du choix du site à la direction architecturale jusqu'à l'exécution finale, avec une attention claire portée à la qualité, au design et à la valeur à long terme.",
     ],
     projLabel: "Immobilier",
@@ -202,10 +205,11 @@ const T = {
     close: "Fermer",
   },
   ar: {
-    nav: [["الاستحواذ", "#akquisition"], ["المشاريع", "#projekte"]],
+    nav: [["من نحن", "#about"], ["الاستحواذ", "#akquisition"], ["المشاريع", "#projekte"]],
     heroEyebrow: "تطوير عقاري واستثمارات",
     heroTitle: "Baidas & Baidas",
     discover: "اكتشف",
+    contactCta: "تواصل",
     aboutLabel: "من نحن",
     aboutTitle: "عقارات حصرية",
     aboutP: [
@@ -217,7 +221,7 @@ const T = {
     founderName: "أندرياس بيداس",
     founderRole: "مطوّر عقاري ومستثمر",
     founderP: [
-      "أندرياس بيداس مطوّر عقاري ومستثمر ومؤسس بيداس آند بيداس. وُلد في ألمانيا ونشأ في لندن، وبدأ مسيرته المهنية متداولاً في المبيعات في زيورخ، ويتنقّل اليوم بين سويسرا ودولة الإمارات العربية المتحدة.",
+      "أندرياس بيداس مطوّر عقاري سويسري ومستثمر ومؤسس بيداس آند بيداس. نشأ في لندن، وبدأ مسيرته المهنية متداولاً في المبيعات في زيورخ، ويتنقّل اليوم بين سويسرا ودولة الإمارات العربية المتحدة.",
       "يشارك شخصياً في كل مشروع، من اختيار الموقع والتوجيه المعماري وصولاً إلى التنفيذ النهائي، مع تركيز واضح على الجودة والتصميم والقيمة على المدى الطويل.",
     ],
     projLabel: "العقارات",
@@ -459,6 +463,7 @@ export default function Home() {
   const [sent, setSent] = useState(false);
   const [lb, setLb] = useState<{ images: string[]; name: string; i: number } | null>(null);
   const [camTick, setCamTick] = useState(0);
+  const [active, setActive] = useState("about");
 
   // Refresh the live construction-cam frame every 15s.
   useEffect(() => {
@@ -469,6 +474,23 @@ export default function Home() {
 
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 60);
+    fn();
+    window.addEventListener("scroll", fn, { passive: true });
+    return () => window.removeEventListener("scroll", fn);
+  }, []);
+
+  // Scroll-spy: highlight the nav item for the section currently in view.
+  useEffect(() => {
+    const ids = ["about", "akquisition", "projekte"];
+    const fn = () => {
+      const y = window.scrollY + 130;
+      let cur = ids[0];
+      for (const id of ids) {
+        const el = document.getElementById(id);
+        if (el && el.offsetTop <= y) cur = id;
+      }
+      setActive(cur);
+    };
     fn();
     window.addEventListener("scroll", fn, { passive: true });
     return () => window.removeEventListener("scroll", fn);
@@ -511,16 +533,24 @@ export default function Home() {
           <LogoLockup color={navTextColor} iconSize={44} fontSize="clamp(17px,2vw,23px)" hideText />
         </button>
 
-        <div style={{ display: "flex", alignItems: "center", gap: "clamp(14px,3vw,28px)" }}>
-          <nav style={{ display: "flex", gap: "clamp(14px,2.4vw,28px)", alignItems: "center" }}>
-            {t.nav.map(([l, h]) => (
-              <button key={h} onClick={() => goTo(h)} style={navLink}
-                onMouseEnter={e => (e.currentTarget.style.opacity = "1")}
-                onMouseLeave={e => (e.currentTarget.style.opacity = "0.82")}>{l}</button>
-            ))}
+        <div style={{ display: "flex", alignItems: "center", gap: "clamp(12px,3vw,26px)" }}>
+          <nav className="hidden md:flex" style={{ gap: "clamp(14px,2.4vw,28px)", alignItems: "center" }}>
+            {t.nav.map(([l, h]) => {
+              const isActive = h === `#${active}`;
+              return (
+                <button key={h} onClick={() => goTo(h)}
+                  style={{ ...navLink, opacity: isActive ? 1 : 0.82, borderBottom: `1px solid ${isActive ? navTextColor : "transparent"}`, paddingBottom: 3 }}
+                  onMouseEnter={e => (e.currentTarget.style.opacity = "1")}
+                  onMouseLeave={e => (e.currentTarget.style.opacity = isActive ? "1" : "0.82")}>{l}</button>
+              );
+            })}
           </nav>
-          <span style={{ width: 1, height: 16, background: scrolled ? LINE : "rgba(255,255,255,0.4)" }} />
+          <span className="hidden md:block" style={{ width: 1, height: 16, background: scrolled ? LINE : "rgba(255,255,255,0.4)" }} />
           <LanguageDropdown lang={lang} setLang={setLang} scrolled={scrolled} />
+          <button onClick={() => goTo("#kontakt")}
+            style={{ background: navTextColor, color: scrolled ? "#fff" : INK, border: "none", borderRadius: 999, padding: "9px 20px", cursor: "pointer", fontFamily: "var(--font-geist-sans)", fontSize: 11, letterSpacing: "0.14em", textTransform: "uppercase", fontWeight: 500, whiteSpace: "nowrap", transition: "background 0.4s ease, color 0.4s ease" }}>
+            {t.contactCta}
+          </button>
         </div>
       </motion.header>
 
@@ -581,7 +611,7 @@ export default function Home() {
           <Reveal>
             <div style={{ position: "relative", width: "100%", maxWidth: 460, aspectRatio: "2 / 3", overflow: "hidden", background: "#E9E3D8" }}>
               <Image
-                src="/team/andreas-portrait.jpg"
+                src="/team/andreas-portrait-2026.jpg"
                 alt={t.founderName}
                 fill
                 sizes="(max-width: 1024px) 100vw, 460px"
@@ -643,7 +673,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2" style={{ gap: "clamp(3rem,6vw,6rem)", alignItems: "start", paddingTop: "clamp(2.5rem,5vw,3.5rem)", borderTop: `1px solid ${LINE}` }}>
+        <div id="kontakt" className="grid grid-cols-1 lg:grid-cols-2" style={{ gap: "clamp(3rem,6vw,6rem)", alignItems: "start", paddingTop: "clamp(2.5rem,5vw,3.5rem)", borderTop: `1px solid ${LINE}`, scrollMarginTop: 90 }}>
           <Reveal>
             <div style={{ marginBottom: 24 }}><LogoLockup color={INK} iconSize={50} fontSize="21px" stacked /></div>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "clamp(1.75rem,4vw,3rem)" }}>
@@ -774,7 +804,11 @@ export default function Home() {
             </div>
           </div>
           <div style={{ height: 1, background: "rgba(255,255,255,0.14)", margin: "3rem 0 1.5rem" }} />
-          <p style={{ fontFamily: "var(--font-geist-sans)", fontSize: 11, color: "rgba(255,255,255,0.4)" }}>© {new Date().getFullYear()} Baidas &amp; Baidas AG</p>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "8px 20px", alignItems: "center" }}>
+            <p style={{ fontFamily: "var(--font-geist-sans)", fontSize: 11, color: "rgba(255,255,255,0.4)", margin: 0 }}>© {new Date().getFullYear()} Baidas &amp; Baidas AG</p>
+            <a href="/impressum" style={{ fontFamily: "var(--font-geist-sans)", fontSize: 11, color: "rgba(255,255,255,0.5)", textDecoration: "none" }}>Impressum</a>
+            <a href="/datenschutz" style={{ fontFamily: "var(--font-geist-sans)", fontSize: 11, color: "rgba(255,255,255,0.5)", textDecoration: "none" }}>Datenschutz</a>
+          </div>
         </div>
       </footer>
 
