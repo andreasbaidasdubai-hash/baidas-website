@@ -655,9 +655,9 @@ export default function Home() {
           style={{ gap: "clamp(2.5rem,5vw,5rem)", alignItems: "center", marginTop: "clamp(4.5rem,9vw,7rem)", paddingTop: "clamp(3rem,6vw,4.5rem)", borderTop: `1px solid ${LINE}` }}
         >
           <Reveal>
-            <div style={{ position: "relative", width: "100%", maxWidth: 400, aspectRatio: "1000 / 1222", overflow: "hidden", background: "#E9E3D8" }}>
+            <div style={{ position: "relative", width: "100%", maxWidth: 400, aspectRatio: "1000 / 1245", overflow: "hidden", background: "#E9E3D8" }}>
               <Image
-                src="/team/andreas-baidas.jpg"
+                src="/team/andreas-baidas-portrait.jpg"
                 alt={`${t.founderName} – ${t.founderRole}, Baidas & Baidas`}
                 fill
                 sizes="(max-width: 1024px) 100vw, 400px"

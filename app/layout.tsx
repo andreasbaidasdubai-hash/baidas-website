@@ -106,7 +106,7 @@ const JSON_LD = {
       name: "Andreas Baidas",
       jobTitle: "Immobilienentwickler & Investor",
       worksFor: { "@id": "https://baidas.ch/#organization" },
-      image: "https://baidas.ch/team/andreas-baidas.jpg",
+      image: "https://baidas.ch/team/andreas-baidas-portrait.jpg",
       url: "https://baidas.ch",
       description: "Andreas Baidas is a real estate developer, investor, and founder of Baidas & Baidas.",
     },
