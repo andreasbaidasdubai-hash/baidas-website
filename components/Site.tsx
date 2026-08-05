@@ -369,7 +369,7 @@ function ProjectCard({ project, statusLabel, statusDone, onOpen }: { project: { 
         boxShadow: hover ? "0 20px 44px -22px rgba(14,27,42,0.38)" : "none",
         transition: "box-shadow 0.6s cubic-bezier(0.22,1,0.36,1)" }}>
       {project.images.map((src, k) => (
-        <Image key={src} src={src} alt={project.name} fill
+        <Image key={src} src={src} alt={`${project.name} – Immobilienprojekt von Baidas & Baidas`} fill
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 380px"
           onClick={() => onOpen(i)}
           style={{ objectFit: "cover", cursor: "pointer",
@@ -655,10 +655,10 @@ export default function Home() {
           style={{ gap: "clamp(2.5rem,5vw,5rem)", alignItems: "center", marginTop: "clamp(4.5rem,9vw,7rem)", paddingTop: "clamp(3rem,6vw,4.5rem)", borderTop: `1px solid ${LINE}` }}
         >
           <Reveal>
-            <div style={{ position: "relative", width: "100%", maxWidth: 400, aspectRatio: "1000 / 1276", overflow: "hidden", background: "#E9E3D8" }}>
+            <div style={{ position: "relative", width: "100%", maxWidth: 400, aspectRatio: "1000 / 1222", overflow: "hidden", background: "#E9E3D8" }}>
               <Image
-                src="/team/andreas-portrait-inhaber-v2.jpg"
-                alt={t.founderName}
+                src="/team/andreas-baidas.jpg"
+                alt={`${t.founderName} – ${t.founderRole}, Baidas & Baidas`}
                 fill
                 sizes="(max-width: 1024px) 100vw, 400px"
                 style={{ objectFit: "cover", objectPosition: "50% 50%" }}
