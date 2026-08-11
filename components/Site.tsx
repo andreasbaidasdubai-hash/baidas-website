@@ -143,7 +143,7 @@ const T = {
     founderName: "Andreas Baidas",
     founderRole: "Immobilienentwickler & Investor",
     founderP: [
-      "Andreas Baidas ist ein Schweizer Immobilienentwickler, Investor und Gründer von Baidas & Baidas. Aufgewachsen in London, begann er seine Laufbahn als Sales Trader in Zürich und lebt heute zwischen der Schweiz und den Vereinigten Arabischen Emiraten.",
+      "Andreas Baidas ist ein Schweizer Immobilienentwickler, Investor und Gründer von Baidas & Baidas. Aufgewachsen in London, begann er seine Laufbahn in der Immobilienentwicklung in Zürich und lebt heute zwischen der Schweiz und den Vereinigten Arabischen Emiraten.",
       "Er ist persönlich in jedes Projekt eingebunden - von der Standortwahl über die architektonische Ausrichtung bis zur finalen Ausführung, mit einem klaren Fokus auf Qualität, Design und langfristigen Wert.",
     ],
     projLabel: "Immobilien",
@@ -178,7 +178,7 @@ const T = {
     founderName: "Andreas Baidas",
     founderRole: "Real Estate Developer & Investor",
     founderP: [
-      "Andreas Baidas is a Swiss real estate developer, investor, and founder of Baidas & Baidas. Raised in London, he began his career as a sales trader in Zurich and now divides his time between Switzerland and the UAE.",
+      "Andreas Baidas is a Swiss real estate developer, investor, and founder of Baidas & Baidas. Raised in London, he began his career in real estate development in Zurich and now divides his time between Switzerland and the UAE.",
       "He is personally involved in every project, from site selection and architectural direction to final execution, with a clear focus on quality, design, and long-term value.",
     ],
     projLabel: "Properties",
@@ -213,7 +213,7 @@ const T = {
     founderName: "Andreas Baidas",
     founderRole: "Promoteur Immobilier & Investisseur",
     founderP: [
-      "Andreas Baidas est un promoteur immobilier suisse, investisseur et fondateur de Baidas & Baidas. Élevé à Londres, il a débuté sa carrière comme sales trader à Zurich et partage aujourd'hui son temps entre la Suisse et les Émirats arabes unis.",
+      "Andreas Baidas est un promoteur immobilier suisse, investisseur et fondateur de Baidas & Baidas. Élevé à Londres, il a débuté sa carrière dans le développement immobilier à Zurich et partage aujourd'hui son temps entre la Suisse et les Émirats arabes unis.",
       "Il s'implique personnellement dans chaque projet, du choix du site à la direction architecturale jusqu'à l'exécution finale, avec une attention claire portée à la qualité, au design et à la valeur à long terme.",
     ],
     projLabel: "Immobilier",
@@ -248,7 +248,7 @@ const T = {
     founderName: "أندرياس بيداس",
     founderRole: "مطوّر عقاري ومستثمر",
     founderP: [
-      "أندرياس بيداس مطوّر عقاري سويسري ومستثمر ومؤسس بيداس آند بيداس. نشأ في لندن، وبدأ مسيرته المهنية متداولاً في المبيعات في زيورخ، ويتنقّل اليوم بين سويسرا ودولة الإمارات العربية المتحدة.",
+      "أندرياس بيداس مطوّر عقاري سويسري ومستثمر ومؤسس بيداس آند بيداس. نشأ في لندن، وبدأ مسيرته المهنية في مجال التطوير العقاري في زيورخ، ويتنقّل اليوم بين سويسرا ودولة الإمارات العربية المتحدة.",
       "يشارك شخصياً في كل مشروع، من اختيار الموقع والتوجيه المعماري وصولاً إلى التنفيذ النهائي، مع تركيز واضح على الجودة والتصميم والقيمة على المدى الطويل.",
     ],
     projLabel: "العقارات",
@@ -655,9 +655,9 @@ export default function Home() {
           style={{ gap: "clamp(2.5rem,5vw,5rem)", alignItems: "center", marginTop: "clamp(4.5rem,9vw,7rem)", paddingTop: "clamp(3rem,6vw,4.5rem)", borderTop: `1px solid ${LINE}` }}
         >
           <Reveal>
-            <div style={{ position: "relative", width: "100%", maxWidth: 400, aspectRatio: "1000 / 1245", overflow: "hidden", background: "#E9E3D8" }}>
+            <div style={{ position: "relative", width: "100%", maxWidth: 420, aspectRatio: "1 / 1", overflow: "hidden", background: "#E9E3D8" }}>
               <Image
-                src="/team/andreas-baidas-portrait.jpg"
+                src="/team/andreas-baidas-bw.jpg"
                 alt={`${t.founderName} – ${t.founderRole}, Baidas & Baidas`}
                 fill
                 sizes="(max-width: 1024px) 100vw, 400px"
