@@ -162,7 +162,7 @@ const T = {
     close: "Schliessen",
   },
   en: {
-    nav: [["About", "#about"], ["Acquisition", "#akquisition"], ["Projects", "#projekte"]],
+    nav: [["About", "#about"], ["Purchase", "#akquisition"], ["Projects", "#projekte"]],
     heroEyebrow: "Real Estate Development & Investments",
     heroTitle: "Baidas & Baidas",
     discover: "Discover",
@@ -184,7 +184,7 @@ const T = {
     projLabel: "Properties",
     projTitle: "Projects",
     projIntro: "Our real-estate projects span Zürich, Dubai and Abu Dhabi. As project developers we manage the entire process — from acquiring the land through to completion of the buildings. Beyond that, we also act as investors in construction projects to secure their success and profitability.",
-    acqLabel: "Acquisition",
+    acqLabel: "Purchase",
     acqTitle: "Offer a property",
     acqP1: "Baidas & Baidas purchases buildable plots in good and very good residential locations in Zürich, Dubai and Abu Dhabi, in order to build particularly high-quality condominiums or single-family homes on them.",
     acqP2: "Do you have a suitable plot or an existing property you would like to offer for sale? For reasons of discretion, you are of course welcome to contact us directly and personally. We look forward to hearing from you.",
@@ -193,11 +193,11 @@ const T = {
     coBody: "Baidas & Baidas participates as a reliable capital and development partner in selected construction projects in Zürich, Dubai and Abu Dhabi. We would welcome a confidential conversation.",
     namePh: "Your name", emailPh: "Your email", msgPh: "Your message",
     send: "Send enquiry", sent: "Thank you — we will be in touch shortly.",
-    footerNav: [["About", "#about"], ["Acquisition", "#akquisition"], ["Properties", "#projekte"]],
+    footerNav: [["About", "#about"], ["Purchase", "#akquisition"], ["Properties", "#projekte"]],
     close: "Close",
   },
   fr: {
-    nav: [["À Propos", "#about"], ["Acquisition", "#akquisition"], ["Projets", "#projekte"]],
+    nav: [["À Propos", "#about"], ["Achat", "#akquisition"], ["Projets", "#projekte"]],
     heroEyebrow: "Développement Immobilier & Investissements",
     heroTitle: "Baidas & Baidas",
     discover: "Découvrir",
@@ -219,7 +219,7 @@ const T = {
     projLabel: "Immobilier",
     projTitle: "Projets",
     projIntro: "Nos projets immobiliers s'étendent sur Zurich, Dubaï et Abu Dhabi. En tant que promoteurs, nous prenons en charge l'ensemble du processus — de l'acquisition des terrains jusqu'à l'achèvement des constructions. Par ailleurs, nous nous engageons également comme investisseurs dans des projets de construction afin d'en garantir le succès et la rentabilité.",
-    acqLabel: "Acquisition",
+    acqLabel: "Achat",
     acqTitle: "Proposer un terrain",
     acqP1: "Baidas & Baidas achète des terrains constructibles dans de bons et très bons emplacements résidentiels à Zurich, Dubaï et Abu Dhabi, afin d'y édifier des appartements en propriété ou des maisons individuelles de très haute qualité.",
     acqP2: "Vous possédez un terrain approprié ou un bien existant et souhaitez le proposer à la vente ? Pour des raisons de discrétion, vous pouvez bien entendu nous contacter directement et personnellement. Nous nous réjouissons de votre prise de contact.",
@@ -228,7 +228,7 @@ const T = {
     coBody: "Baidas & Baidas s'engage comme partenaire fiable en capital et en développement dans des projets de construction sélectionnés à Zurich, Dubaï et Abu Dhabi. Nous serions ravis d'un échange confidentiel.",
     namePh: "Votre nom", emailPh: "Votre e-mail", msgPh: "Votre message",
     send: "Envoyer", sent: "Merci — nous vous contacterons bientôt.",
-    footerNav: [["À Propos", "#about"], ["Acquisition", "#akquisition"], ["Immobilier", "#projekte"]],
+    footerNav: [["À Propos", "#about"], ["Achat", "#akquisition"], ["Immobilier", "#projekte"]],
     close: "Fermer",
   },
   ar: {
@@ -512,10 +512,13 @@ export default function Home() {
   const [active, setActive] = useState("about");
   const [menuOpen, setMenuOpen] = useState(false);
 
-  // Lock body scroll while the mobile menu is open.
+  // Lock body scroll + close on Escape while the mobile menu is open.
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    if (!menuOpen) return;
+    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") setMenuOpen(false); };
+    window.addEventListener("keydown", onKey);
+    return () => { document.body.style.overflow = ""; window.removeEventListener("keydown", onKey); };
   }, [menuOpen]);
 
   // Refresh the live construction-cam frame every 15s.
@@ -563,7 +566,10 @@ export default function Home() {
 
   const portalLabel = lang === "fr" ? "Portail" : lang === "ar" ? "البوابة" : "Portal";
 
-  const navTextColor = scrolled ? INK : "#fff";
+  // When the full-screen mobile menu is open, the header floats over the dark
+  // navy overlay, so it must read as "not solid" (white logo/burger).
+  const navSolid = scrolled && !menuOpen;
+  const navTextColor = navSolid ? INK : "#fff";
   const navLink: React.CSSProperties = {
     fontFamily: "var(--font-geist-sans)", fontSize: 11.5, letterSpacing: "0.16em",
     textTransform: "uppercase", textDecoration: "none", background: "none", border: "none",
@@ -579,14 +585,14 @@ export default function Home() {
           position: "fixed", top: 0, left: 0, right: 0, zIndex: 100, height: 74,
           display: "flex", alignItems: "center", justifyContent: "space-between",
           padding: "0 clamp(1.25rem,4vw,2.75rem)",
-          background: scrolled ? "rgba(255,255,255,0.92)" : "transparent",
-          backdropFilter: scrolled ? "blur(18px)" : "none",
-          borderBottom: scrolled ? `1px solid ${LINE}` : "1px solid transparent",
+          background: navSolid ? "rgba(255,255,255,0.92)" : "transparent",
+          backdropFilter: navSolid ? "blur(18px)" : "none",
+          borderBottom: navSolid ? `1px solid ${LINE}` : "1px solid transparent",
           transition: "background 0.4s ease, border-color 0.4s ease, backdrop-filter 0.4s ease",
         }}
       >
         <button onClick={() => goTo("#top")} style={{ background: "none", border: "none", cursor: "pointer", display: "flex", alignItems: "center", gap: 13, padding: 0 }} aria-label="Baidas & Baidas">
-          <LogoLockup color={navTextColor} iconSize={44} fontSize="clamp(17px,2vw,23px)" hideText />
+          <LogoLockup color={navTextColor} iconSize={44} fontSize="clamp(17px,2vw,23px)" />
         </button>
 
         <div style={{ display: "flex", alignItems: "center", gap: "clamp(10px,3vw,26px)" }}>
@@ -602,7 +608,7 @@ export default function Home() {
             })}
           </nav>
           <span className="hidden md:inline-block" style={{ width: 1, height: 16, background: scrolled ? LINE : "rgba(255,255,255,0.4)", flexShrink: 0 }} />
-          <LanguageDropdown lang={lang} scrolled={scrolled} />
+          <span className="hidden md:block"><LanguageDropdown lang={lang} scrolled={scrolled} /></span>
           <a href="https://portal.baidas.ch" aria-label="Portal" className="hidden md:inline-flex"
             style={{ alignItems: "center", background: "transparent", color: navTextColor, border: `1px solid ${navTextColor}`, borderRadius: 999, padding: "8px 18px", cursor: "pointer", fontFamily: "var(--font-geist-sans)", fontSize: 11, letterSpacing: "0.14em", textTransform: "uppercase", fontWeight: 500, whiteSpace: "nowrap", textDecoration: "none", transition: "background 0.3s ease, color 0.3s ease, border-color 0.4s ease" }}
             onMouseEnter={e => { e.currentTarget.style.background = navTextColor; e.currentTarget.style.color = scrolled ? "#fff" : INK; }}
@@ -625,27 +631,40 @@ export default function Home() {
         </div>
       </motion.header>
 
-      {/* ── MOBILE MENU ── */}
+      {/* ── MOBILE MENU (full-screen takeover) ── */}
       <AnimatePresence>
         {menuOpen && (
-          <motion.div className="md:hidden"
-            initial={reduce ? false : { opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} exit={reduce ? undefined : { opacity: 0, y: -10 }}
-            transition={{ duration: 0.22, ease: "easeOut" }}
-            style={{ position: "fixed", top: 74, left: 0, right: 0, zIndex: 90, background: "#fff", borderBottom: `1px solid ${LINE}`, boxShadow: "0 22px 44px -26px rgba(14,27,42,0.4)", padding: "6px clamp(1.25rem,5vw,2rem) 20px" }}>
-            {t.nav.map(([l, h]) => (
-              <button key={h} onClick={() => goTo(h)}
-                style={{ display: "block", width: "100%", textAlign: lang === "ar" ? "right" : "left", background: "none", border: "none", borderBottom: `1px solid ${LINE}`, padding: "16px 2px", cursor: "pointer", fontFamily: "var(--font-geist-sans)", fontSize: 14, letterSpacing: "0.14em", textTransform: "uppercase", color: INK }}>
-                {l}
-              </button>
-            ))}
-            <a href="https://portal.baidas.ch"
-              style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "16px 2px", borderBottom: `1px solid ${LINE}`, textDecoration: "none", fontFamily: "var(--font-geist-sans)", fontSize: 14, letterSpacing: "0.14em", textTransform: "uppercase", color: INK }}>
-              <span>{portalLabel}</span><span aria-hidden="true" style={{ opacity: 0.5 }}>↗</span>
-            </a>
-            <button onClick={() => goTo("#kontakt")}
-              style={{ display: "flex", justifyContent: "center", alignItems: "center", width: "100%", background: INK, color: "#fff", border: "none", borderRadius: 999, padding: "15px 18px", marginTop: 18, cursor: "pointer", fontFamily: "var(--font-geist-sans)", fontSize: 12, letterSpacing: "0.14em", textTransform: "uppercase", fontWeight: 500 }}>
-              {t.contactCta}
-            </button>
+          <motion.div className="md:hidden" role="dialog" aria-modal="true"
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+            transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
+            style={{ position: "fixed", inset: 0, zIndex: 90, background: "#0E1B2A", display: "flex", flexDirection: "column", justifyContent: "space-between", padding: "calc(74px + 7vh) clamp(1.6rem,7vw,2.6rem) max(7vh,34px)" }}>
+            <motion.nav
+              initial="hidden" animate="show"
+              variants={{ hidden: {}, show: { transition: { staggerChildren: reduce ? 0 : 0.07, delayChildren: reduce ? 0 : 0.08 } } }}
+              style={{ display: "flex", flexDirection: "column", gap: "clamp(4px,2vh,16px)", alignItems: lang === "ar" ? "flex-end" : "flex-start" }}>
+              {[...t.nav, [portalLabel, "https://portal.baidas.ch"], [t.contactCta, "#kontakt"]].map(([l, h]) => {
+                const external = h.startsWith("http");
+                const linkStyle: React.CSSProperties = { background: "none", border: "none", padding: "5px 0", cursor: "pointer", textDecoration: "none", color: "#fff", fontFamily: "var(--font-geist-sans)", fontSize: "clamp(27px,7.6vw,36px)", fontWeight: 500, letterSpacing: "0.09em", textTransform: "uppercase", lineHeight: 1.12, display: "inline-flex", alignItems: "center", gap: 12 };
+                return (
+                  <motion.div key={h} variants={{ hidden: { opacity: 0, y: 16 }, show: { opacity: 1, y: 0 } }} transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}>
+                    {external
+                      ? <a href={h} onClick={() => setMenuOpen(false)} style={linkStyle}>{l}<span aria-hidden="true" style={{ fontSize: "0.5em", opacity: 0.55 }}>↗</span></a>
+                      : <button onClick={() => goTo(h)} style={linkStyle}>{l}</button>}
+                  </motion.div>
+                );
+              })}
+            </motion.nav>
+
+            <motion.div
+              initial={reduce ? false : { opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: reduce ? 0 : 0.4, duration: 0.5 }}
+              style={{ display: "flex", gap: 20, alignItems: "center", justifyContent: lang === "ar" ? "flex-end" : "flex-start" }}>
+              {LANGS.map(l => (
+                <a key={l} href={l === "de" ? "/" : "/" + l}
+                  style={{ color: "#fff", textDecoration: "none", fontFamily: "var(--font-geist-sans)", fontSize: 12.5, letterSpacing: "0.18em", textTransform: "uppercase", fontWeight: l === lang ? 600 : 400, opacity: l === lang ? 1 : 0.5 }}>
+                  {l.toUpperCase()}
+                </a>
+              ))}
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
