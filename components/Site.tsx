@@ -127,7 +127,7 @@ const PROJECTS: { name: string; images: string[]; status?: string }[] = PROJECT_
    faithful translations of that same content (nothing invented). ── */
 const T = {
   de: {
-    nav: [["Über Uns", "#about"], ["Akquisition", "#akquisition"], ["Projekte", "#projekte"]],
+    nav: [["Über Uns", "#about"], ["Ankauf", "#akquisition"], ["Projekte", "#projekte"]],
     heroEyebrow: "Immobilienentwicklung & Investments",
     heroTitle: "Baidas & Baidas",
     discover: "Entdecken",
@@ -149,7 +149,7 @@ const T = {
     projLabel: "Immobilien",
     projTitle: "Projekte",
     projIntro: "Unsere Immobilienprojekte erstrecken sich über Zürich, Dubai und Abu Dhabi. In unserer Rolle als Projektentwickler übernehmen wir den gesamten Prozess – von der Anschaffung der Grundstücke bis hin zur Fertigstellung der Bauvorhaben. Darüber hinaus engagieren wir uns auch als Investoren in Bauprojekten, um deren Erfolg und Rentabilität zu sichern.",
-    acqLabel: "Akquisition",
+    acqLabel: "Ankauf",
     acqTitle: "Grundstück anbieten",
     acqP1: "Baidas & Baidas kauft bebaubare Grundstücke in guten und sehr guten Wohnlagen in Zürich, Dubai und Abu Dhabi, um auf ihnen besonders hochwertige Eigentumswohnungen oder Einfamilienhäuser zu errichten.",
     acqP2: "Sie haben ein passendes Grundstück oder eine Bestandsimmobilie und wollen diese zum Kauf anbieten? Selbstverständlich können Sie uns aus Diskretionsgründen auch direkt und persönlich kontaktieren. Wir freuen uns über Ihre Kontaktaufnahme.",
@@ -158,7 +158,7 @@ const T = {
     coBody: "Baidas & Baidas beteiligt sich als verlässlicher Kapital- und Entwicklungspartner an ausgewählten Bauprojekten in Zürich, Dubai und Abu Dhabi. Wir freuen uns auf eine vertrauliche Kontaktaufnahme.",
     namePh: "Ihr Name", emailPh: "Ihre E-Mail", msgPh: "Ihre Nachricht",
     send: "Anfrage senden", sent: "Vielen Dank — wir melden uns in Kürze.",
-    footerNav: [["Über Uns", "#about"], ["Akquisition", "#akquisition"], ["Immobilien", "#projekte"]],
+    footerNav: [["Über Uns", "#about"], ["Ankauf", "#akquisition"], ["Immobilien", "#projekte"]],
     close: "Schliessen",
   },
   en: {
@@ -580,7 +580,7 @@ export default function Home() {
         </button>
 
         <div style={{ display: "flex", alignItems: "center", gap: "clamp(10px,3vw,26px)" }}>
-          <nav style={{ display: "flex", gap: "clamp(12px,2.4vw,28px)", alignItems: "center" }}>
+          <nav className="hidden md:flex" style={{ gap: "clamp(12px,2.4vw,28px)", alignItems: "center" }}>
             {t.nav.map(([l, h]) => {
               const isActive = h === `#${active}`;
               return (
@@ -591,8 +591,14 @@ export default function Home() {
               );
             })}
           </nav>
-          <span style={{ width: 1, height: 16, background: scrolled ? LINE : "rgba(255,255,255,0.4)", flexShrink: 0 }} />
+          <span className="hidden md:inline-block" style={{ width: 1, height: 16, background: scrolled ? LINE : "rgba(255,255,255,0.4)", flexShrink: 0 }} />
           <LanguageDropdown lang={lang} scrolled={scrolled} />
+          <a href="https://portal.baidas.ch" aria-label="Portal"
+            style={{ display: "inline-flex", alignItems: "center", background: "transparent", color: navTextColor, border: `1px solid ${navTextColor}`, borderRadius: 999, padding: "8px 18px", cursor: "pointer", fontFamily: "var(--font-geist-sans)", fontSize: 11, letterSpacing: "0.14em", textTransform: "uppercase", fontWeight: 500, whiteSpace: "nowrap", textDecoration: "none", transition: "background 0.3s ease, color 0.3s ease, border-color 0.4s ease" }}
+            onMouseEnter={e => { e.currentTarget.style.background = navTextColor; e.currentTarget.style.color = scrolled ? "#fff" : INK; }}
+            onMouseLeave={e => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = navTextColor; }}>
+            {lang === "fr" ? "Portail" : lang === "ar" ? "البوابة" : "Portal"}
+          </a>
           <button onClick={() => goTo("#kontakt")} className="hidden md:inline-flex"
             style={{ alignItems: "center", background: navTextColor, color: scrolled ? "#fff" : INK, border: "none", borderRadius: 999, padding: "9px 20px", cursor: "pointer", fontFamily: "var(--font-geist-sans)", fontSize: 11, letterSpacing: "0.14em", textTransform: "uppercase", fontWeight: 500, whiteSpace: "nowrap", transition: "background 0.4s ease, color 0.4s ease" }}>
             {t.contactCta}
