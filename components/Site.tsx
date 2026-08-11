@@ -510,6 +510,13 @@ export default function Home() {
   const [lb, setLb] = useState<{ images: string[]; name: string; i: number } | null>(null);
   const [camTick, setCamTick] = useState(0);
   const [active, setActive] = useState("about");
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  // Lock body scroll while the mobile menu is open.
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [menuOpen]);
 
   // Refresh the live construction-cam frame every 15s.
   useEffect(() => {
@@ -549,9 +556,12 @@ export default function Home() {
   }, [lang]);
 
   const goTo = (href: string) => {
+    setMenuOpen(false);
     if (href.startsWith("#")) document.querySelector(href)?.scrollIntoView({ behavior: "smooth", block: "start" });
     else window.location.href = href;
   };
+
+  const portalLabel = lang === "fr" ? "Portail" : lang === "ar" ? "البوابة" : "Portal";
 
   const navTextColor = scrolled ? INK : "#fff";
   const navLink: React.CSSProperties = {
@@ -593,18 +603,52 @@ export default function Home() {
           </nav>
           <span className="hidden md:inline-block" style={{ width: 1, height: 16, background: scrolled ? LINE : "rgba(255,255,255,0.4)", flexShrink: 0 }} />
           <LanguageDropdown lang={lang} scrolled={scrolled} />
-          <a href="https://portal.baidas.ch" aria-label="Portal"
-            style={{ display: "inline-flex", alignItems: "center", background: "transparent", color: navTextColor, border: `1px solid ${navTextColor}`, borderRadius: 999, padding: "8px 18px", cursor: "pointer", fontFamily: "var(--font-geist-sans)", fontSize: 11, letterSpacing: "0.14em", textTransform: "uppercase", fontWeight: 500, whiteSpace: "nowrap", textDecoration: "none", transition: "background 0.3s ease, color 0.3s ease, border-color 0.4s ease" }}
+          <a href="https://portal.baidas.ch" aria-label="Portal" className="hidden md:inline-flex"
+            style={{ alignItems: "center", background: "transparent", color: navTextColor, border: `1px solid ${navTextColor}`, borderRadius: 999, padding: "8px 18px", cursor: "pointer", fontFamily: "var(--font-geist-sans)", fontSize: 11, letterSpacing: "0.14em", textTransform: "uppercase", fontWeight: 500, whiteSpace: "nowrap", textDecoration: "none", transition: "background 0.3s ease, color 0.3s ease, border-color 0.4s ease" }}
             onMouseEnter={e => { e.currentTarget.style.background = navTextColor; e.currentTarget.style.color = scrolled ? "#fff" : INK; }}
             onMouseLeave={e => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = navTextColor; }}>
-            {lang === "fr" ? "Portail" : lang === "ar" ? "البوابة" : "Portal"}
+            {portalLabel}
           </a>
           <button onClick={() => goTo("#kontakt")} className="hidden md:inline-flex"
             style={{ alignItems: "center", background: navTextColor, color: scrolled ? "#fff" : INK, border: "none", borderRadius: 999, padding: "9px 20px", cursor: "pointer", fontFamily: "var(--font-geist-sans)", fontSize: 11, letterSpacing: "0.14em", textTransform: "uppercase", fontWeight: 500, whiteSpace: "nowrap", transition: "background 0.4s ease, color 0.4s ease" }}>
             {t.contactCta}
           </button>
+
+          {/* mobile menu toggle */}
+          <button onClick={() => setMenuOpen(o => !o)} className="inline-flex md:hidden items-center justify-center"
+            aria-label="Menu" aria-expanded={menuOpen}
+            style={{ width: 36, height: 36, background: "none", border: "none", cursor: "pointer", color: navTextColor, padding: 0, marginInlineEnd: -6 }}>
+            <svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round">
+              {menuOpen ? (<><path d="M6 6l12 12" /><path d="M18 6L6 18" /></>) : (<><path d="M4 8h16" /><path d="M4 16h16" /></>)}
+            </svg>
+          </button>
         </div>
       </motion.header>
+
+      {/* ── MOBILE MENU ── */}
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div className="md:hidden"
+            initial={reduce ? false : { opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} exit={reduce ? undefined : { opacity: 0, y: -10 }}
+            transition={{ duration: 0.22, ease: "easeOut" }}
+            style={{ position: "fixed", top: 74, left: 0, right: 0, zIndex: 90, background: "#fff", borderBottom: `1px solid ${LINE}`, boxShadow: "0 22px 44px -26px rgba(14,27,42,0.4)", padding: "6px clamp(1.25rem,5vw,2rem) 20px" }}>
+            {t.nav.map(([l, h]) => (
+              <button key={h} onClick={() => goTo(h)}
+                style={{ display: "block", width: "100%", textAlign: lang === "ar" ? "right" : "left", background: "none", border: "none", borderBottom: `1px solid ${LINE}`, padding: "16px 2px", cursor: "pointer", fontFamily: "var(--font-geist-sans)", fontSize: 14, letterSpacing: "0.14em", textTransform: "uppercase", color: INK }}>
+                {l}
+              </button>
+            ))}
+            <a href="https://portal.baidas.ch"
+              style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "16px 2px", borderBottom: `1px solid ${LINE}`, textDecoration: "none", fontFamily: "var(--font-geist-sans)", fontSize: 14, letterSpacing: "0.14em", textTransform: "uppercase", color: INK }}>
+              <span>{portalLabel}</span><span aria-hidden="true" style={{ opacity: 0.5 }}>↗</span>
+            </a>
+            <button onClick={() => goTo("#kontakt")}
+              style={{ display: "flex", justifyContent: "center", alignItems: "center", width: "100%", background: INK, color: "#fff", border: "none", borderRadius: 999, padding: "15px 18px", marginTop: 18, cursor: "pointer", fontFamily: "var(--font-geist-sans)", fontSize: 12, letterSpacing: "0.14em", textTransform: "uppercase", fontWeight: 500 }}>
+              {t.contactCta}
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* ── HERO ── */}
       <section id="top" style={{ position: "relative", height: "100dvh", overflow: "hidden", background: "#0E1B2A" }}>
