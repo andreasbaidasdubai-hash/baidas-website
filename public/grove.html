@@ -670,6 +670,8 @@
 
 
 
+
+
 <script>
 (function(){
   var C = {
@@ -908,7 +910,7 @@
   function esc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
   function link(s){ return esc(s).replace(/info@baidas\.ch/g,'<a href="mailto:info@baidas.ch">info@baidas.ch</a>'); }
   function speak(text){ if(!speakOn||!('speechSynthesis' in window)) return; try{ speechSynthesis.cancel(); var u=new SpeechSynthesisUtterance(String(text).replace(/[✨👋📅📧]/g,'')); u.lang=VLANG[lang()]||'en-US'; speechSynthesis.speak(u);}catch(e){} }
-  function add(text,who){ var d=document.createElement('div'); d.className='gc-b gc-'+who; d.innerHTML=(who==='bot')?link(text):esc(text); msgs.appendChild(d); msgs.scrollTop=msgs.scrollHeight; if(who==='bot') speak(text); return d; }
+  function add(text,who,raw){ var d=document.createElement('div'); d.className='gc-b gc-'+who; d.innerHTML=raw?text:((who==='bot')?link(text):esc(text)); msgs.appendChild(d); msgs.scrollTop=msgs.scrollHeight; if(who==='bot'&&!raw) speak(text); return d; }
   function botType(text,after){ var d=document.createElement('div'); d.className='gc-b gc-bot gc-typing'; d.innerHTML='<span></span><span></span><span></span>'; msgs.appendChild(d); msgs.scrollTop=msgs.scrollHeight;
     setTimeout(function(){ d.classList.remove('gc-typing'); d.innerHTML=link(text); msgs.scrollTop=msgs.scrollHeight; speak(text); if(after) after(); }, 520); }
 
@@ -930,11 +932,11 @@
       var href='mailto:info@baidas.ch?subject='+encodeURIComponent(c2.subj)+'&body='+body;
       try{ localStorage.setItem('grove_enquiries',(localStorage.getItem('grove_enquiries')||'')+JSON.stringify({name:name,email:email,cin:cin,cout:cout,guests:guests,t:Date.now()})+'\n'); }catch(e){}
       d.querySelector('.gc-fsend').disabled=true;
-      botType(c2.f_thanks,function(){ var a=add('<a class="gc-mail" href="'+href+'">'+esc(c2.f_mail)+'</a>','bot'); });
+      botType(c2.f_thanks,function(){ add('<a class="gc-mail" href="'+href+'">'+esc(c2.f_mail)+'</a>','bot',true); });
     });
   }
 
-  function answer(intent){ var c=C[lang()]; if(intent==='avail'){ botType(c.avail,function(){ var b=add('<button class="gc-formbtn" type="button">'+esc(c.f_open)+'</button>','bot'); b.querySelector('.gc-formbtn').addEventListener('click',showForm); }); return; } botType(c[intent]||c.fallback); }
+  function answer(intent){ var c=C[lang()]; if(intent==='avail'){ botType(c.avail,function(){ var b=add('<button class="gc-formbtn" type="button">'+esc(c.f_open)+'</button>','bot',true); b.querySelector('.gc-formbtn').addEventListener('click',showForm); }); return; } botType(c[intent]||c.fallback); }
 
   function renderChrome(){ var c=C[lang()];
     wrap.querySelector('#gc-title').textContent=c.title; wrap.querySelector('#gc-sub').textContent=c.sub;
