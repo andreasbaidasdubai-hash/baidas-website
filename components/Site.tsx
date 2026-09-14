@@ -58,6 +58,7 @@ const PHOTOS: { src: string; name: string }[] = [
   { src: "/projekte/saadiyat-villa-6-11.jpg", name: "Saadiyat Lagoons, Al Ghaf" },
   { src: "/projekte/saadiyat-villa-6-13.jpg", name: "Saadiyat Lagoons, Ethir" },
   { src: "/projekte/silvestris-5.jpg", name: "Silvestris, Zürich" },
+  { src: "/projekte/silvestris-6.jpg", name: "Silvestris, Zürich" },
   { src: "https://static.wixstatic.com/media/b3010c_fba9859cbc0a46db9d0b1d70a65f2fb4~mv2.jpg", name: "Creek Edge Villas, Dubai" },
   { src: "https://static.wixstatic.com/media/b3010c_6f1c757e7d4a4befa1cf19217c17b98d~mv2.jpg", name: "Haus am Tämberg, Zürich" },
   { src: "/projekte/the-cape-2.jpg", name: "The Cape, Al Barari" },
