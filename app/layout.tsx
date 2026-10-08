@@ -130,6 +130,29 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{ __html: JSON.stringify(JSON_LD) }}
         />
         {children}
+        {/*
+          Belline's receptionist widget, installed the way a customer installs
+          it.
+
+          Added 8 October 2026 to prove the product works on a website that is
+          not Belline's own — the one thing nobody had tested before
+          approaching customers. baidas.ch is on that venue's allowed-origins
+          list, so the widget is entitled to render here; from any other site
+          the ping comes back 403 and the widget takes itself off the page.
+
+          The snippet is copied verbatim from the Belline dashboard, `async`
+          and all, so what is being tested is exactly what a customer is given.
+          Belle answers as Belline here, not as Baidas & Baidas.
+
+          To remove it, delete this script tag. Nothing else on the site
+          depends on it.
+        */}
+        <script
+          src="https://app.belline.ai/embed.js"
+          data-belline="be_belline_site"
+          data-mode="chat"
+          async
+        />
       </body>
     </html>
   );
